@@ -1,0 +1,53 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme inline {
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-display);
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Display font for headings and brand */
+.font-display {
+  font-family: var(--font-display), var(--font-inter), sans-serif;
+}
+
+/* Headings use display font */
+h1, h2, h3 {
+  font-family: var(--font-display), var(--font-inter), sans-serif;
+  letter-spacing: -0.025em;
+}
+
+/* Smooth details/summary animation */
+details summary {
+  list-style: none;
+}
+details summary::-webkit-details-marker {
+  display: none;
+}
+details summary::after {
+  content: "+";
+  float: right;
+  font-weight: 300;
+  font-size: 1.25rem;
+  color: #9ca3af;
+  transition: transform 0.2s;
+}
+details[open] summary::after {
+  transform: rotate(45deg);
+}
+
+/* Subtle hover transitions */
+a, button {
+  transition: all 0.15s ease;
+}
+
+/* Selection color */
+::selection {
+  background-color: #dbeafe;
+  color: #1e40af;
+}

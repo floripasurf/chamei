@@ -1,0 +1,16 @@
+{
+  "name": "Chamei",
+  "short_name": "Chamei",
+  "description": "Encontre profissionais de confianca",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f9fafb",
+  "theme_color": "#2563EB",
+  "icons": [
+    {
+      "src": "/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
