@@ -6,6 +6,7 @@ interface Lead {
   id: string;
   name: string;
   whatsapp: string;
+  category_id: string | null;
   category_name: string | null;
   neighborhood: string | null;
   description: string | null;
@@ -30,6 +31,27 @@ const STATUS_LABELS: Record<string, string> = {
 export default function LeadsTable({ leads: initialLeads }: { leads: Lead[] }) {
   const [leads, setLeads] = useState(initialLeads);
   const [updating, setUpdating] = useState<string | null>(null);
+  const [approvedUrl, setApprovedUrl] = useState<string | null>(null);
+
+  async function approveLead(id: string) {
+    setUpdating(id);
+    try {
+      const res = await fetch(`/api/leads/${id}/approve`, {
+        method: "POST",
+      });
+      if (res.ok) {
+        const data = await res.json();
+        setLeads((prev) =>
+          prev.map((l) => (l.id === id ? { ...l, status: "claimed" } : l))
+        );
+        setApprovedUrl(data.professional.url);
+        setTimeout(() => setApprovedUrl(null), 5000);
+      }
+    } catch {
+      // ignore
+    }
+    setUpdating(null);
+  }
 
   async function updateStatus(id: string, newStatus: string) {
     setUpdating(id);
@@ -76,6 +98,22 @@ export default function LeadsTable({ leads: initialLeads }: { leads: Lead[] }) {
   }
 
   return (
+    <div>
+      {approvedUrl && (
+        <div className="mb-4 bg-green-50 border border-green-200 rounded-xl p-3 flex items-center justify-between">
+          <span className="text-sm text-green-700">
+            Perfil criado com sucesso!
+          </span>
+          <a
+            href={approvedUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm font-medium text-green-600 hover:underline"
+          >
+            Ver perfil →
+          </a>
+        </div>
+      )}
     <div className="overflow-x-auto">
       <table className="w-full text-sm">
         <thead>
@@ -128,35 +166,26 @@ export default function LeadsTable({ leads: initialLeads }: { leads: Lead[] }) {
               </td>
               <td className="py-3">
                 <div className="flex gap-1">
-                  {lead.status === "new" && (
-                    <>
-                      <button
-                        onClick={() => updateStatus(lead.id, "contacted")}
-                        disabled={updating === lead.id}
-                        className="text-xs px-2 py-1 bg-blue-50 text-blue-600 rounded hover:bg-blue-100 transition-colors disabled:opacity-50"
-                      >
-                        Contactar
-                      </button>
-                      <a
-                        href={`https://wa.me/55${lead.whatsapp}?text=${encodeURIComponent(`Ola ${lead.name}, aqui e da equipe Chamei! Recebemos seu cadastro como ${lead.category_name || "profissional"} e queremos te ajudar a receber mais clientes. Podemos conversar?`)}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-xs px-2 py-1 bg-green-50 text-green-600 rounded hover:bg-green-100 transition-colors"
-                      >
-                        WhatsApp
-                      </a>
-                    </>
-                  )}
-                  {lead.status === "contacted" && (
+                  {lead.status !== "claimed" && lead.status !== "rejected" && (
                     <button
-                      onClick={() => updateStatus(lead.id, "claimed")}
+                      onClick={() => approveLead(lead.id)}
                       disabled={updating === lead.id}
-                      className="text-xs px-2 py-1 bg-purple-50 text-purple-600 rounded hover:bg-purple-100 transition-colors disabled:opacity-50"
+                      className="text-xs px-2 py-1 bg-green-600 text-white rounded font-medium hover:bg-green-700 transition-colors disabled:opacity-50"
                     >
-                      Reivindicou
+                      {updating === lead.id ? "..." : "Aprovar"}
                     </button>
                   )}
-                  {lead.status !== "rejected" && lead.status !== "new" && (
+                  {lead.status === "new" && (
+                    <a
+                      href={`https://wa.me/55${lead.whatsapp}?text=${encodeURIComponent(`Ola ${lead.name}, aqui e da equipe Chamei! Recebemos seu cadastro como ${lead.category_name || "profissional"} e queremos te ajudar a receber mais clientes. Podemos conversar?`)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs px-2 py-1 bg-green-50 text-green-600 rounded hover:bg-green-100 transition-colors"
+                    >
+                      WhatsApp
+                    </a>
+                  )}
+                  {lead.status !== "rejected" && lead.status !== "claimed" && (
                     <button
                       onClick={() => updateStatus(lead.id, "rejected")}
                       disabled={updating === lead.id}
@@ -171,6 +200,7 @@ export default function LeadsTable({ leads: initialLeads }: { leads: Lead[] }) {
           ))}
         </tbody>
       </table>
+    </div>
     </div>
   );
 }

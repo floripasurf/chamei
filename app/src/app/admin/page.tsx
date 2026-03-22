@@ -2,6 +2,7 @@ import { getDb } from "@/lib/db";
 import Link from "next/link";
 import LeadsTable from "./leads-table";
 import ClaimsTable from "./claims-table";
+import AdminGuard from "./admin-guard";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -61,6 +62,7 @@ export default async function AdminPage() {
   const pendingClaims = claims.filter((c: any) => c.status === "pending").length;
 
   return (
+    <AdminGuard>
     <div>
       <section className="bg-white border-b border-gray-100">
         <div className="max-w-6xl mx-auto px-4 py-6">
@@ -155,5 +157,6 @@ export default async function AdminPage() {
         </div>
       </div>
     </div>
+    </AdminGuard>
   );
 }
