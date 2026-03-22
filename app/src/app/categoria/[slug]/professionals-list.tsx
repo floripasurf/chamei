@@ -14,6 +14,7 @@ interface Pro {
   google_rating: number | null;
   google_review_count: number;
   is_verified: boolean;
+  is_claimed: boolean;
   photo_url: string | null;
   hours: string | null;
   latitude: number | null;
@@ -22,7 +23,7 @@ interface Pro {
   top_review?: { author_name: string | null; text: string | null; rating: number | null } | null;
 }
 
-type SortMode = "rating" | "reviews" | "nearby";
+type SortMode = "nearby" | "rating" | "reviews";
 
 function haversine(lat1: number, lng1: number, lat2: number, lng2: number): number {
   const R = 6371;
@@ -36,15 +37,69 @@ function haversine(lat1: number, lng1: number, lat2: number, lng2: number): numb
   return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 }
 
+function sortByProximity(list: Pro[], lat: number, lng: number) {
+  const withDistance = list.map((p) => ({
+    ...p,
+    distance_km:
+      p.latitude && p.longitude
+        ? haversine(lat, lng, p.latitude, p.longitude)
+        : 9999,
+  }));
+
+  // Claimed within 10km first, then nearby by distance, then far by distance
+  return withDistance.sort((a, b) => {
+    const aClose = (a.distance_km || 9999) <= 10;
+    const bClose = (b.distance_km || 9999) <= 10;
+    const aClaimed = a.is_claimed;
+    const bClaimed = b.is_claimed;
+
+    // Claimed + within 10km → top priority
+    if (aClose && aClaimed && !(bClose && bClaimed)) return -1;
+    if (bClose && bClaimed && !(aClose && aClaimed)) return 1;
+
+    // Both claimed+close or both not: sort by distance
+    if (aClose && bClose) {
+      // Within 10km: claimed first, then by rating
+      if (aClaimed !== bClaimed) return aClaimed ? -1 : 1;
+      return (b.google_rating || 0) - (a.google_rating || 0);
+    }
+
+    // Otherwise sort by distance
+    return (a.distance_km || 9999) - (b.distance_km || 9999);
+  });
+}
+
 export default function ProfessionalsList({ professionals }: { professionals: Pro[] }) {
-  const [sortMode, setSortMode] = useState<SortMode>("rating");
+  const [sortMode, setSortMode] = useState<SortMode>("nearby");
   const [sorted, setSorted] = useState<Pro[]>(professionals);
   const [geoStatus, setGeoStatus] = useState<"idle" | "loading" | "done" | "denied">("idle");
   const [userLoc, setUserLoc] = useState<{ lat: number; lng: number } | null>(null);
 
-  // Sort by rating on initial load
+  // Default: try geolocation on load for proximity sort
   useEffect(() => {
-    setSorted(sortByRating(professionals));
+    if (!navigator.geolocation) {
+      setGeoStatus("denied");
+      setSortMode("rating");
+      setSorted(sortByRating(professionals));
+      return;
+    }
+
+    setGeoStatus("loading");
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        const loc = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+        setUserLoc(loc);
+        setGeoStatus("done");
+        setSorted(sortByProximity(professionals, loc.lat, loc.lng));
+      },
+      () => {
+        // Fallback to rating if geo denied
+        setGeoStatus("denied");
+        setSortMode("rating");
+        setSorted(sortByRating(professionals));
+      },
+      { enableHighAccuracy: false, timeout: 10000 }
+    );
   }, [professionals]);
 
   function sortByRating(list: Pro[]) {
@@ -53,18 +108,6 @@ export default function ProfessionalsList({ professionals }: { professionals: Pr
 
   function sortByReviews(list: Pro[]) {
     return [...list].sort((a, b) => (b.google_review_count || 0) - (a.google_review_count || 0));
-  }
-
-  function sortByDistance(list: Pro[], lat: number, lng: number) {
-    return [...list]
-      .map((p) => ({
-        ...p,
-        distance_km:
-          p.latitude && p.longitude
-            ? haversine(lat, lng, p.latitude, p.longitude)
-            : 9999,
-      }))
-      .sort((a, b) => (a.distance_km || 9999) - (b.distance_km || 9999));
   }
 
   function handleSort(mode: SortMode) {
@@ -76,7 +119,7 @@ export default function ProfessionalsList({ professionals }: { professionals: Pr
       setSorted(sortByReviews(professionals));
     } else if (mode === "nearby") {
       if (userLoc) {
-        setSorted(sortByDistance(professionals, userLoc.lat, userLoc.lng));
+        setSorted(sortByProximity(professionals, userLoc.lat, userLoc.lng));
       } else {
         setGeoStatus("loading");
         navigator.geolocation.getCurrentPosition(
@@ -84,7 +127,7 @@ export default function ProfessionalsList({ professionals }: { professionals: Pr
             const loc = { lat: pos.coords.latitude, lng: pos.coords.longitude };
             setUserLoc(loc);
             setGeoStatus("done");
-            setSorted(sortByDistance(professionals, loc.lat, loc.lng));
+            setSorted(sortByProximity(professionals, loc.lat, loc.lng));
           },
           () => {
             setGeoStatus("denied");
@@ -102,9 +145,9 @@ export default function ProfessionalsList({ professionals }: { professionals: Pr
       <div className="flex items-center gap-2 mb-5">
         <span className="text-xs text-gray-400 mr-1">Ordenar:</span>
         {[
+          { mode: "nearby" as SortMode, label: "📍 Mais perto" },
           { mode: "rating" as SortMode, label: "Melhor avaliados" },
           { mode: "reviews" as SortMode, label: "Mais avaliações" },
-          { mode: "nearby" as SortMode, label: "📍 Mais perto" },
         ].map(({ mode, label }) => (
           <button
             key={mode}
