@@ -26,13 +26,13 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: "Chamei — Encontre profissionais de confiança",
   description:
-    "Conectamos você a eletricistas, encanadores, pedreiros, diaristas e outros profissionais avaliados no Brasil. Compare, escolha e chame pelo WhatsApp. Grátis.",
+    "Os melhores profissionais do Brasil em um só lugar! Compare avaliações e chame direto pelo WhatsApp.",
   keywords:
-    "profissionais são paulo, eletricista sp, encanador sp, pedreiro sp, diarista sp, serviços residenciais, reformas sp",
+    "profissionais brasil, eletricista perto de mim, encanador, pedreiro, diarista, serviços residenciais, reformas",
   openGraph: {
     title: "Chamei — Profissionais de confiança",
     description:
-      "Encontre e contrate profissionais avaliados em SP. Grátis para clientes e profissionais.",
+      "Os melhores profissionais do Brasil em um só lugar! Compare avaliações e chame direto pelo WhatsApp.",
     url: "https://chamei.app",
     siteName: "Chamei",
     locale: "pt_BR",
