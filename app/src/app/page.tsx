@@ -48,11 +48,10 @@ export default async function Home() {
       <section className="bg-gradient-to-b from-white to-gray-50 border-b border-gray-100">
         <div className="max-w-5xl mx-auto px-4 py-14 sm:py-20 text-center">
           <h1 className="text-3xl sm:text-5xl font-bold text-gray-900 leading-tight">
-            Encontre profissionais<br />de confiança
+            Somente os melhores<br />profissionais
           </h1>
           <p className="text-gray-500 mt-4 text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
-            O Chamei conecta você a profissionais avaliados por clientes reais.
-            Compare, escolha e chame direto pelo WhatsApp. Grátis.
+            Link direto para o WhatsApp. Rápido, fácil e grátis!
           </p>
 
           {/* Search */}
