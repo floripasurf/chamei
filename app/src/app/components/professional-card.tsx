@@ -18,6 +18,7 @@ interface CardProfessional {
   is_claimed?: boolean;
   photo_url: string | null;
   hours: string | null;
+  category_name?: string | null;
   distance_km?: number;
 }
 
@@ -51,6 +52,38 @@ function maskPhone(phone: string): string {
   return phone.replace(/.(?=.{4})/g, "*");
 }
 
+function AvailabilityIndicator({ hours }: { hours: string | null }) {
+  if (!hours) return null;
+
+  const now = new Date();
+  const currentHour = now.getHours();
+  const isWeekday = now.getDay() >= 1 && now.getDay() <= 5;
+
+  // Simple heuristic: if hours mention "24h" or "aberto", always available
+  const is24h = /24\s*h|aberto/i.test(hours);
+  // Assume typical business hours 8-18 on weekdays
+  const isLikelyOpen = is24h || (isWeekday && currentHour >= 8 && currentHour < 18);
+
+  return (
+    <span className={`inline-flex items-center gap-1 text-[10px] font-medium ${isLikelyOpen ? "text-green-600" : "text-gray-400"}`}>
+      <span className={`w-1.5 h-1.5 rounded-full ${isLikelyOpen ? "bg-green-500 animate-pulse" : "bg-gray-300"}`} />
+      {isLikelyOpen ? "Disponível" : "Fora do horário"}
+    </span>
+  );
+}
+
+function ServiceTags({ categoryName }: { categoryName: string | null | undefined }) {
+  if (!categoryName) return null;
+
+  return (
+    <div className="flex flex-wrap gap-1 mt-1.5">
+      <span className="inline-flex items-center px-2 py-0.5 rounded-md bg-blue-50 text-blue-700 text-[10px] font-medium">
+        {categoryName}
+      </span>
+    </div>
+  );
+}
+
 function TrustSignals({ pro }: { pro: CardProfessional }) {
   const badges: { label: string; color: string }[] = [];
 
@@ -58,10 +91,6 @@ function TrustSignals({ pro }: { pro: CardProfessional }) {
     badges.push({ label: "Top avaliado", color: "text-green-600" });
   } else if (pro.google_review_count >= 20) {
     badges.push({ label: "Muito avaliado", color: "text-green-600" });
-  }
-
-  if (pro.hours && (/24/.test(pro.hours) || /aberto/i.test(pro.hours))) {
-    badges.push({ label: "Disponível agora", color: "text-blue-600" });
   }
 
   if (badges.length === 0 && !pro.phone) return null;
@@ -96,6 +125,20 @@ function getInitials(name: string): string {
     .toUpperCase();
 }
 
+// Deterministic gradient based on name
+function getGradient(name: string): string {
+  const gradients = [
+    "from-blue-500 to-indigo-600",
+    "from-emerald-500 to-teal-600",
+    "from-violet-500 to-purple-600",
+    "from-orange-500 to-red-500",
+    "from-cyan-500 to-blue-600",
+    "from-pink-500 to-rose-600",
+  ];
+  const idx = (name.charCodeAt(0) + name.length) % gradients.length;
+  return gradients[idx];
+}
+
 export default function ProfessionalCard({
   pro,
   topReview,
@@ -109,7 +152,7 @@ export default function ProfessionalCard({
     : null;
 
   return (
-    <div className="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all overflow-hidden">
+    <div className="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg hover:scale-[1.01] transition-all duration-200 overflow-hidden group">
       <div className="flex">
         {/* Photo */}
         <Link href={`/profissional/${pro.slug}`} className="shrink-0">
@@ -117,12 +160,15 @@ export default function ProfessionalCard({
             <img
               src={pro.photo_url}
               alt={pro.name}
-              className="w-28 h-full sm:w-36 object-cover bg-gray-100"
+              className="w-28 h-full sm:w-36 object-cover bg-gray-100 group-hover:brightness-105 transition-all duration-200"
               loading="lazy"
             />
           ) : (
-            <div className="w-28 h-full sm:w-36 bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center min-h-[120px]">
-              <span className="text-2xl font-bold text-white/90">
+            <div className={`w-28 h-full sm:w-36 bg-gradient-to-br ${getGradient(pro.name)} flex flex-col items-center justify-center min-h-[120px] group-hover:brightness-110 transition-all duration-200`}>
+              <svg className="w-8 h-8 text-white/60 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+              </svg>
+              <span className="text-lg font-bold text-white/90">
                 {getInitials(pro.name)}
               </span>
             </div>
@@ -134,7 +180,7 @@ export default function ProfessionalCard({
           <div>
             <div className="flex items-start justify-between gap-2">
               <Link href={`/profissional/${pro.slug}`} className="min-w-0 flex items-center gap-1.5">
-                <h3 className="font-semibold text-gray-900 truncate hover:text-blue-600 transition-colors">
+                <h3 className="font-semibold text-gray-900 truncate group-hover:text-blue-600 transition-colors">
                   {pro.name}
                 </h3>
                 {pro.is_claimed && (
@@ -146,17 +192,23 @@ export default function ProfessionalCard({
                   </span>
                 )}
               </Link>
-              {pro.distance_km !== undefined && (
-                <span className="shrink-0 text-xs font-medium text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full">
-                  {formatDistance(pro.distance_km)}
-                </span>
-              )}
+              <div className="flex items-center gap-1.5 shrink-0">
+                <AvailabilityIndicator hours={pro.hours} />
+                {pro.distance_km !== undefined && (
+                  <span className="text-xs font-medium text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full">
+                    {formatDistance(pro.distance_km)}
+                  </span>
+                )}
+              </div>
             </div>
 
             {/* Location */}
             <p className="text-sm text-gray-500 mt-0.5 truncate">
               {pro.neighborhood || pro.city || pro.address || "São Paulo, SP"}
             </p>
+
+            {/* Service tags */}
+            <ServiceTags categoryName={pro.category_name} />
 
             {/* Rating */}
             <div className="flex items-center gap-2 mt-2">
