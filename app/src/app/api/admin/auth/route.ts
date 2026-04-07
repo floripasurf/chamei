@@ -1,12 +1,18 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "chamei2026";
-
 export async function POST(request: NextRequest) {
+  const adminPassword = process.env.ADMIN_PASSWORD;
+  if (!adminPassword) {
+    return NextResponse.json(
+      { error: "Servidor mal configurado" },
+      { status: 500 },
+    );
+  }
+
   const body = await request.json();
   const { password } = body;
 
-  if (password === ADMIN_PASSWORD) {
+  if (password === adminPassword) {
     const response = NextResponse.json({ success: true });
     response.cookies.set("admin_session", "authenticated", {
       httpOnly: true,
