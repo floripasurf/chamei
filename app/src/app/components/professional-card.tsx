@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { trackEvent } from "@/lib/track";
 
 const PLATFORM_NAME = "Chamei";
 
@@ -250,6 +251,7 @@ export default function ProfessionalCard({
                 rel="noopener noreferrer"
                 onClick={(e) => {
                   e.stopPropagation();
+                  trackEvent(pro.id, "whatsapp_click");
                   if (typeof window !== 'undefined' && (window as any).gtag) {
                     (window as any).gtag('event', 'whatsapp_click', {
                       professional_name: pro.name,

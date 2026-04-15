@@ -4,6 +4,7 @@ import { getDb } from "@/lib/db";
 import { Professional, ReviewImported } from "@/lib/types";
 import ContactSidebar from "./contact-sidebar";
 import ShareProfileButton from "./share-profile-button";
+import TrackView from "./track-view";
 
 export async function generateMetadata({
   params,
@@ -137,6 +138,7 @@ export default async function ProfessionalPage({
 
   return (
     <>
+      <TrackView professionalId={pro.id} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

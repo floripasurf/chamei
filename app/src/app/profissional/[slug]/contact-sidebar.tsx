@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import ClaimProfile from "./claim-profile";
+import { trackEvent } from "@/lib/track";
 
 const PLATFORM_NAME = "Chamei";
 
@@ -97,6 +98,7 @@ export default function ContactSidebar({
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => {
+              trackEvent(professionalId, "whatsapp_click");
               if (typeof window !== 'undefined' && (window as any).gtag) {
                 (window as any).gtag('event', 'whatsapp_click', {
                   professional_name: professionalName,
@@ -110,6 +112,7 @@ export default function ContactSidebar({
 
           <a
             href={`tel:${phone}`}
+            onClick={() => trackEvent(professionalId, "phone_click")}
             className="block w-full text-center bg-blue-600 text-white rounded-lg py-3 font-medium hover:bg-blue-700 transition-colors mb-3"
           >
             Ligar
