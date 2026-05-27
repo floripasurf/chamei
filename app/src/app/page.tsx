@@ -33,14 +33,18 @@ const CATEGORIES = {
 };
 
 export default async function Home() {
-  const sql = getDb();
-
-  const stats = await sql`
-    SELECT
-      (SELECT count(*) FROM professionals WHERE is_active = true) as total_pros,
-      (SELECT count(*) FROM categories) as total_cats
-  `;
-  const totalPros = stats[0]?.total_pros || 0;
+  let totalPros = 0;
+  try {
+    const sql = getDb();
+    const stats = await sql`
+      SELECT
+        (SELECT count(*) FROM professionals WHERE is_active = true) as total_pros,
+        (SELECT count(*) FROM categories) as total_cats
+    `;
+    totalPros = stats[0]?.total_pros || 0;
+  } catch (err) {
+    console.error("[home] db failed, rendering with totalPros=0", err);
+  }
 
   return (
     <div>

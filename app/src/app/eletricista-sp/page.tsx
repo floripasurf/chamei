@@ -26,22 +26,27 @@ const SPECIALTIES = [
 ];
 
 export default async function EletricistaSP() {
-  const sql = getDb();
+  let pros: Professional[] = [];
+  let total = 0;
+  try {
+    const sql = getDb();
+    pros = (await sql`
+      SELECT p.* FROM professionals p
+      JOIN categories c ON p.category_id = c.id
+      WHERE c.slug = 'eletricista' AND p.is_active = true
+      ORDER BY p.google_rating DESC NULLS LAST, p.google_review_count DESC NULLS LAST
+      LIMIT 20
+    `) as Professional[];
 
-  const pros = (await sql`
-    SELECT p.* FROM professionals p
-    JOIN categories c ON p.category_id = c.id
-    WHERE c.slug = 'eletricista' AND p.is_active = true
-    ORDER BY p.google_rating DESC NULLS LAST, p.google_review_count DESC NULLS LAST
-    LIMIT 20
-  `) as Professional[];
-
-  const countResult = await sql`
-    SELECT count(*) as total FROM professionals p
-    JOIN categories c ON p.category_id = c.id
-    WHERE c.slug = 'eletricista' AND p.is_active = true
-  `;
-  const total = countResult[0]?.total || 0;
+    const countResult = await sql`
+      SELECT count(*) as total FROM professionals p
+      JOIN categories c ON p.category_id = c.id
+      WHERE c.slug = 'eletricista' AND p.is_active = true
+    `;
+    total = countResult[0]?.total || 0;
+  } catch (err) {
+    console.error("[eletricista-sp] db failed", err);
+  }
 
   const faqItems = [
     {

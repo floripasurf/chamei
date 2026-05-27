@@ -11,33 +11,38 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const sql = getDb();
+  try {
+    const sql = getDb();
 
-  const rows = await sql`
-    SELECT p.name, p.google_rating, p.google_review_count, p.city,
-           c.name as category_name
-    FROM professionals p
-    LEFT JOIN categories c ON p.category_id = c.id
-    WHERE p.slug = ${slug}
-    LIMIT 1
-  `;
+    const rows = await sql`
+      SELECT p.name, p.google_rating, p.google_review_count, p.city,
+             c.name as category_name
+      FROM professionals p
+      LEFT JOIN categories c ON p.category_id = c.id
+      WHERE p.slug = ${slug}
+      LIMIT 1
+    `;
 
-  if (rows.length === 0) {
-    return { title: "Profissional não encontrado | Chamei" };
+    if (rows.length === 0) {
+      return { title: "Profissional não encontrado | Chamei" };
+    }
+
+    const pro = rows[0];
+    const city = pro.city ? ` em ${pro.city}` : "";
+    const title = `${pro.name} - ${pro.category_name}${city} | Chamei`;
+
+    const ratingPart =
+      pro.google_rating && pro.google_review_count
+        ? ` Nota ${pro.google_rating} com ${pro.google_review_count} avaliações.`
+        : "";
+
+    const description = `${pro.name} é ${pro.category_name?.toLowerCase()}${city}.${ratingPart} Veja avaliações, contato e mais no Chamei.`;
+
+    return { title, description };
+  } catch (err) {
+    console.error("[profissional] generateMetadata db failed", err);
+    return { title: "Chamei" };
   }
-
-  const pro = rows[0];
-  const city = pro.city ? ` em ${pro.city}` : "";
-  const title = `${pro.name} - ${pro.category_name}${city} | Chamei`;
-
-  const ratingPart =
-    pro.google_rating && pro.google_review_count
-      ? ` Nota ${pro.google_rating} com ${pro.google_review_count} avaliações.`
-      : "";
-
-  const description = `${pro.name} é ${pro.category_name?.toLowerCase()}${city}.${ratingPart} Veja avaliações, contato e mais no Chamei.`;
-
-  return { title, description };
 }
 
 function StarRating({ rating, size = "sm" }: { rating: number | null; size?: "sm" | "lg" }) {
@@ -82,33 +87,51 @@ export default async function ProfessionalPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const sql = getDb();
 
-  const rows = await sql`
-    SELECT p.*, c.name as category_name, c.slug as category_slug
-    FROM professionals p
-    LEFT JOIN categories c ON p.category_id = c.id
-    WHERE p.slug = ${slug}
-    LIMIT 1
-  `;
+  type ProRow = Professional & { category_name: string; category_slug: string };
+  let pro: ProRow | null = null;
+  let importedReviews: ReviewImported[] = [];
+  let dbDown = false;
 
-  if (rows.length === 0) {
+  try {
+    const sql = getDb();
+    const rows = await sql`
+      SELECT p.*, c.name as category_name, c.slug as category_slug
+      FROM professionals p
+      LEFT JOIN categories c ON p.category_id = c.id
+      WHERE p.slug = ${slug}
+      LIMIT 1
+    `;
+    pro = (rows[0] as ProRow) ?? null;
+
+    if (pro) {
+      importedReviews = (await sql`
+        SELECT * FROM reviews_imported
+        WHERE professional_id = ${pro.id}
+        ORDER BY created_at DESC
+        LIMIT 20
+      `) as ReviewImported[];
+    }
+  } catch (err) {
+    console.error("[profissional] db failed", err);
+    dbDown = true;
+  }
+
+  if (!pro) {
     return (
       <div className="max-w-6xl mx-auto px-4 py-16 text-center">
-        <h1 className="text-2xl font-bold text-gray-900">Profissional não encontrado</h1>
+        <h1 className="text-2xl font-bold text-gray-900">
+          {dbDown ? "Temporariamente indisponível" : "Profissional não encontrado"}
+        </h1>
+        {dbDown && (
+          <p className="text-sm text-gray-500 mt-2">
+            Estamos com instabilidade. Tente novamente em instantes.
+          </p>
+        )}
         <Link href="/" className="text-blue-600 mt-4 inline-block">Voltar ao início</Link>
       </div>
     );
   }
-
-  const pro = rows[0] as Professional & { category_name: string; category_slug: string };
-
-  const importedReviews = (await sql`
-    SELECT * FROM reviews_imported
-    WHERE professional_id = ${pro.id}
-    ORDER BY created_at DESC
-    LIMIT 20
-  `) as ReviewImported[];
 
   const jsonLd = {
     "@context": "https://schema.org",
