@@ -1,26 +1,49 @@
 import { MetadataRoute } from "next";
 import { neon } from "@neondatabase/serverless";
 
+export const revalidate = 86400;
+
+type Row = Record<string, unknown>;
+
+async function safeQuery<T = Row>(
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  fn: () => Promise<any>,
+  label: string
+): Promise<T[]> {
+  try {
+    return (await fn()) as T[];
+  } catch (err) {
+    console.error(`[sitemap] ${label} failed`, err);
+    return [];
+  }
+}
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const sql = neon(process.env.DATABASE_URL!);
 
-  const categories = await sql`SELECT slug FROM categories ORDER BY name`;
-  const professionals = await sql`SELECT slug, updated_at FROM professionals WHERE is_active = true ORDER BY updated_at DESC LIMIT 5000`;
-  let blogPosts: { slug: string; updated_at: string }[] = [];
-  try {
-    blogPosts = await sql`SELECT slug, updated_at FROM blog_posts WHERE published = true ORDER BY published_at DESC` as { slug: string; updated_at: string }[];
-  } catch {
-    // Table may not exist yet
-  }
+  const categories = await safeQuery<{ slug: string }>(
+    () => sql`SELECT slug FROM categories ORDER BY name`,
+    "categories"
+  );
+  const professionals = await safeQuery<{ slug: string; updated_at: string }>(
+    () => sql`SELECT slug, updated_at FROM professionals WHERE is_active = true ORDER BY updated_at DESC LIMIT 5000`,
+    "professionals"
+  );
+  const blogPosts = await safeQuery<{ slug: string; updated_at: string }>(
+    () => sql`SELECT slug, updated_at FROM blog_posts WHERE published = true ORDER BY published_at DESC`,
+    "blog_posts"
+  );
 
-  // Get all city+category combinations for landing pages
-  const cityCombos = await sql`
-    SELECT DISTINCT c.slug as cat_slug, p.city, p.state
-    FROM professionals p
-    JOIN categories c ON p.category_id = c.id
-    WHERE p.is_active = true AND p.city IS NOT NULL
-    ORDER BY c.slug, p.city
-  `;
+  const cityCombos = await safeQuery<{ cat_slug: string; city: string; state: string | null }>(
+    () => sql`
+      SELECT DISTINCT c.slug as cat_slug, p.city, p.state
+      FROM professionals p
+      JOIN categories c ON p.category_id = c.id
+      WHERE p.is_active = true AND p.city IS NOT NULL
+      ORDER BY c.slug, p.city
+    `,
+    "city_combos"
+  );
 
   const base = "https://chamei.app";
 
@@ -38,7 +61,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8,
   }));
 
-  // City + Category landing pages (highest SEO value)
   const citySlugify = (city: string, state: string | null) => {
     const slug = city.toLowerCase().replace(/\s+/g, "-")
       .replace(/[àáâãä]/g, "a").replace(/[èéêë]/g, "e")

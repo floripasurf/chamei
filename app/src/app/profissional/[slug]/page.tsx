@@ -6,6 +6,8 @@ import ContactSidebar from "./contact-sidebar";
 import ShareProfileButton from "./share-profile-button";
 import TrackView from "./track-view";
 
+export const revalidate = 3600;
+
 export async function generateMetadata({
   params,
 }: {

@@ -4,6 +4,8 @@ import { getDb } from "@/lib/db";
 import { Professional } from "@/lib/types";
 import ProfessionalsList from "./professionals-list";
 
+export const revalidate = 3600;
+
 export async function generateMetadata({
   params,
 }: {

@@ -4,6 +4,8 @@ import { Professional } from "@/lib/types";
 import ProfessionalCard from "@/app/components/professional-card";
 import Link from "next/link";
 
+export const revalidate = 3600;
+
 function formatCityName(slug: string): string {
   return slug
     .split("-")
