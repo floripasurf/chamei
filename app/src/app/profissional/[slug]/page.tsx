@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getDb } from "@/lib/db";
+import { SITE_URL } from "@/lib/seo";
 import { Professional, ReviewImported } from "@/lib/types";
 import ContactSidebar from "./contact-sidebar";
 import ShareProfileButton from "./share-profile-button";
@@ -139,7 +140,7 @@ export default async function ProfessionalPage({
     name: pro.name,
     ...(pro.address && { address: pro.address }),
     ...(pro.phone && { telephone: pro.phone }),
-    url: `https://chamei.com.br/profissional/${pro.slug}`,
+    url: `${SITE_URL}/profissional/${pro.slug}`,
     ...(pro.category_name && { serviceType: pro.category_name }),
     ...(pro.google_rating && {
       aggregateRating: {
