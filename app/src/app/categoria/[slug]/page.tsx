@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getDb } from "@/lib/db";
+import { SITE_URL } from "@/lib/seo";
 import { Professional } from "@/lib/types";
 import ProfessionalsList from "./professionals-list";
 
@@ -98,7 +99,7 @@ export default async function CategoryPage({
     itemListElement: pros.map((pro, index) => ({
       "@type": "ListItem",
       position: index + 1,
-      url: `https://chamei.com.br/profissional/${pro.slug}`,
+      url: `${SITE_URL}/profissional/${pro.slug}`,
       name: pro.name,
     })),
   };
