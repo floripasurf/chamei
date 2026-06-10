@@ -1,9 +1,8 @@
 import Link from "next/link";
-import { getDb } from "@/lib/db";
+import { getTotalActiveProfessionals } from "@/lib/cached-queries";
 import CityProfessionals from "./components/city-professionals";
 
-// Force dynamic rendering so the count is always fresh
-export const dynamic = "force-dynamic";
+export const revalidate = 3600;
 
 const CATEGORIES = {
   "Reformas e Reparos": [
@@ -33,18 +32,7 @@ const CATEGORIES = {
 };
 
 export default async function Home() {
-  let totalPros = 0;
-  try {
-    const sql = getDb();
-    const stats = await sql`
-      SELECT
-        (SELECT count(*) FROM professionals WHERE is_active = true) as total_pros,
-        (SELECT count(*) FROM categories) as total_cats
-    `;
-    totalPros = stats[0]?.total_pros || 0;
-  } catch (err) {
-    console.error("[home] db failed, rendering with totalPros=0", err);
-  }
+  const totalPros = await getTotalActiveProfessionals();
 
   return (
     <div>

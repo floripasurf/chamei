@@ -35,5 +35,12 @@ export async function GET(request: NextRequest) {
     LIMIT ${limit}
   `;
 
-  return NextResponse.json({ professionals, total: professionals.length });
+  return NextResponse.json(
+    { professionals, total: professionals.length },
+    {
+      headers: {
+        "Cache-Control": "public, s-maxage=60, stale-while-revalidate=300",
+      },
+    }
+  );
 }

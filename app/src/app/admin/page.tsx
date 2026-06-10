@@ -15,6 +15,53 @@ export const dynamic = "force-dynamic";
 export default async function AdminPage() {
   const sql = getDb();
 
+  // Conversion funnel data
+  let funnel7: Record<string, number> = { view: 0, whatsapp_click: 0, phone_click: 0, share: 0 };
+  let funnel30: Record<string, number> = { view: 0, whatsapp_click: 0, phone_click: 0, share: 0 };
+  let claims7 = { initiated: 0, verified: 0 };
+  let claims30 = { initiated: 0, verified: 0 };
+  let hasFunnel = false;
+
+  try {
+    const f7 = await sql`
+      SELECT event_type, count(*) as total
+      FROM conversion_events
+      WHERE created_at >= now() - interval '7 days'
+      GROUP BY event_type
+    `;
+    f7.forEach((r: any) => { funnel7[r.event_type] = Number(r.total); });
+
+    const f30 = await sql`
+      SELECT event_type, count(*) as total
+      FROM conversion_events
+      WHERE created_at >= now() - interval '30 days'
+      GROUP BY event_type
+    `;
+    f30.forEach((r: any) => { funnel30[r.event_type] = Number(r.total); });
+
+    const c7 = await sql`
+      SELECT
+        count(*) as initiated,
+        count(*) FILTER (WHERE status = 'approved') as verified
+      FROM profile_claims
+      WHERE created_at >= now() - interval '7 days'
+    `;
+    claims7 = { initiated: Number(c7[0].initiated), verified: Number(c7[0].verified) };
+
+    const c30 = await sql`
+      SELECT
+        count(*) as initiated,
+        count(*) FILTER (WHERE status = 'approved') as verified
+      FROM profile_claims
+      WHERE created_at >= now() - interval '30 days'
+    `;
+    claims30 = { initiated: Number(c30[0].initiated), verified: Number(c30[0].verified) };
+
+    hasFunnel = true;
+  } catch {
+    // Table may not exist yet
+  }
+
   const stats = await sql`
     SELECT
       (SELECT count(*) FROM professionals WHERE is_active = true) as total_pros,
@@ -81,6 +128,55 @@ export default async function AdminPage() {
       </section>
 
       <div className="max-w-6xl mx-auto px-4 py-8">
+        {/* Conversion Funnel */}
+        {hasFunnel && (
+          <div className="bg-white rounded-xl border border-gray-100 p-5 mb-8">
+            <h2 className="text-sm font-semibold text-gray-900 mb-4">Funil de Conversão</h2>
+            {[
+              { label: "Últimos 7 dias", data: funnel7, cl: claims7 },
+              { label: "Últimos 30 dias", data: funnel30, cl: claims30 },
+            ].map(({ label, data, cl }) => {
+              const steps = [
+                { name: "Visualizações", value: data.view, color: "bg-blue-500" },
+                { name: "WhatsApp", value: data.whatsapp_click, color: "bg-green-500" },
+                { name: "Ligações", value: data.phone_click, color: "bg-purple-500" },
+                { name: "Claims iniciados", value: cl.initiated, color: "bg-amber-500" },
+                { name: "Claims verificados", value: cl.verified, color: "bg-emerald-500" },
+              ];
+              const max = Math.max(...steps.map((s) => s.value), 1);
+
+              return (
+                <div key={label} className="mb-5 last:mb-0">
+                  <p className="text-xs text-gray-500 mb-2 font-medium">{label}</p>
+                  <div className="space-y-2">
+                    {steps.map((step, i) => {
+                      const pct = max > 0 ? (step.value / max) * 100 : 0;
+                      const convRate = i > 0 && steps[i - 1].value > 0
+                        ? ((step.value / steps[i - 1].value) * 100).toFixed(1)
+                        : null;
+                      return (
+                        <div key={step.name} className="flex items-center gap-3">
+                          <span className="text-xs text-gray-600 w-36 shrink-0">{step.name}</span>
+                          <div className="flex-1 bg-gray-100 rounded-full h-5 relative overflow-hidden">
+                            <div
+                              className={`${step.color} h-full rounded-full transition-all`}
+                              style={{ width: `${Math.max(pct, 1)}%` }}
+                            />
+                          </div>
+                          <span className="text-sm font-medium text-gray-900 w-14 text-right">{step.value}</span>
+                          {convRate !== null && (
+                            <span className="text-[10px] text-gray-400 w-12 text-right">{convRate}%</span>
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        )}
+
         {/* Stats */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
           {[

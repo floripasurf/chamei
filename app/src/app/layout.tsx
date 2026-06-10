@@ -4,6 +4,7 @@ import { LogoFull, LogoIcon } from "./components/logo";
 import InstallButton from "./components/install-button";
 import { CityProvider } from "./components/city-detector";
 import Analytics from "./components/analytics";
+import MobileBottomNav from "./components/mobile-bottom-nav";
 import "./globals.css";
 
 const inter = Inter({
@@ -156,6 +157,9 @@ export default function RootLayout({
         </footer>
         <InstallButton />
         <Analytics />
+        <MobileBottomNav />
+        {/* Bottom padding for mobile nav */}
+        <div className="h-14 sm:hidden" aria-hidden="true" />
       </body>
     </html>
   );

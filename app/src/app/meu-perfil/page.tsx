@@ -4,6 +4,7 @@ import { Professional } from "@/lib/types";
 import ProfileEdit from "./profile-edit";
 import PhotoUpload from "./photo-upload";
 import CopyButton from "./copy-button";
+import DashboardStats from "./dashboard-stats";
 
 export const metadata = {
   title: "Meu Perfil | Chamei",
@@ -18,6 +19,18 @@ export default async function MeuPerfilPage() {
 
   const profileUrl = `https://chamei.app/profissional/${pro.slug}`;
 
+  // Calculate profile completeness
+  const fields = [
+    pro.name,
+    pro.whatsapp || pro.phone,
+    pro.description,
+    pro.neighborhood,
+    pro.hours,
+    pro.photo_url || pro.profile_photo_url,
+  ];
+  const filledCount = fields.filter(Boolean).length;
+  const profileComplete = Math.round((filledCount / fields.length) * 100);
+
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
       {/* Header */}
@@ -29,28 +42,7 @@ export default async function MeuPerfilPage() {
       </div>
 
       {/* Stats Section */}
-      <div className="bg-white rounded-2xl border border-gray-100 p-6 mb-6">
-        <h2 className="text-sm font-semibold text-gray-900 mb-4 flex items-center gap-2">
-          <span className="text-gray-400">📊</span> Seus números
-        </h2>
-        <div className="grid grid-cols-3 gap-4">
-          <div className="bg-gray-50 rounded-xl p-4 text-center">
-            <p className="text-2xl font-bold text-gray-300">—</p>
-            <p className="text-xs text-gray-400 mt-1">Visitas ao perfil</p>
-            <p className="text-[10px] text-gray-300 mt-0.5">Em breve</p>
-          </div>
-          <div className="bg-gray-50 rounded-xl p-4 text-center">
-            <p className="text-2xl font-bold text-gray-300">—</p>
-            <p className="text-xs text-gray-400 mt-1">Cliques no WhatsApp</p>
-            <p className="text-[10px] text-gray-300 mt-0.5">Em breve</p>
-          </div>
-          <div className="bg-gray-50 rounded-xl p-4 text-center">
-            <p className="text-2xl font-bold text-gray-300">—</p>
-            <p className="text-xs text-gray-400 mt-1">Ligações recebidas</p>
-            <p className="text-[10px] text-gray-300 mt-0.5">Em breve</p>
-          </div>
-        </div>
-      </div>
+      <DashboardStats profileComplete={profileComplete} professionalName={pro.name} />
 
       {/* Profile Edit */}
       <div className="bg-white rounded-2xl border border-gray-100 p-6 mb-6">

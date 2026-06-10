@@ -4,6 +4,8 @@ import { Professional } from "@/lib/types";
 import ProfessionalCard from "../components/professional-card";
 import NearbyProfessionals from "../components/nearby-professionals";
 
+export const revalidate = 3600;
+
 export const metadata: Metadata = {
   title: "Eletricista em São Paulo | Chamei - Profissionais Avaliados",
   description:
@@ -45,7 +47,7 @@ export default async function EletricistaSP() {
     `;
     total = countResult[0]?.total || 0;
   } catch (err) {
-    console.error("[eletricista-sp] db failed", err);
+    console.error("[eletricista-sp] db failed at build", err);
   }
 
   const faqItems = [

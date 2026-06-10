@@ -1,8 +1,14 @@
 import { NextResponse } from "next/server";
-import { neon } from "@neondatabase/serverless";
+import { getCategories } from "@/lib/cached-queries";
 
 export async function GET() {
-  const sql = neon(process.env.DATABASE_URL!);
-  const categories = await sql`SELECT id, name, slug FROM categories ORDER BY name`;
-  return NextResponse.json({ categories });
+  const categories = await getCategories();
+  return NextResponse.json(
+    { categories },
+    {
+      headers: {
+        "Cache-Control": "public, s-maxage=300, stale-while-revalidate=600",
+      },
+    }
+  );
 }

@@ -1,6 +1,8 @@
 import { MetadataRoute } from "next";
 import { neon } from "@neondatabase/serverless";
 
+export const revalidate = 86400;
+
 type Row = Record<string, unknown>;
 
 async function safeQuery<T = Row>(
