@@ -12,25 +12,29 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const sql = getDb();
+  try {
+    const sql = getDb();
+    const categories = await sql`SELECT * FROM categories WHERE slug = ${slug} LIMIT 1`;
+    const category = categories[0];
 
-  const categories = await sql`SELECT * FROM categories WHERE slug = ${slug} LIMIT 1`;
-  const category = categories[0];
+    if (!category) {
+      return { title: "Categoria não encontrada | Chamei" };
+    }
 
-  if (!category) {
-    return { title: "Categoria não encontrada | Chamei" };
+    const countRows = await sql`
+      SELECT COUNT(*)::int as total FROM professionals
+      WHERE category_id = ${category.id} AND is_active = true
+    `;
+    const total = countRows[0]?.total ?? 0;
+
+    const title = `${category.name} | Chamei - Profissionais avaliados`;
+    const description = `Encontre os melhores profissionais de ${category.name.toLowerCase()} no Chamei. ${total} profissionais avaliados prontos para atender você.`;
+
+    return { title, description };
+  } catch (err) {
+    console.error("[categoria] generateMetadata db failed", err);
+    return { title: "Chamei" };
   }
-
-  const countRows = await sql`
-    SELECT COUNT(*)::int as total FROM professionals
-    WHERE category_id = ${category.id} AND is_active = true
-  `;
-  const total = countRows[0]?.total ?? 0;
-
-  const title = `${category.name} | Chamei - Profissionais avaliados`;
-  const description = `Encontre os melhores profissionais de ${category.name.toLowerCase()} no Chamei. ${total} profissionais avaliados prontos para atender você.`;
-
-  return { title, description };
 }
 
 export default async function CategoryPage({
@@ -39,32 +43,54 @@ export default async function CategoryPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const sql = getDb();
 
-  const categories = await sql`SELECT * FROM categories WHERE slug = ${slug} LIMIT 1`;
-  const category = categories[0];
+  type ProWithReview = Professional & {
+    top_review?: { author_name: string | null; text: string | null; rating: number | null } | null;
+  };
+
+  type Cat = { id: string; name: string; slug: string };
+  let category: Cat | null = null;
+  let pros: ProWithReview[] = [];
+  let dbDown = false;
+  try {
+    const sql = getDb();
+    const categories = (await sql`SELECT * FROM categories WHERE slug = ${slug} LIMIT 1`) as Cat[];
+    const first = categories[0];
+    if (first) {
+      category = first;
+      pros = (await sql`
+        SELECT p.*,
+          (SELECT row_to_json(r) FROM (
+            SELECT author_name, text, rating FROM reviews_imported
+            WHERE professional_id = p.id AND text IS NOT NULL
+            ORDER BY rating DESC LIMIT 1
+          ) r) as top_review
+        FROM professionals p
+        WHERE p.category_id = ${first.id} AND p.is_active = true
+        ORDER BY p.google_rating DESC NULLS LAST
+        LIMIT 100
+      `) as ProWithReview[];
+    }
+  } catch (err) {
+    console.error("[categoria] db failed", err);
+    dbDown = true;
+  }
 
   if (!category) {
     return (
       <div className="max-w-5xl mx-auto px-4 py-16 text-center">
-        <h1 className="text-2xl font-bold text-gray-900">Categoria não encontrada</h1>
+        <h1 className="text-2xl font-bold text-gray-900">
+          {dbDown ? "Temporariamente indisponível" : "Categoria não encontrada"}
+        </h1>
+        {dbDown && (
+          <p className="text-sm text-gray-500 mt-2">
+            Estamos com instabilidade. Tente novamente em instantes.
+          </p>
+        )}
         <Link href="/" className="text-blue-600 mt-4 inline-block">Voltar ao início</Link>
       </div>
     );
   }
-
-  const pros = (await sql`
-    SELECT p.*,
-      (SELECT row_to_json(r) FROM (
-        SELECT author_name, text, rating FROM reviews_imported
-        WHERE professional_id = p.id AND text IS NOT NULL
-        ORDER BY rating DESC LIMIT 1
-      ) r) as top_review
-    FROM professionals p
-    WHERE p.category_id = ${category.id} AND p.is_active = true
-    ORDER BY p.google_rating DESC NULLS LAST
-    LIMIT 100
-  `) as (Professional & { top_review?: { author_name: string | null; text: string | null; rating: number | null } | null })[];
 
   const jsonLd = {
     "@context": "https://schema.org",

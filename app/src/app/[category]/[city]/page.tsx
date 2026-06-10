@@ -29,26 +29,34 @@ export async function generateMetadata({
   params: Promise<{ category: string; city: string }>;
 }): Promise<Metadata> {
   const { category, city } = await params;
-  const sql = getDb();
-
-  const cats = await sql`SELECT name FROM categories WHERE slug = ${category} LIMIT 1`;
-  const catName = cats[0]?.name || formatCityName(category);
 
   const state = extractState(city);
   const cityName = state
     ? formatCityName(city.replace(`-${state.toLowerCase()}`, ""))
     : formatCityName(city);
 
-  const countRows = await sql`
-    SELECT count(*)::int as total FROM professionals p
-    JOIN categories c ON p.category_id = c.id
-    WHERE c.slug = ${category} AND p.is_active = true
-      AND (p.city ILIKE ${`%${cityName}%`} OR p.address ILIKE ${`%${cityName}%`})
-  `;
-  const total = countRows[0]?.total || 0;
+  let catName = formatCityName(category);
+  let total = 0;
+  try {
+    const sql = getDb();
+    const cats = await sql`SELECT name FROM categories WHERE slug = ${category} LIMIT 1`;
+    catName = cats[0]?.name || catName;
+
+    const countRows = await sql`
+      SELECT count(*)::int as total FROM professionals p
+      JOIN categories c ON p.category_id = c.id
+      WHERE c.slug = ${category} AND p.is_active = true
+        AND (p.city ILIKE ${`%${cityName}%`} OR p.address ILIKE ${`%${cityName}%`})
+    `;
+    total = countRows[0]?.total || 0;
+  } catch (err) {
+    console.error("[city-cat] generateMetadata db failed", err);
+  }
 
   const title = `${catName} em ${cityName}${state ? `, ${state}` : ""} | Chamei`;
-  const description = `Encontre os melhores profissionais de ${catName.toLowerCase()} em ${cityName}. ${total} profissionais avaliados com nota no Google. Compare e chame pelo WhatsApp. Grátis.`;
+  const description = total > 0
+    ? `Encontre os melhores profissionais de ${catName.toLowerCase()} em ${cityName}. ${total} profissionais avaliados com nota no Google. Compare e chame pelo WhatsApp. Grátis.`
+    : `Profissionais de ${catName.toLowerCase()} em ${cityName}. Compare e chame pelo WhatsApp. Grátis.`;
 
   return {
     title,
@@ -67,61 +75,85 @@ export default async function CityCategoryPage({
   params: Promise<{ category: string; city: string }>;
 }) {
   const { category, city } = await params;
-  const sql = getDb();
-
-  const cats = await sql`SELECT * FROM categories WHERE slug = ${category} LIMIT 1`;
-  const cat = cats[0];
-
-  if (!cat) {
-    return (
-      <div className="max-w-5xl mx-auto px-4 py-16 text-center">
-        <h1 className="text-2xl font-bold text-gray-900">Categoria não encontrada</h1>
-        <Link href="/" className="text-blue-600 mt-4 inline-block">Voltar ao início</Link>
-      </div>
-    );
-  }
 
   const state = extractState(city);
   const cityName = state
     ? formatCityName(city.replace(`-${state.toLowerCase()}`, ""))
     : formatCityName(city);
 
-  const pros = (await sql`
-    SELECT p.*,
-      (SELECT row_to_json(r) FROM (
-        SELECT author_name, text, rating FROM reviews_imported
-        WHERE professional_id = p.id AND text IS NOT NULL
-        ORDER BY rating DESC LIMIT 1
-      ) r) as top_review
-    FROM professionals p
-    WHERE p.category_id = ${cat.id} AND p.is_active = true
-      AND (p.city ILIKE ${`%${cityName}%`} OR p.address ILIKE ${`%${cityName}%`})
-    ORDER BY p.google_rating DESC NULLS LAST, p.google_review_count DESC NULLS LAST
-    LIMIT 50
-  `) as (Professional & { top_review?: any })[];
+  type Cat = { id: string; name: string; slug: string };
+  type ProWithReview = Professional & {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    top_review?: any;
+  };
 
-  // Get other cities with this category for internal linking
-  const otherCities = await sql`
-    SELECT p.city, p.state, count(*) as total
-    FROM professionals p
-    WHERE p.category_id = ${cat.id} AND p.is_active = true AND p.city IS NOT NULL
-      AND p.city NOT ILIKE ${`%${cityName}%`}
-    GROUP BY p.city, p.state
-    ORDER BY total DESC
-    LIMIT 12
-  `;
+  let cat: Cat | null = null;
+  let pros: ProWithReview[] = [];
+  let otherCities: { city: string; state: string | null; total: number }[] = [];
+  let otherCategories: { name: string; slug: string; total: number }[] = [];
+  let dbDown = false;
 
-  // Get other categories in this city for internal linking
-  const otherCategories = await sql`
-    SELECT c.name, c.slug, count(*) as total
-    FROM professionals p
-    JOIN categories c ON p.category_id = c.id
-    WHERE p.is_active = true AND c.slug != ${category}
-      AND (p.city ILIKE ${`%${cityName}%`} OR p.address ILIKE ${`%${cityName}%`})
-    GROUP BY c.id, c.name, c.slug
-    ORDER BY total DESC
-    LIMIT 10
-  `;
+  try {
+    const sql = getDb();
+    const cats = await sql`SELECT * FROM categories WHERE slug = ${category} LIMIT 1`;
+    cat = (cats[0] as Cat) ?? null;
+
+    if (cat) {
+      pros = (await sql`
+        SELECT p.*,
+          (SELECT row_to_json(r) FROM (
+            SELECT author_name, text, rating FROM reviews_imported
+            WHERE professional_id = p.id AND text IS NOT NULL
+            ORDER BY rating DESC LIMIT 1
+          ) r) as top_review
+        FROM professionals p
+        WHERE p.category_id = ${cat.id} AND p.is_active = true
+          AND (p.city ILIKE ${`%${cityName}%`} OR p.address ILIKE ${`%${cityName}%`})
+        ORDER BY p.google_rating DESC NULLS LAST, p.google_review_count DESC NULLS LAST
+        LIMIT 50
+      `) as ProWithReview[];
+
+      otherCities = (await sql`
+        SELECT p.city, p.state, count(*) as total
+        FROM professionals p
+        WHERE p.category_id = ${cat.id} AND p.is_active = true AND p.city IS NOT NULL
+          AND p.city NOT ILIKE ${`%${cityName}%`}
+        GROUP BY p.city, p.state
+        ORDER BY total DESC
+        LIMIT 12
+      `) as typeof otherCities;
+
+      otherCategories = (await sql`
+        SELECT c.name, c.slug, count(*) as total
+        FROM professionals p
+        JOIN categories c ON p.category_id = c.id
+        WHERE p.is_active = true AND c.slug != ${category}
+          AND (p.city ILIKE ${`%${cityName}%`} OR p.address ILIKE ${`%${cityName}%`})
+        GROUP BY c.id, c.name, c.slug
+        ORDER BY total DESC
+        LIMIT 10
+      `) as typeof otherCategories;
+    }
+  } catch (err) {
+    console.error("[city-cat] db failed", err);
+    dbDown = true;
+  }
+
+  if (!cat) {
+    return (
+      <div className="max-w-5xl mx-auto px-4 py-16 text-center">
+        <h1 className="text-2xl font-bold text-gray-900">
+          {dbDown ? "Temporariamente indisponível" : "Categoria não encontrada"}
+        </h1>
+        {dbDown && (
+          <p className="text-sm text-gray-500 mt-2">
+            Estamos com instabilidade. Tente novamente em instantes.
+          </p>
+        )}
+        <Link href="/" className="text-blue-600 mt-4 inline-block">Voltar ao início</Link>
+      </div>
+    );
+  }
 
   const cityDisplay = `${cityName}${state ? `, ${state}` : ""}`;
 

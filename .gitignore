@@ -34,3 +34,6 @@ __pycache__/
 
 # supabase
 supabase/.temp/
+
+# Proprietary partner acquisition scripts
+scraper/

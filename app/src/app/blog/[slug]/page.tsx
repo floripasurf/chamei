@@ -10,8 +10,8 @@ export const revalidate = 3600;
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const sql = getDb();
   try {
+    const sql = getDb();
     const rows = await sql`
       SELECT title, excerpt FROM blog_posts WHERE slug = ${slug} AND published = true
     `;
@@ -54,10 +54,11 @@ function formatDate(date: string) {
 
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
-  const sql = getDb();
 
-  let rows;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let rows: Record<string, any>[] | undefined;
   try {
+    const sql = getDb();
     rows = await sql`
       SELECT * FROM blog_posts WHERE slug = ${slug} AND published = true
     `;
@@ -73,17 +74,18 @@ export default async function BlogPostPage({ params }: Props) {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let related: Record<string, any>[] = [];
   try {
-    related = post.category_slug
-      ? await sql`
-          SELECT id, title, slug, excerpt, cover_image_url, category_slug, published_at
-          FROM blog_posts
-          WHERE published = true
-            AND category_slug = ${post.category_slug}
-            AND slug != ${slug}
-          ORDER BY published_at DESC
-          LIMIT 3
-        `
-      : [];
+    if (post.category_slug) {
+      const sql = getDb();
+      related = await sql`
+        SELECT id, title, slug, excerpt, cover_image_url, category_slug, published_at
+        FROM blog_posts
+        WHERE published = true
+          AND category_slug = ${post.category_slug}
+          AND slug != ${slug}
+        ORDER BY published_at DESC
+        LIMIT 3
+      `;
+    }
   } catch {
     // ignore
   }
