@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /api/
+Disallow: /meu-perfil
 
 Sitemap: https://chamei.app/sitemap.xml
