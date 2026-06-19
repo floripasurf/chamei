@@ -13,11 +13,11 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  // Look up valid code — phone is stored in the verification record, not sent by the client
+  // Look up the latest valid code for this professional (NOT matched by code, so
+  // we can count wrong guesses and block brute-force on the 6-digit code).
   const codes = await sql`
-    SELECT id, phone FROM verification_codes
+    SELECT id, phone, code, attempts FROM verification_codes
     WHERE professional_id = ${professional_id}
-      AND code = ${code}
       AND used = false
       AND expires_at > now()
     ORDER BY created_at DESC
@@ -31,11 +31,30 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  const verifiedPhone = codes[0].phone;
+  const record = codes[0];
 
-  // Mark code as used
+  // Anti brute-force: after 5 wrong guesses, burn the code.
+  if ((record.attempts ?? 0) >= 5) {
+    await sql`UPDATE verification_codes SET used = true WHERE id = ${record.id}`;
+    return NextResponse.json(
+      { error: "Muitas tentativas. Solicite um novo código." },
+      { status: 429 }
+    );
+  }
+
+  if (String(record.code) !== String(code)) {
+    await sql`UPDATE verification_codes SET attempts = attempts + 1 WHERE id = ${record.id}`;
+    return NextResponse.json(
+      { error: "Código inválido ou expirado" },
+      { status: 400 }
+    );
+  }
+
+  const verifiedPhone = record.phone;
+
+  // Correct code — mark as used.
   await sql`
-    UPDATE verification_codes SET used = true WHERE id = ${codes[0].id}
+    UPDATE verification_codes SET used = true WHERE id = ${record.id}
   `;
 
   // Ensure session_token column exists
