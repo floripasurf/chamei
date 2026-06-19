@@ -1,0 +1,8954 @@
+[
+  {
+    "city": "Rio Grande",
+    "state": "RS",
+    "population": 198935,
+    "current_pros": 4
+  },
+  {
+    "city": "Cachoeiro de Itapemirim",
+    "state": "ES",
+    "population": 198342,
+    "current_pros": 0
+  },
+  {
+    "city": "Itabuna",
+    "state": "BA",
+    "population": 196344,
+    "current_pros": 0
+  },
+  {
+    "city": "Alvorada",
+    "state": "RS",
+    "population": 194062,
+    "current_pros": 1
+  },
+  {
+    "city": "Linhares",
+    "state": "ES",
+    "population": 183797,
+    "current_pros": 0
+  },
+  {
+    "city": "Araguaína",
+    "state": "TO",
+    "population": 183024,
+    "current_pros": 0
+  },
+  {
+    "city": "Timon",
+    "state": "MA",
+    "population": 182711,
+    "current_pros": 9
+  },
+  {
+    "city": "Barra Mansa",
+    "state": "RJ",
+    "population": 181679,
+    "current_pros": 0
+  },
+  {
+    "city": "Itu",
+    "state": "SP",
+    "population": 175047,
+    "current_pros": 0
+  },
+  {
+    "city": "Senador Canedo",
+    "state": "GO",
+    "population": 175042,
+    "current_pros": 0
+  },
+  {
+    "city": "Lages",
+    "state": "SC",
+    "population": 172458,
+    "current_pros": 0
+  },
+  {
+    "city": "Abaetetuba",
+    "state": "PA",
+    "population": 172344,
+    "current_pros": 0
+  },
+  {
+    "city": "Poços de Caldas",
+    "state": "MG",
+    "population": 172339,
+    "current_pros": 0
+  },
+  {
+    "city": "Parnaíba",
+    "state": "PI",
+    "population": 170491,
+    "current_pros": 0
+  },
+  {
+    "city": "Jequié",
+    "state": "BA",
+    "population": 169201,
+    "current_pros": 0
+  },
+  {
+    "city": "Patos de Minas",
+    "state": "MG",
+    "population": 169173,
+    "current_pros": 0
+  },
+  {
+    "city": "Rio das Ostras",
+    "state": "RJ",
+    "population": 168455,
+    "current_pros": 0
+  },
+  {
+    "city": "Itapetininga",
+    "state": "SP",
+    "population": 164256,
+    "current_pros": 0
+  },
+  {
+    "city": "Santana de Parnaíba",
+    "state": "SP",
+    "population": 163787,
+    "current_pros": 0
+  },
+  {
+    "city": "Caxias",
+    "state": "MA",
+    "population": 163546,
+    "current_pros": 7
+  },
+  {
+    "city": "Itapecerica da Serra",
+    "state": "SP",
+    "population": 163003,
+    "current_pros": 0
+  },
+  {
+    "city": "Pouso Alegre",
+    "state": "MG",
+    "population": 162133,
+    "current_pros": 0
+  },
+  {
+    "city": "Alagoinhas",
+    "state": "BA",
+    "population": 161196,
+    "current_pros": 0
+  },
+  {
+    "city": "Santa Rita",
+    "state": "PB",
+    "population": 160852,
+    "current_pros": 0
+  },
+  {
+    "city": "Toledo",
+    "state": "PR",
+    "population": 160701,
+    "current_pros": 0
+  },
+  {
+    "city": "Mogi Guaçu",
+    "state": "SP",
+    "population": 160318,
+    "current_pros": 0
+  },
+  {
+    "city": "Camaragibe",
+    "state": "PE",
+    "population": 156112,
+    "current_pros": 0
+  },
+  {
+    "city": "Brusque",
+    "state": "SC",
+    "population": 155307,
+    "current_pros": 0
+  },
+  {
+    "city": "Teixeira de Freitas",
+    "state": "BA",
+    "population": 153738,
+    "current_pros": 0
+  },
+  {
+    "city": "Trindade",
+    "state": "GO",
+    "population": 153560,
+    "current_pros": 3
+  },
+  {
+    "city": "Paço do Lumiar",
+    "state": "MA",
+    "population": 153158,
+    "current_pros": 9
+  },
+  {
+    "city": "Garanhuns",
+    "state": "PE",
+    "population": 151803,
+    "current_pros": 0
+  },
+  {
+    "city": "Botucatu",
+    "state": "SP",
+    "population": 151053,
+    "current_pros": 0
+  },
+  {
+    "city": "Queimados",
+    "state": "RJ",
+    "population": 149135,
+    "current_pros": 0
+  },
+  {
+    "city": "Cametá",
+    "state": "PA",
+    "population": 144859,
+    "current_pros": 0
+  },
+  {
+    "city": "Campo Largo",
+    "state": "PR",
+    "population": 144504,
+    "current_pros": 0
+  },
+  {
+    "city": "Vitória de Santo Antão",
+    "state": "PE",
+    "population": 144243,
+    "current_pros": 0
+  },
+  {
+    "city": "Varginha",
+    "state": "MG",
+    "population": 143676,
+    "current_pros": 0
+  },
+  {
+    "city": "Três Lagoas",
+    "state": "MS",
+    "population": 143523,
+    "current_pros": 0
+  },
+  {
+    "city": "Teófilo Otoni",
+    "state": "MG",
+    "population": 142851,
+    "current_pros": 0
+  },
+  {
+    "city": "Cachoeirinha",
+    "state": "RS",
+    "population": 141503,
+    "current_pros": 1
+  },
+  {
+    "city": "Salto",
+    "state": "SP",
+    "population": 141111,
+    "current_pros": 0
+  },
+  {
+    "city": "Ji-Paraná",
+    "state": "RO",
+    "population": 140101,
+    "current_pros": 0
+  },
+  {
+    "city": "Barcarena",
+    "state": "PA",
+    "population": 139076,
+    "current_pros": 0
+  },
+  {
+    "city": "Itapipoca",
+    "state": "CE",
+    "population": 138978,
+    "current_pros": 0
+  },
+  {
+    "city": "Altamira",
+    "state": "PA",
+    "population": 138749,
+    "current_pros": 0
+  },
+  {
+    "city": "Santa Cruz do Sul",
+    "state": "RS",
+    "population": 138270,
+    "current_pros": 0
+  },
+  {
+    "city": "Araruama",
+    "state": "RJ",
+    "population": 137906,
+    "current_pros": 0
+  },
+  {
+    "city": "Resende",
+    "state": "RJ",
+    "population": 137697,
+    "current_pros": 0
+  },
+  {
+    "city": "Jaú",
+    "state": "SP",
+    "population": 137409,
+    "current_pros": 0
+  },
+  {
+    "city": "Sapucaia do Sul",
+    "state": "RS",
+    "population": 136572,
+    "current_pros": 0
+  },
+  {
+    "city": "Araras",
+    "state": "SP",
+    "population": 135744,
+    "current_pros": 0
+  },
+  {
+    "city": "Itaituba",
+    "state": "PA",
+    "population": 135369,
+    "current_pros": 0
+  },
+  {
+    "city": "Apucarana",
+    "state": "PR",
+    "population": 134910,
+    "current_pros": 0
+  },
+  {
+    "city": "Sabará",
+    "state": "MG",
+    "population": 134576,
+    "current_pros": 0
+  },
+  {
+    "city": "São Mateus",
+    "state": "ES",
+    "population": 134423,
+    "current_pros": 0
+  },
+  {
+    "city": "Bragança",
+    "state": "PA",
+    "population": 132489,
+    "current_pros": 0
+  },
+  {
+    "city": "Sertãozinho",
+    "state": "SP",
+    "population": 132176,
+    "current_pros": 0
+  },
+  {
+    "city": "Barbacena",
+    "state": "MG",
+    "population": 129695,
+    "current_pros": 0
+  },
+  {
+    "city": "Colatina",
+    "state": "ES",
+    "population": 129301,
+    "current_pros": 0
+  },
+  {
+    "city": "Tatuí",
+    "state": "SP",
+    "population": 129130,
+    "current_pros": 0
+  },
+  {
+    "city": "Bento Gonçalves",
+    "state": "RS",
+    "population": 127977,
+    "current_pros": 0
+  },
+  {
+    "city": "Itatiba",
+    "state": "SP",
+    "population": 127112,
+    "current_pros": 0
+  },
+  {
+    "city": "Barretos",
+    "state": "SP",
+    "population": 126957,
+    "current_pros": 0
+  },
+  {
+    "city": "Almirante Tamandaré",
+    "state": "PR",
+    "population": 125861,
+    "current_pros": 0
+  },
+  {
+    "city": "Arapongas",
+    "state": "PR",
+    "population": 124838,
+    "current_pros": 0
+  },
+  {
+    "city": "Sorriso",
+    "state": "MT",
+    "population": 124665,
+    "current_pros": 0
+  },
+  {
+    "city": "São Gonçalo do Amarante",
+    "state": "RN",
+    "population": 124495,
+    "current_pros": 0
+  },
+  {
+    "city": "Itaguaí",
+    "state": "RJ",
+    "population": 124021,
+    "current_pros": 0
+  },
+  {
+    "city": "Araguari",
+    "state": "MG",
+    "population": 123432,
+    "current_pros": 0
+  },
+  {
+    "city": "Birigui",
+    "state": "SP",
+    "population": 123340,
+    "current_pros": 0
+  },
+  {
+    "city": "Igarassu",
+    "state": "PE",
+    "population": 123017,
+    "current_pros": 0
+  },
+  {
+    "city": "Catalão",
+    "state": "GO",
+    "population": 122760,
+    "current_pros": 0
+  },
+  {
+    "city": "Bagé",
+    "state": "RS",
+    "population": 121928,
+    "current_pros": 0
+  },
+  {
+    "city": "Guaratinguetá",
+    "state": "SP",
+    "population": 121916,
+    "current_pros": 0
+  },
+  {
+    "city": "Eunápolis",
+    "state": "BA",
+    "population": 121067,
+    "current_pros": 0
+  },
+  {
+    "city": "Nova Lima",
+    "state": "MG",
+    "population": 120959,
+    "current_pros": 0
+  },
+  {
+    "city": "Uruguaiana",
+    "state": "RS",
+    "population": 120819,
+    "current_pros": 0
+  },
+  {
+    "city": "Marituba",
+    "state": "PA",
+    "population": 119437,
+    "current_pros": 0
+  },
+  {
+    "city": "Paulo Afonso",
+    "state": "BA",
+    "population": 119418,
+    "current_pros": 1
+  },
+  {
+    "city": "Catanduva",
+    "state": "SP",
+    "population": 119275,
+    "current_pros": 0
+  },
+  {
+    "city": "Santana",
+    "state": "AP",
+    "population": 118803,
+    "current_pros": 4
+  },
+  {
+    "city": "Araxá",
+    "state": "MG",
+    "population": 118786,
+    "current_pros": 0
+  },
+  {
+    "city": "Luís Eduardo Magalhães",
+    "state": "BA",
+    "population": 118382,
+    "current_pros": 2
+  },
+  {
+    "city": "Codó",
+    "state": "MA",
+    "population": 118283,
+    "current_pros": 0
+  },
+  {
+    "city": "São Lourenço da Mata",
+    "state": "PE",
+    "population": 118258,
+    "current_pros": 0
+  },
+  {
+    "city": "Itabira",
+    "state": "MG",
+    "population": 118053,
+    "current_pros": 0
+  },
+  {
+    "city": "Passos",
+    "state": "MG",
+    "population": 116951,
+    "current_pros": 0
+  },
+  {
+    "city": "Tubarão",
+    "state": "SC",
+    "population": 116725,
+    "current_pros": 0
+  },
+  {
+    "city": "Breves",
+    "state": "PA",
+    "population": 116058,
+    "current_pros": 0
+  },
+  {
+    "city": "Cubatão",
+    "state": "SP",
+    "population": 114870,
+    "current_pros": 0
+  },
+  {
+    "city": "Nova Serrana",
+    "state": "MG",
+    "population": 114791,
+    "current_pros": 0
+  },
+  {
+    "city": "Tangará da Serra",
+    "state": "MT",
+    "population": 114603,
+    "current_pros": 0
+  },
+  {
+    "city": "Itacoatiara",
+    "state": "AM",
+    "population": 113917,
+    "current_pros": 0
+  },
+  {
+    "city": "Paragominas",
+    "state": "PA",
+    "population": 113498,
+    "current_pros": 0
+  },
+  {
+    "city": "Itumbiara",
+    "state": "GO",
+    "population": 113322,
+    "current_pros": 0
+  },
+  {
+    "city": "Planaltina",
+    "state": "GO",
+    "population": 112304,
+    "current_pros": 0
+  },
+  {
+    "city": "Manacapuru",
+    "state": "AM",
+    "population": 111751,
+    "current_pros": 0
+  },
+  {
+    "city": "Lavras",
+    "state": "MG",
+    "population": 110682,
+    "current_pros": 0
+  },
+  {
+    "city": "São Pedro da Aldeia",
+    "state": "RJ",
+    "population": 110677,
+    "current_pros": 9
+  },
+  {
+    "city": "Açailândia",
+    "state": "MA",
+    "population": 110611,
+    "current_pros": 0
+  },
+  {
+    "city": "Santo Antônio de Jesus",
+    "state": "BA",
+    "population": 109791,
+    "current_pros": 1
+  },
+  {
+    "city": "Vilhena",
+    "state": "RO",
+    "population": 109651,
+    "current_pros": 0
+  },
+  {
+    "city": "Erechim",
+    "state": "RS",
+    "population": 109609,
+    "current_pros": 0
+  },
+  {
+    "city": "Itabaiana",
+    "state": "SE",
+    "population": 109250,
+    "current_pros": 0
+  },
+  {
+    "city": "Ariquemes",
+    "state": "RO",
+    "population": 109170,
+    "current_pros": 0
+  },
+  {
+    "city": "Coronel Fabriciano",
+    "state": "MG",
+    "population": 108708,
+    "current_pros": 0
+  },
+  {
+    "city": "Maranguape",
+    "state": "CE",
+    "population": 108622,
+    "current_pros": 0
+  },
+  {
+    "city": "Muriaé",
+    "state": "MG",
+    "population": 108447,
+    "current_pros": 0
+  },
+  {
+    "city": "Patos",
+    "state": "PB",
+    "population": 108104,
+    "current_pros": 0
+  },
+  {
+    "city": "Bacabal",
+    "state": "MA",
+    "population": 107755,
+    "current_pros": 0
+  },
+  {
+    "city": "Novo Gama",
+    "state": "GO",
+    "population": 107663,
+    "current_pros": 0
+  },
+  {
+    "city": "Ubá",
+    "state": "MG",
+    "population": 107423,
+    "current_pros": 0
+  },
+  {
+    "city": "Itaperuna",
+    "state": "RJ",
+    "population": 107297,
+    "current_pros": 0
+  },
+  {
+    "city": "Ourinhos",
+    "state": "SP",
+    "population": 106911,
+    "current_pros": 0
+  },
+  {
+    "city": "Caldas Novas",
+    "state": "GO",
+    "population": 106820,
+    "current_pros": 0
+  },
+  {
+    "city": "Ituiutaba",
+    "state": "MG",
+    "population": 106775,
+    "current_pros": 0
+  },
+  {
+    "city": "Ipojuca",
+    "state": "PE",
+    "population": 106539,
+    "current_pros": 0
+  },
+  {
+    "city": "Balsas",
+    "state": "MA",
+    "population": 105974,
+    "current_pros": 0
+  },
+  {
+    "city": "Lagarto",
+    "state": "SE",
+    "population": 105957,
+    "current_pros": 0
+  },
+  {
+    "city": "Assis",
+    "state": "SP",
+    "population": 104858,
+    "current_pros": 0
+  },
+  {
+    "city": "Santa Cruz do Capibaribe",
+    "state": "PE",
+    "population": 104854,
+    "current_pros": 0
+  },
+  {
+    "city": "Abreu e Lima",
+    "state": "PE",
+    "population": 104248,
+    "current_pros": 0
+  },
+  {
+    "city": "Aracruz",
+    "state": "ES",
+    "population": 103363,
+    "current_pros": 0
+  },
+  {
+    "city": "Itaúna",
+    "state": "MG",
+    "population": 103272,
+    "current_pros": 0
+  },
+  {
+    "city": "Pará de Minas",
+    "state": "MG",
+    "population": 102844,
+    "current_pros": 0
+  },
+  {
+    "city": "Iguatu",
+    "state": "CE",
+    "population": 102588,
+    "current_pros": 0
+  },
+  {
+    "city": "Francisco Beltrão",
+    "state": "PR",
+    "population": 102312,
+    "current_pros": 0
+  },
+  {
+    "city": "Japeri",
+    "state": "RJ",
+    "population": 102171,
+    "current_pros": 0
+  },
+  {
+    "city": "Parintins",
+    "state": "AM",
+    "population": 101855,
+    "current_pros": 0
+  },
+  {
+    "city": "Leme",
+    "state": "SP",
+    "population": 101537,
+    "current_pros": 0
+  },
+  {
+    "city": "São Cristóvão",
+    "state": "SE",
+    "population": 101213,
+    "current_pros": 0
+  },
+  {
+    "city": "Votuporanga",
+    "state": "SP",
+    "population": 100568,
+    "current_pros": 0
+  },
+  {
+    "city": "Caçapava",
+    "state": "SP",
+    "population": 100071,
+    "current_pros": 0
+  },
+  {
+    "city": "Paracatu",
+    "state": "MG",
+    "population": 99005,
+    "current_pros": 0
+  },
+  {
+    "city": "Cruzeiro do Sul",
+    "state": "AC",
+    "population": 98916,
+    "current_pros": 0
+  },
+  {
+    "city": "Serra Talhada",
+    "state": "PE",
+    "population": 98816,
+    "current_pros": 0
+  },
+  {
+    "city": "Corumbá",
+    "state": "MS",
+    "population": 98751,
+    "current_pros": 0
+  },
+  {
+    "city": "Ponta Porã",
+    "state": "MS",
+    "population": 98598,
+    "current_pros": 0
+  },
+  {
+    "city": "Barra do Piraí",
+    "state": "RJ",
+    "population": 98506,
+    "current_pros": 0
+  },
+  {
+    "city": "Cajamar",
+    "state": "SP",
+    "population": 98365,
+    "current_pros": 0
+  },
+  {
+    "city": "Cacoal",
+    "state": "RO",
+    "population": 98280,
+    "current_pros": 0
+  },
+  {
+    "city": "Mairiporã",
+    "state": "SP",
+    "population": 97835,
+    "current_pros": 0
+  },
+  {
+    "city": "Pato Branco",
+    "state": "PR",
+    "population": 97821,
+    "current_pros": 0
+  },
+  {
+    "city": "Rio Largo",
+    "state": "AL",
+    "population": 97658,
+    "current_pros": 0
+  },
+  {
+    "city": "Manhuaçu",
+    "state": "MG",
+    "population": 97328,
+    "current_pros": 0
+  },
+  {
+    "city": "Lajeado",
+    "state": "RS",
+    "population": 96879,
+    "current_pros": 0
+  },
+  {
+    "city": "Itajubá",
+    "state": "MG",
+    "population": 96855,
+    "current_pros": 0
+  },
+  {
+    "city": "Avaré",
+    "state": "SP",
+    "population": 96450,
+    "current_pros": 0
+  },
+  {
+    "city": "Paranavaí",
+    "state": "PR",
+    "population": 96209,
+    "current_pros": 0
+  },
+  {
+    "city": "Tucuruí",
+    "state": "PA",
+    "population": 96119,
+    "current_pros": 0
+  },
+  {
+    "city": "São João da Boa Vista",
+    "state": "SP",
+    "population": 96080,
+    "current_pros": 0
+  },
+  {
+    "city": "Primavera do Leste",
+    "state": "MT",
+    "population": 96006,
+    "current_pros": 0
+  },
+  {
+    "city": "Guaíba",
+    "state": "RS",
+    "population": 95946,
+    "current_pros": 0
+  },
+  {
+    "city": "Lucas do Rio Verde",
+    "state": "MT",
+    "population": 95792,
+    "current_pros": 0
+  },
+  {
+    "city": "Mogi Mirim",
+    "state": "SP",
+    "population": 95742,
+    "current_pros": 0
+  },
+  {
+    "city": "Saquarema",
+    "state": "RJ",
+    "population": 95315,
+    "current_pros": 0
+  },
+  {
+    "city": "São João del Rei",
+    "state": "MG",
+    "population": 94468,
+    "current_pros": 0
+  },
+  {
+    "city": "Patrocínio",
+    "state": "MG",
+    "population": 94357,
+    "current_pros": 0
+  },
+  {
+    "city": "Guanambi",
+    "state": "BA",
+    "population": 93488,
+    "current_pros": 0
+  },
+  {
+    "city": "Esmeraldas",
+    "state": "MG",
+    "population": 93103,
+    "current_pros": 0
+  },
+  {
+    "city": "Gravatá",
+    "state": "PE",
+    "population": 92429,
+    "current_pros": 0
+  },
+  {
+    "city": "Itapeva",
+    "state": "SP",
+    "population": 92393,
+    "current_pros": 0
+  },
+  {
+    "city": "Cáceres",
+    "state": "MT",
+    "population": 91767,
+    "current_pros": 0
+  },
+  {
+    "city": "Moju",
+    "state": "PA",
+    "population": 91760,
+    "current_pros": 0
+  },
+  {
+    "city": "Unaí",
+    "state": "MG",
+    "population": 91320,
+    "current_pros": 0
+  },
+  {
+    "city": "Caratinga",
+    "state": "MG",
+    "population": 90890,
+    "current_pros": 0
+  },
+  {
+    "city": "Araripina",
+    "state": "PE",
+    "population": 90504,
+    "current_pros": 0
+  },
+  {
+    "city": "Arujá",
+    "state": "SP",
+    "population": 90273,
+    "current_pros": 0
+  },
+  {
+    "city": "Gurupi",
+    "state": "TO",
+    "population": 90209,
+    "current_pros": 0
+  },
+  {
+    "city": "Valença",
+    "state": "BA",
+    "population": 90053,
+    "current_pros": 0
+  },
+  {
+    "city": "Canaã dos Carajás",
+    "state": "PA",
+    "population": 89524,
+    "current_pros": 0
+  },
+  {
+    "city": "Quixadá",
+    "state": "CE",
+    "population": 88846,
+    "current_pros": 0
+  },
+  {
+    "city": "Santa Inês",
+    "state": "MA",
+    "population": 88249,
+    "current_pros": 0
+  },
+  {
+    "city": "Pinheiro",
+    "state": "MA",
+    "population": 88091,
+    "current_pros": 0
+  },
+  {
+    "city": "Ijuí",
+    "state": "RS",
+    "population": 87848,
+    "current_pros": 0
+  },
+  {
+    "city": "Barra do Corda",
+    "state": "MA",
+    "population": 87757,
+    "current_pros": 0
+  },
+  {
+    "city": "São Bento do Sul",
+    "state": "SC",
+    "population": 87661,
+    "current_pros": 0
+  },
+  {
+    "city": "Lorena",
+    "state": "SP",
+    "population": 87468,
+    "current_pros": 0
+  },
+  {
+    "city": "Sant'Ana do Livramento",
+    "state": "RS",
+    "population": 87329,
+    "current_pros": 0
+  },
+  {
+    "city": "Concórdia",
+    "state": "SC",
+    "population": 87206,
+    "current_pros": 0
+  },
+  {
+    "city": "Macaíba",
+    "state": "RN",
+    "population": 87056,
+    "current_pros": 0
+  },
+  {
+    "city": "Tianguá",
+    "state": "CE",
+    "population": 86968,
+    "current_pros": 0
+  },
+  {
+    "city": "Jacobina",
+    "state": "BA",
+    "population": 86896,
+    "current_pros": 0
+  },
+  {
+    "city": "Picos",
+    "state": "PI",
+    "population": 86701,
+    "current_pros": 0
+  },
+  {
+    "city": "Pacatuba",
+    "state": "CE",
+    "population": 86564,
+    "current_pros": 4
+  },
+  {
+    "city": "Quixeramobim",
+    "state": "CE",
+    "population": 86431,
+    "current_pros": 0
+  },
+  {
+    "city": "Goiana",
+    "state": "PE",
+    "population": 85497,
+    "current_pros": 0
+  },
+  {
+    "city": "Aquiraz",
+    "state": "CE",
+    "population": 85316,
+    "current_pros": 0
+  },
+  {
+    "city": "Seropédica",
+    "state": "RJ",
+    "population": 84794,
+    "current_pros": 0
+  },
+  {
+    "city": "Serrinha",
+    "state": "BA",
+    "population": 84690,
+    "current_pros": 0
+  },
+  {
+    "city": "Chapadinha",
+    "state": "MA",
+    "population": 84395,
+    "current_pros": 0
+  },
+  {
+    "city": "Curvelo",
+    "state": "MG",
+    "population": 84297,
+    "current_pros": 0
+  },
+  {
+    "city": "São Sebastião",
+    "state": "SP",
+    "population": 84280,
+    "current_pros": 5
+  },
+  {
+    "city": "Timóteo",
+    "state": "MG",
+    "population": 84172,
+    "current_pros": 0
+  },
+  {
+    "city": "Belo Jardim",
+    "state": "PE",
+    "population": 84033,
+    "current_pros": 0
+  },
+  {
+    "city": "João Monlevade",
+    "state": "MG",
+    "population": 83791,
+    "current_pros": 0
+  },
+  {
+    "city": "Ceará-Mirim",
+    "state": "RN",
+    "population": 83543,
+    "current_pros": 0
+  },
+  {
+    "city": "Carpina",
+    "state": "PE",
+    "population": 83482,
+    "current_pros": 0
+  },
+  {
+    "city": "Cianorte",
+    "state": "PR",
+    "population": 82988,
+    "current_pros": 9
+  },
+  {
+    "city": "Arcoverde",
+    "state": "PE",
+    "population": 82487,
+    "current_pros": 0
+  },
+  {
+    "city": "Três Rios",
+    "state": "RJ",
+    "population": 82319,
+    "current_pros": 0
+  },
+  {
+    "city": "Alfenas",
+    "state": "MG",
+    "population": 82303,
+    "current_pros": 0
+  },
+  {
+    "city": "Cachoeira do Sul",
+    "state": "RS",
+    "population": 82222,
+    "current_pros": 0
+  },
+  {
+    "city": "Barbalha",
+    "state": "CE",
+    "population": 81441,
+    "current_pros": 0
+  },
+  {
+    "city": "São Roque",
+    "state": "SP",
+    "population": 81366,
+    "current_pros": 0
+  },
+  {
+    "city": "Lagoa Santa",
+    "state": "MG",
+    "population": 81299,
+    "current_pros": 8
+  },
+  {
+    "city": "Horizonte",
+    "state": "CE",
+    "population": 81161,
+    "current_pros": 0
+  },
+  {
+    "city": "Matão",
+    "state": "SP",
+    "population": 81075,
+    "current_pros": 0
+  },
+  {
+    "city": "Tefé",
+    "state": "AM",
+    "population": 80137,
+    "current_pros": 0
+  },
+  {
+    "city": "Crateús",
+    "state": "CE",
+    "population": 80130,
+    "current_pros": 0
+  },
+  {
+    "city": "Viçosa",
+    "state": "MG",
+    "population": 79517,
+    "current_pros": 0
+  },
+  {
+    "city": "Santa Rosa",
+    "state": "RS",
+    "population": 79488,
+    "current_pros": 0
+  },
+  {
+    "city": "Santa Izabel do Pará",
+    "state": "PA",
+    "population": 79195,
+    "current_pros": 0
+  },
+  {
+    "city": "Santo Ângelo",
+    "state": "RS",
+    "population": 79146,
+    "current_pros": 0
+  },
+  {
+    "city": "Irecê",
+    "state": "BA",
+    "population": 78781,
+    "current_pros": 0
+  },
+  {
+    "city": "Gaspar",
+    "state": "SC",
+    "population": 78344,
+    "current_pros": 0
+  },
+  {
+    "city": "Três Corações",
+    "state": "MG",
+    "population": 78291,
+    "current_pros": 0
+  },
+  {
+    "city": "Bebedouro",
+    "state": "SP",
+    "population": 78257,
+    "current_pros": 0
+  },
+  {
+    "city": "Esteio",
+    "state": "RS",
+    "population": 78144,
+    "current_pros": 0
+  },
+  {
+    "city": "Senhor do Bonfim",
+    "state": "BA",
+    "population": 78090,
+    "current_pros": 0
+  },
+  {
+    "city": "Goianésia",
+    "state": "GO",
+    "population": 78009,
+    "current_pros": 0
+  },
+  {
+    "city": "Sapiranga",
+    "state": "RS",
+    "population": 77935,
+    "current_pros": 0
+  },
+  {
+    "city": "Indaial",
+    "state": "SC",
+    "population": 77888,
+    "current_pros": 0
+  },
+  {
+    "city": "Ibiúna",
+    "state": "SP",
+    "population": 77801,
+    "current_pros": 0
+  },
+  {
+    "city": "Telêmaco Borba",
+    "state": "PR",
+    "population": 77479,
+    "current_pros": 0
+  },
+  {
+    "city": "Canindé",
+    "state": "CE",
+    "population": 77376,
+    "current_pros": 0
+  },
+  {
+    "city": "Cascavel",
+    "state": "CE",
+    "population": 76866,
+    "current_pros": 0
+  },
+  {
+    "city": "Lins",
+    "state": "SP",
+    "population": 76844,
+    "current_pros": 0
+  },
+  {
+    "city": "Grajaú",
+    "state": "MA",
+    "population": 76837,
+    "current_pros": 0
+  },
+  {
+    "city": "Araranguá",
+    "state": "SC",
+    "population": 76611,
+    "current_pros": 0
+  },
+  {
+    "city": "Cruzeiro",
+    "state": "SP",
+    "population": 76444,
+    "current_pros": 0
+  },
+  {
+    "city": "Caçador",
+    "state": "SC",
+    "population": 76298,
+    "current_pros": 0
+  },
+  {
+    "city": "Casa Nova",
+    "state": "BA",
+    "population": 76131,
+    "current_pros": 0
+  },
+  {
+    "city": "Alenquer",
+    "state": "PA",
+    "population": 75882,
+    "current_pros": 0
+  },
+  {
+    "city": "Rolândia",
+    "state": "PR",
+    "population": 75818,
+    "current_pros": 0
+  },
+  {
+    "city": "Pirassununga",
+    "state": "SP",
+    "population": 75594,
+    "current_pros": 0
+  },
+  {
+    "city": "Pacajus",
+    "state": "CE",
+    "population": 75454,
+    "current_pros": 0
+  },
+  {
+    "city": "Capanema",
+    "state": "PA",
+    "population": 75309,
+    "current_pros": 0
+  },
+  {
+    "city": "Dias d'Ávila",
+    "state": "BA",
+    "population": 75296,
+    "current_pros": 0
+  },
+  {
+    "city": "Tailândia",
+    "state": "PA",
+    "population": 75290,
+    "current_pros": 0
+  },
+  {
+    "city": "Santo Antônio do Descoberto",
+    "state": "GO",
+    "population": 75221,
+    "current_pros": 0
+  },
+  {
+    "city": "São Sebastião do Paraíso",
+    "state": "MG",
+    "population": 75179,
+    "current_pros": 0
+  },
+  {
+    "city": "Campo Formoso",
+    "state": "BA",
+    "population": 75112,
+    "current_pros": 0
+  },
+  {
+    "city": "Candeias",
+    "state": "BA",
+    "population": 74854,
+    "current_pros": 0
+  },
+  {
+    "city": "Russas",
+    "state": "CE",
+    "population": 74834,
+    "current_pros": 0
+  },
+  {
+    "city": "Brumado",
+    "state": "BA",
+    "population": 74368,
+    "current_pros": 0
+  },
+  {
+    "city": "Alegrete",
+    "state": "RS",
+    "population": 74285,
+    "current_pros": 0
+  },
+  {
+    "city": "Itapira",
+    "state": "SP",
+    "population": 74038,
+    "current_pros": 0
+  },
+  {
+    "city": "Barra do Garças",
+    "state": "MT",
+    "population": 73878,
+    "current_pros": 0
+  },
+  {
+    "city": "Palmeira dos Índios",
+    "state": "AL",
+    "population": 73621,
+    "current_pros": 0
+  },
+  {
+    "city": "Coari",
+    "state": "AM",
+    "population": 73576,
+    "current_pros": 0
+  },
+  {
+    "city": "Janaúba",
+    "state": "MG",
+    "population": 73555,
+    "current_pros": 0
+  },
+  {
+    "city": "Fernandópolis",
+    "state": "SP",
+    "population": 73508,
+    "current_pros": 0
+  },
+  {
+    "city": "Jaboticabal",
+    "state": "SP",
+    "population": 73473,
+    "current_pros": 0
+  },
+  {
+    "city": "Tabatinga",
+    "state": "AM",
+    "population": 73348,
+    "current_pros": 0
+  },
+  {
+    "city": "Tomé-Açu",
+    "state": "PA",
+    "population": 73058,
+    "current_pros": 0
+  },
+  {
+    "city": "Oriximiná",
+    "state": "PA",
+    "population": 72889,
+    "current_pros": 0
+  },
+  {
+    "city": "Farroupilha",
+    "state": "RS",
+    "population": 72552,
+    "current_pros": 0
+  },
+  {
+    "city": "Itaitinga",
+    "state": "CE",
+    "population": 72512,
+    "current_pros": 0
+  },
+  {
+    "city": "Conceição do Coité",
+    "state": "BA",
+    "population": 71601,
+    "current_pros": 0
+  },
+  {
+    "city": "Valença",
+    "state": "RJ",
+    "population": 71449,
+    "current_pros": 0
+  },
+  {
+    "city": "Formiga",
+    "state": "MG",
+    "population": 70897,
+    "current_pros": 0
+  },
+  {
+    "city": "Venâncio Aires",
+    "state": "RS",
+    "population": 70842,
+    "current_pros": 0
+  },
+  {
+    "city": "Sousa",
+    "state": "PB",
+    "population": 70066,
+    "current_pros": 0
+  },
+  {
+    "city": "Amparo",
+    "state": "SP",
+    "population": 69792,
+    "current_pros": 0
+  },
+  {
+    "city": "Porto Nacional",
+    "state": "TO",
+    "population": 69551,
+    "current_pros": 0
+  },
+  {
+    "city": "Igarapé-Miri",
+    "state": "PA",
+    "population": 69446,
+    "current_pros": 0
+  },
+  {
+    "city": "Mococa",
+    "state": "SP",
+    "population": 69372,
+    "current_pros": 0
+  },
+  {
+    "city": "Acaraú",
+    "state": "CE",
+    "population": 69317,
+    "current_pros": 0
+  },
+  {
+    "city": "Benevides",
+    "state": "PA",
+    "population": 68962,
+    "current_pros": 0
+  },
+  {
+    "city": "Embu-Guaçu",
+    "state": "SP",
+    "population": 68913,
+    "current_pros": 0
+  },
+  {
+    "city": "Bom Jesus da Lapa",
+    "state": "BA",
+    "population": 68866,
+    "current_pros": 0
+  },
+  {
+    "city": "Iranduba",
+    "state": "AM",
+    "population": 68862,
+    "current_pros": 0
+  },
+  {
+    "city": "Itapetinga",
+    "state": "BA",
+    "population": 68724,
+    "current_pros": 0
+  },
+  {
+    "city": "Extremoz",
+    "state": "RN",
+    "population": 68584,
+    "current_pros": 0
+  },
+  {
+    "city": "Lençóis Paulista",
+    "state": "SP",
+    "population": 68568,
+    "current_pros": 0
+  },
+  {
+    "city": "Ouricuri",
+    "state": "PE",
+    "population": 68489,
+    "current_pros": 0
+  },
+  {
+    "city": "Itaberaba",
+    "state": "BA",
+    "population": 68425,
+    "current_pros": 0
+  },
+  {
+    "city": "Barreirinhas",
+    "state": "MA",
+    "population": 68234,
+    "current_pros": 0
+  },
+  {
+    "city": "Piripiri",
+    "state": "PI",
+    "population": 67887,
+    "current_pros": 0
+  },
+  {
+    "city": "Surubim",
+    "state": "PE",
+    "population": 67821,
+    "current_pros": 0
+  },
+  {
+    "city": "Cataguases",
+    "state": "MG",
+    "population": 67732,
+    "current_pros": 0
+  },
+  {
+    "city": "Portel",
+    "state": "PA",
+    "population": 67580,
+    "current_pros": 0
+  },
+  {
+    "city": "Januária",
+    "state": "MG",
+    "population": 67123,
+    "current_pros": 0
+  },
+  {
+    "city": "Estância",
+    "state": "SE",
+    "population": 67060,
+    "current_pros": 0
+  },
+  {
+    "city": "Cristalina",
+    "state": "GO",
+    "population": 66827,
+    "current_pros": 0
+  },
+  {
+    "city": "Cajazeiras",
+    "state": "PB",
+    "population": 66585,
+    "current_pros": 0
+  },
+  {
+    "city": "Montenegro",
+    "state": "RS",
+    "population": 66352,
+    "current_pros": 0
+  },
+  {
+    "city": "Maués",
+    "state": "AM",
+    "population": 66336,
+    "current_pros": 0
+  },
+  {
+    "city": "Capão da Canoa",
+    "state": "RS",
+    "population": 66234,
+    "current_pros": 0
+  },
+  {
+    "city": "Vacaria",
+    "state": "RS",
+    "population": 66146,
+    "current_pros": 0
+  },
+  {
+    "city": "Salgueiro",
+    "state": "PE",
+    "population": 65946,
+    "current_pros": 0
+  },
+  {
+    "city": "Mirassol",
+    "state": "SP",
+    "population": 65811,
+    "current_pros": 0
+  },
+  {
+    "city": "Pesqueira",
+    "state": "PE",
+    "population": 65481,
+    "current_pros": 0
+  },
+  {
+    "city": "Tupã",
+    "state": "SP",
+    "population": 65433,
+    "current_pros": 0
+  },
+  {
+    "city": "Morada Nova",
+    "state": "CE",
+    "population": 65390,
+    "current_pros": 0
+  },
+  {
+    "city": "Camocim",
+    "state": "CE",
+    "population": 65251,
+    "current_pros": 0
+  },
+  {
+    "city": "Pedro Leopoldo",
+    "state": "MG",
+    "population": 65174,
+    "current_pros": 0
+  },
+  {
+    "city": "Bezerros",
+    "state": "PE",
+    "population": 65007,
+    "current_pros": 0
+  },
+  {
+    "city": "Euclides da Cunha",
+    "state": "BA",
+    "population": 64768,
+    "current_pros": 0
+  },
+  {
+    "city": "Icó",
+    "state": "CE",
+    "population": 64745,
+    "current_pros": 0
+  },
+  {
+    "city": "Campo Bom",
+    "state": "RS",
+    "population": 64719,
+    "current_pros": 0
+  },
+  {
+    "city": "Tauá",
+    "state": "CE",
+    "population": 64655,
+    "current_pros": 0
+  },
+  {
+    "city": "São Félix do Xingu",
+    "state": "PA",
+    "population": 64651,
+    "current_pros": 0
+  },
+  {
+    "city": "Mariana",
+    "state": "MG",
+    "population": 64506,
+    "current_pros": 0
+  },
+  {
+    "city": "Floriano",
+    "state": "PI",
+    "population": 64393,
+    "current_pros": 0
+  },
+  {
+    "city": "Monte Alegre",
+    "state": "PA",
+    "population": 64002,
+    "current_pros": 0
+  },
+  {
+    "city": "Camaquã",
+    "state": "RS",
+    "population": 63961,
+    "current_pros": 0
+  },
+  {
+    "city": "Boituva",
+    "state": "SP",
+    "population": 63850,
+    "current_pros": 0
+  },
+  {
+    "city": "Novo Repartimento",
+    "state": "PA",
+    "population": 63796,
+    "current_pros": 0
+  },
+  {
+    "city": "Carazinho",
+    "state": "RS",
+    "population": 63670,
+    "current_pros": 0
+  },
+  {
+    "city": "Içara",
+    "state": "SC",
+    "population": 63489,
+    "current_pros": 0
+  },
+  {
+    "city": "Nova Mutum",
+    "state": "MT",
+    "population": 63455,
+    "current_pros": 0
+  },
+  {
+    "city": "Humaitá",
+    "state": "AM",
+    "population": 63454,
+    "current_pros": 0
+  },
+  {
+    "city": "Penápolis",
+    "state": "SP",
+    "population": 63426,
+    "current_pros": 0
+  },
+  {
+    "city": "Caicó",
+    "state": "RN",
+    "population": 63338,
+    "current_pros": 0
+  },
+  {
+    "city": "Cruz das Almas",
+    "state": "BA",
+    "population": 63326,
+    "current_pros": 0
+  },
+  {
+    "city": "Acará",
+    "state": "PA",
+    "population": 63110,
+    "current_pros": 0
+  },
+  {
+    "city": "Viçosa do Ceará",
+    "state": "CE",
+    "population": 62972,
+    "current_pros": 0
+  },
+  {
+    "city": "Rolim de Moura",
+    "state": "RO",
+    "population": 62959,
+    "current_pros": 0
+  },
+  {
+    "city": "Dom Eliseu",
+    "state": "PA",
+    "population": 62823,
+    "current_pros": 0
+  },
+  {
+    "city": "Limoeiro do Norte",
+    "state": "CE",
+    "population": 62623,
+    "current_pros": 0
+  },
+  {
+    "city": "Marechal Deodoro",
+    "state": "AL",
+    "population": 62477,
+    "current_pros": 0
+  },
+  {
+    "city": "Jaguariúna",
+    "state": "SP",
+    "population": 62309,
+    "current_pros": 0
+  },
+  {
+    "city": "Itapecuru Mirim",
+    "state": "MA",
+    "population": 62264,
+    "current_pros": 0
+  },
+  {
+    "city": "Viseu",
+    "state": "PA",
+    "population": 62189,
+    "current_pros": 0
+  },
+  {
+    "city": "Escada",
+    "state": "PE",
+    "population": 62174,
+    "current_pros": 0
+  },
+  {
+    "city": "Alta Floresta",
+    "state": "MT",
+    "population": 62158,
+    "current_pros": 0
+  },
+  {
+    "city": "Ibitinga",
+    "state": "SP",
+    "population": 62143,
+    "current_pros": 0
+  },
+  {
+    "city": "Trairi",
+    "state": "CE",
+    "population": 62004,
+    "current_pros": 0
+  },
+  {
+    "city": "Itamaraju",
+    "state": "BA",
+    "population": 61999,
+    "current_pros": 0
+  },
+  {
+    "city": "Registro",
+    "state": "SP",
+    "population": 61927,
+    "current_pros": 0
+  },
+  {
+    "city": "Andradina",
+    "state": "SP",
+    "population": 61625,
+    "current_pros": 0
+  },
+  {
+    "city": "Coroatá",
+    "state": "MA",
+    "population": 61337,
+    "current_pros": 0
+  },
+  {
+    "city": "São Borja",
+    "state": "RS",
+    "population": 61311,
+    "current_pros": 0
+  },
+  {
+    "city": "Frutal",
+    "state": "MG",
+    "population": 61275,
+    "current_pros": 0
+  },
+  {
+    "city": "Cosmópolis",
+    "state": "SP",
+    "population": 61167,
+    "current_pros": 0
+  },
+  {
+    "city": "Irati",
+    "state": "PR",
+    "population": 61004,
+    "current_pros": 0
+  },
+  {
+    "city": "União dos Palmares",
+    "state": "AL",
+    "population": 60860,
+    "current_pros": 0
+  },
+  {
+    "city": "Cruz Alta",
+    "state": "RS",
+    "population": 60454,
+    "current_pros": 0
+  },
+  {
+    "city": "Capitão Poço",
+    "state": "PA",
+    "population": 60318,
+    "current_pros": 0
+  },
+  {
+    "city": "Penedo",
+    "state": "AL",
+    "population": 60185,
+    "current_pros": 0
+  },
+  {
+    "city": "São Gabriel",
+    "state": "RS",
+    "population": 60090,
+    "current_pros": 0
+  },
+  {
+    "city": "Guarabira",
+    "state": "PB",
+    "population": 60057,
+    "current_pros": 0
+  },
+  {
+    "city": "Batatais",
+    "state": "SP",
+    "population": 59939,
+    "current_pros": 0
+  },
+  {
+    "city": "Paudalho",
+    "state": "PE",
+    "population": 59924,
+    "current_pros": 0
+  },
+  {
+    "city": "Cachoeiras de Macacu",
+    "state": "RJ",
+    "population": 59861,
+    "current_pros": 0
+  },
+  {
+    "city": "Ponte Nova",
+    "state": "MG",
+    "population": 59638,
+    "current_pros": 0
+  },
+  {
+    "city": "Extrema",
+    "state": "MG",
+    "population": 59336,
+    "current_pros": 0
+  },
+  {
+    "city": "Limoeiro",
+    "state": "PE",
+    "population": 59236,
+    "current_pros": 0
+  },
+  {
+    "city": "Ipirá",
+    "state": "BA",
+    "population": 59222,
+    "current_pros": 0
+  },
+  {
+    "city": "Rio Bonito",
+    "state": "RJ",
+    "population": 59126,
+    "current_pros": 0
+  },
+  {
+    "city": "Assú",
+    "state": "RN",
+    "population": 59099,
+    "current_pros": 0
+  },
+  {
+    "city": "Videira",
+    "state": "SC",
+    "population": 59074,
+    "current_pros": 0
+  },
+  {
+    "city": "Santa Luzia",
+    "state": "MA",
+    "population": 58839,
+    "current_pros": 7
+  },
+  {
+    "city": "Marechal Cândido Rondon",
+    "state": "PR",
+    "population": 58734,
+    "current_pros": 0
+  },
+  {
+    "city": "Tijucas",
+    "state": "SC",
+    "population": 58695,
+    "current_pros": 0
+  },
+  {
+    "city": "Porto Feliz",
+    "state": "SP",
+    "population": 58605,
+    "current_pros": 0
+  },
+  {
+    "city": "Santo Amaro",
+    "state": "BA",
+    "population": 58398,
+    "current_pros": 0
+  },
+  {
+    "city": "São Gonçalo do Amarante",
+    "state": "CE",
+    "population": 58191,
+    "current_pros": 0
+  },
+  {
+    "city": "Manicoré",
+    "state": "AM",
+    "population": 58018,
+    "current_pros": 0
+  },
+  {
+    "city": "Xinguara",
+    "state": "PA",
+    "population": 57768,
+    "current_pros": 0
+  },
+  {
+    "city": "Pirapora",
+    "state": "MG",
+    "population": 57713,
+    "current_pros": 0
+  },
+  {
+    "city": "Moreno",
+    "state": "PE",
+    "population": 57654,
+    "current_pros": 0
+  },
+  {
+    "city": "São Gabriel da Cachoeira",
+    "state": "AM",
+    "population": 57396,
+    "current_pros": 0
+  },
+  {
+    "city": "Mafra",
+    "state": "SC",
+    "population": 57262,
+    "current_pros": 0
+  },
+  {
+    "city": "Imbituba",
+    "state": "SC",
+    "population": 57256,
+    "current_pros": 0
+  },
+  {
+    "city": "Três Pontas",
+    "state": "MG",
+    "population": 57209,
+    "current_pros": 0
+  },
+  {
+    "city": "Rondon do Pará",
+    "state": "PA",
+    "population": 57031,
+    "current_pros": 0
+  },
+  {
+    "city": "Canoinhas",
+    "state": "SC",
+    "population": 56948,
+    "current_pros": 0
+  },
+  {
+    "city": "Olímpia",
+    "state": "SP",
+    "population": 56874,
+    "current_pros": 0
+  },
+  {
+    "city": "Baião",
+    "state": "PA",
+    "population": 56850,
+    "current_pros": 0
+  },
+  {
+    "city": "Buriticupu",
+    "state": "MA",
+    "population": 56733,
+    "current_pros": 0
+  },
+  {
+    "city": "São Francisco do Sul",
+    "state": "SC",
+    "population": 56726,
+    "current_pros": 1
+  },
+  {
+    "city": "União da Vitória",
+    "state": "PR",
+    "population": 56560,
+    "current_pros": 0
+  },
+  {
+    "city": "Palmares",
+    "state": "PE",
+    "population": 56475,
+    "current_pros": 0
+  },
+  {
+    "city": "Tramandaí",
+    "state": "RS",
+    "population": 56430,
+    "current_pros": 0
+  },
+  {
+    "city": "Itabirito",
+    "state": "MG",
+    "population": 56369,
+    "current_pros": 0
+  },
+  {
+    "city": "Ribeira do Pombal",
+    "state": "BA",
+    "population": 56316,
+    "current_pros": 0
+  },
+  {
+    "city": "Beberibe",
+    "state": "CE",
+    "population": 55977,
+    "current_pros": 0
+  },
+  {
+    "city": "São Miguel do Guamá",
+    "state": "PA",
+    "population": 55970,
+    "current_pros": 0
+  },
+  {
+    "city": "Granja",
+    "state": "CE",
+    "population": 55809,
+    "current_pros": 0
+  },
+  {
+    "city": "Pontes e Lacerda",
+    "state": "MT",
+    "population": 55762,
+    "current_pros": 0
+  },
+  {
+    "city": "Paraíso do Tocantins",
+    "state": "TO",
+    "population": 55704,
+    "current_pros": 2
+  },
+  {
+    "city": "Jaru",
+    "state": "RO",
+    "population": 55682,
+    "current_pros": 0
+  },
+  {
+    "city": "Óbidos",
+    "state": "PA",
+    "population": 55527,
+    "current_pros": 0
+  },
+  {
+    "city": "Congonhas",
+    "state": "MG",
+    "population": 55272,
+    "current_pros": 0
+  },
+  {
+    "city": "Santo Estêvão",
+    "state": "BA",
+    "population": 55146,
+    "current_pros": 0
+  },
+  {
+    "city": "Tutóia",
+    "state": "MA",
+    "population": 55076,
+    "current_pros": 0
+  },
+  {
+    "city": "Xanxerê",
+    "state": "SC",
+    "population": 54891,
+    "current_pros": 0
+  },
+  {
+    "city": "Caetité",
+    "state": "BA",
+    "population": 54730,
+    "current_pros": 0
+  },
+  {
+    "city": "Santa Isabel",
+    "state": "SP",
+    "population": 54691,
+    "current_pros": 0
+  },
+  {
+    "city": "Bom Despacho",
+    "state": "MG",
+    "population": 54377,
+    "current_pros": 0
+  },
+  {
+    "city": "Taquara",
+    "state": "RS",
+    "population": 54353,
+    "current_pros": 0
+  },
+  {
+    "city": "Morrinhos",
+    "state": "GO",
+    "population": 54326,
+    "current_pros": 0
+  },
+  {
+    "city": "Guapimirim",
+    "state": "RJ",
+    "population": 54311,
+    "current_pros": 0
+  },
+  {
+    "city": "Piedade",
+    "state": "SP",
+    "population": 54266,
+    "current_pros": 0
+  },
+  {
+    "city": "Juruti",
+    "state": "PA",
+    "population": 54255,
+    "current_pros": 0
+  },
+  {
+    "city": "São Francisco",
+    "state": "MG",
+    "population": 54223,
+    "current_pros": 0
+  },
+  {
+    "city": "Brejo Santo",
+    "state": "CE",
+    "population": 54192,
+    "current_pros": 0
+  },
+  {
+    "city": "Vigia",
+    "state": "PA",
+    "population": 54062,
+    "current_pros": 0
+  },
+  {
+    "city": "Campo Belo",
+    "state": "MG",
+    "population": 54027,
+    "current_pros": 0
+  },
+  {
+    "city": "Porto Ferreira",
+    "state": "SP",
+    "population": 53966,
+    "current_pros": 0
+  },
+  {
+    "city": "Lagoa da Prata",
+    "state": "MG",
+    "population": 53927,
+    "current_pros": 0
+  },
+  {
+    "city": "Inhumas",
+    "state": "GO",
+    "population": 53884,
+    "current_pros": 0
+  },
+  {
+    "city": "Barra",
+    "state": "BA",
+    "population": 53642,
+    "current_pros": 0
+  },
+  {
+    "city": "Parobé",
+    "state": "RS",
+    "population": 53569,
+    "current_pros": 0
+  },
+  {
+    "city": "Buíque",
+    "state": "PE",
+    "population": 53489,
+    "current_pros": 0
+  },
+  {
+    "city": "Artur Nogueira",
+    "state": "SP",
+    "population": 53467,
+    "current_pros": 0
+  },
+  {
+    "city": "Sapé",
+    "state": "PB",
+    "population": 53457,
+    "current_pros": 0
+  },
+  {
+    "city": "São José do Rio Pardo",
+    "state": "SP",
+    "population": 53427,
+    "current_pros": 0
+  },
+  {
+    "city": "Tremembé",
+    "state": "SP",
+    "population": 53426,
+    "current_pros": 0
+  },
+  {
+    "city": "São Miguel dos Campos",
+    "state": "AL",
+    "population": 53380,
+    "current_pros": 0
+  },
+  {
+    "city": "Ibiporã",
+    "state": "PR",
+    "population": 53276,
+    "current_pros": 0
+  },
+  {
+    "city": "Taquaritinga",
+    "state": "SP",
+    "population": 53264,
+    "current_pros": 0
+  },
+  {
+    "city": "Viana",
+    "state": "MA",
+    "population": 53176,
+    "current_pros": 0
+  },
+  {
+    "city": "Naviraí",
+    "state": "MS",
+    "population": 53014,
+    "current_pros": 0
+  },
+  {
+    "city": "Barra Velha",
+    "state": "SC",
+    "population": 52860,
+    "current_pros": 9
+  },
+  {
+    "city": "Delmiro Gouveia",
+    "state": "AL",
+    "population": 52845,
+    "current_pros": 0
+  },
+  {
+    "city": "Tobias Barreto",
+    "state": "SE",
+    "population": 52783,
+    "current_pros": 0
+  },
+  {
+    "city": "Guaxupé",
+    "state": "MG",
+    "population": 52744,
+    "current_pros": 0
+  },
+  {
+    "city": "Leopoldina",
+    "state": "MG",
+    "population": 52739,
+    "current_pros": 0
+  },
+  {
+    "city": "Nova Venécia",
+    "state": "ES",
+    "population": 52324,
+    "current_pros": 0
+  },
+  {
+    "city": "Itupiranga",
+    "state": "PA",
+    "population": 52201,
+    "current_pros": 0
+  },
+  {
+    "city": "Boa Viagem",
+    "state": "CE",
+    "population": 52133,
+    "current_pros": 0
+  },
+  {
+    "city": "Mairinque",
+    "state": "SP",
+    "population": 51888,
+    "current_pros": 0
+  },
+  {
+    "city": "Coruripe",
+    "state": "AL",
+    "population": 51784,
+    "current_pros": 0
+  },
+  {
+    "city": "Campo Novo do Parecis",
+    "state": "MT",
+    "population": 51722,
+    "current_pros": 0
+  },
+  {
+    "city": "Capivari",
+    "state": "SP",
+    "population": 51369,
+    "current_pros": 0
+  },
+  {
+    "city": "Brejo da Madre de Deus",
+    "state": "PE",
+    "population": 51308,
+    "current_pros": 0
+  },
+  {
+    "city": "São Bento do Una",
+    "state": "PE",
+    "population": 51165,
+    "current_pros": 0
+  },
+  {
+    "city": "Tucano",
+    "state": "BA",
+    "population": 51016,
+    "current_pros": 0
+  },
+  {
+    "city": "Guaramirim",
+    "state": "SC",
+    "population": 51009,
+    "current_pros": 0
+  },
+  {
+    "city": "Canguçu",
+    "state": "RS",
+    "population": 50968,
+    "current_pros": 0
+  },
+  {
+    "city": "Prudentópolis",
+    "state": "PR",
+    "population": 50946,
+    "current_pros": 0
+  },
+  {
+    "city": "Nova Andradina",
+    "state": "MS",
+    "population": 50848,
+    "current_pros": 0
+  },
+  {
+    "city": "Poções",
+    "state": "BA",
+    "population": 50773,
+    "current_pros": 0
+  },
+  {
+    "city": "Queimadas",
+    "state": "PB",
+    "population": 50698,
+    "current_pros": 0
+  },
+  {
+    "city": "Campina Grande do Sul",
+    "state": "PR",
+    "population": 50600,
+    "current_pros": 0
+  },
+  {
+    "city": "Santiago",
+    "state": "RS",
+    "population": 50336,
+    "current_pros": 0
+  },
+  {
+    "city": "Araci",
+    "state": "BA",
+    "population": 50308,
+    "current_pros": 0
+  },
+  {
+    "city": "Palmas",
+    "state": "PR",
+    "population": 50238,
+    "current_pros": 0
+  },
+  {
+    "city": "Catu",
+    "state": "BA",
+    "population": 50109,
+    "current_pros": 0
+  },
+  {
+    "city": "Altos",
+    "state": "PI",
+    "population": 50094,
+    "current_pros": 0
+  },
+  {
+    "city": "Jales",
+    "state": "SP",
+    "population": 50078,
+    "current_pros": 0
+  },
+  {
+    "city": "São Benedito",
+    "state": "CE",
+    "population": 50058,
+    "current_pros": 0
+  },
+  {
+    "city": "São José de Mipibu",
+    "state": "RN",
+    "population": 50053,
+    "current_pros": 0
+  },
+  {
+    "city": "São Joaquim da Barra",
+    "state": "SP",
+    "population": 49885,
+    "current_pros": 0
+  },
+  {
+    "city": "Monte Santo",
+    "state": "BA",
+    "population": 49807,
+    "current_pros": 0
+  },
+  {
+    "city": "Bocaiúva",
+    "state": "MG",
+    "population": 49797,
+    "current_pros": 0
+  },
+  {
+    "city": "Timbó",
+    "state": "SC",
+    "population": 49768,
+    "current_pros": 0
+  },
+  {
+    "city": "Sidrolândia",
+    "state": "MS",
+    "population": 49735,
+    "current_pros": 0
+  },
+  {
+    "city": "Barras",
+    "state": "PI",
+    "population": 49703,
+    "current_pros": 0
+  },
+  {
+    "city": "Muaná",
+    "state": "PA",
+    "population": 49648,
+    "current_pros": 0
+  },
+  {
+    "city": "Monte Carmelo",
+    "state": "MG",
+    "population": 49500,
+    "current_pros": 0
+  },
+  {
+    "city": "Estância Velha",
+    "state": "RS",
+    "population": 49499,
+    "current_pros": 0
+  },
+  {
+    "city": "Diamantina",
+    "state": "MG",
+    "population": 49493,
+    "current_pros": 0
+  },
+  {
+    "city": "Lábrea",
+    "state": "AM",
+    "population": 49469,
+    "current_pros": 0
+  },
+  {
+    "city": "Igarapé",
+    "state": "MG",
+    "population": 49120,
+    "current_pros": 0
+  },
+  {
+    "city": "Itapajé",
+    "state": "CE",
+    "population": 49073,
+    "current_pros": 0
+  },
+  {
+    "city": "Campo Verde",
+    "state": "MT",
+    "population": 49053,
+    "current_pros": 0
+  },
+  {
+    "city": "Santana do Paraíso",
+    "state": "MG",
+    "population": 49025,
+    "current_pros": 0
+  },
+  {
+    "city": "Osório",
+    "state": "RS",
+    "population": 48999,
+    "current_pros": 0
+  },
+  {
+    "city": "Monte Alto",
+    "state": "SP",
+    "population": 48758,
+    "current_pros": 0
+  },
+  {
+    "city": "João Pinheiro",
+    "state": "MG",
+    "population": 48725,
+    "current_pros": 0
+  },
+  {
+    "city": "Seabra",
+    "state": "BA",
+    "population": 48721,
+    "current_pros": 0
+  },
+  {
+    "city": "Paiçandu",
+    "state": "PR",
+    "population": 48695,
+    "current_pros": 0
+  },
+  {
+    "city": "Aquidauana",
+    "state": "MS",
+    "population": 48689,
+    "current_pros": 0
+  },
+  {
+    "city": "Salinópolis",
+    "state": "PA",
+    "population": 48663,
+    "current_pros": 0
+  },
+  {
+    "city": "Cabreúva",
+    "state": "SP",
+    "population": 48654,
+    "current_pros": 0
+  },
+  {
+    "city": "Casimiro de Abreu",
+    "state": "RJ",
+    "population": 48636,
+    "current_pros": 0
+  },
+  {
+    "city": "Juína",
+    "state": "MT",
+    "population": 48396,
+    "current_pros": 0
+  },
+  {
+    "city": "São Bento",
+    "state": "MA",
+    "population": 48166,
+    "current_pros": 0
+  },
+  {
+    "city": "Maracaju",
+    "state": "MS",
+    "population": 48073,
+    "current_pros": 0
+  },
+  {
+    "city": "Augusto Corrêa",
+    "state": "PA",
+    "population": 47912,
+    "current_pros": 0
+  },
+  {
+    "city": "União",
+    "state": "PI",
+    "population": 47896,
+    "current_pros": 0
+  },
+  {
+    "city": "Santa Cruz do Rio Pardo",
+    "state": "SP",
+    "population": 47759,
+    "current_pros": 0
+  },
+  {
+    "city": "São Miguel do Oeste",
+    "state": "SC",
+    "population": 47724,
+    "current_pros": 0
+  },
+  {
+    "city": "Jaguaquara",
+    "state": "BA",
+    "population": 47624,
+    "current_pros": 0
+  },
+  {
+    "city": "Itaberaí",
+    "state": "GO",
+    "population": 47603,
+    "current_pros": 0
+  },
+  {
+    "city": "Dois Vizinhos",
+    "state": "PR",
+    "population": 47589,
+    "current_pros": 0
+  },
+  {
+    "city": "Mauriti",
+    "state": "CE",
+    "population": 47501,
+    "current_pros": 0
+  },
+  {
+    "city": "Santana do Ipanema",
+    "state": "AL",
+    "population": 47418,
+    "current_pros": 0
+  },
+  {
+    "city": "Capão Bonito",
+    "state": "SP",
+    "population": 47409,
+    "current_pros": 1
+  },
+  {
+    "city": "São Francisco de Itabapoana",
+    "state": "RJ",
+    "population": 47397,
+    "current_pros": 0
+  },
+  {
+    "city": "Timbaúba",
+    "state": "PE",
+    "population": 47312,
+    "current_pros": 0
+  },
+  {
+    "city": "Conceição do Araguaia",
+    "state": "PA",
+    "population": 47144,
+    "current_pros": 0
+  },
+  {
+    "city": "Jardinópolis",
+    "state": "SP",
+    "population": 47125,
+    "current_pros": 0
+  },
+  {
+    "city": "Campo Maior",
+    "state": "PI",
+    "population": 47119,
+    "current_pros": 0
+  },
+  {
+    "city": "Breu Branco",
+    "state": "PA",
+    "population": 47066,
+    "current_pros": 0
+  },
+  {
+    "city": "Xique-Xique",
+    "state": "BA",
+    "population": 47019,
+    "current_pros": 0
+  },
+  {
+    "city": "Mamanguape",
+    "state": "PB",
+    "population": 46966,
+    "current_pros": 0
+  },
+  {
+    "city": "São Lourenço",
+    "state": "MG",
+    "population": 46868,
+    "current_pros": 0
+  },
+  {
+    "city": "Tarauacá",
+    "state": "AC",
+    "population": 46816,
+    "current_pros": 0
+  },
+  {
+    "city": "Marau",
+    "state": "RS",
+    "population": 46748,
+    "current_pros": 0
+  },
+  {
+    "city": "Dracena",
+    "state": "SP",
+    "population": 46735,
+    "current_pros": 0
+  },
+  {
+    "city": "Jaraguá",
+    "state": "GO",
+    "population": 46633,
+    "current_pros": 0
+  },
+  {
+    "city": "Presidente Dutra",
+    "state": "MA",
+    "population": 46606,
+    "current_pros": 0
+  },
+  {
+    "city": "Cerquilho",
+    "state": "SP",
+    "population": 46391,
+    "current_pros": 0
+  },
+  {
+    "city": "Livramento de Nossa Senhora",
+    "state": "BA",
+    "population": 46376,
+    "current_pros": 0
+  },
+  {
+    "city": "Pederneiras",
+    "state": "SP",
+    "population": 46337,
+    "current_pros": 0
+  },
+  {
+    "city": "Bom Conselho",
+    "state": "PE",
+    "population": 46202,
+    "current_pros": 0
+  },
+  {
+    "city": "Uruará",
+    "state": "PA",
+    "population": 45962,
+    "current_pros": 0
+  },
+  {
+    "city": "Autazes",
+    "state": "AM",
+    "population": 45960,
+    "current_pros": 0
+  },
+  {
+    "city": "Marataízes",
+    "state": "ES",
+    "population": 45953,
+    "current_pros": 0
+  },
+  {
+    "city": "Acopiara",
+    "state": "CE",
+    "population": 45937,
+    "current_pros": 0
+  },
+  {
+    "city": "Lapa",
+    "state": "PR",
+    "population": 45878,
+    "current_pros": 0
+  },
+  {
+    "city": "Lago da Pedra",
+    "state": "MA",
+    "population": 45865,
+    "current_pros": 0
+  },
+  {
+    "city": "Itarema",
+    "state": "CE",
+    "population": 45852,
+    "current_pros": 0
+  },
+  {
+    "city": "Cornélio Procópio",
+    "state": "PR",
+    "population": 45720,
+    "current_pros": 0
+  },
+  {
+    "city": "Santo Antônio da Platina",
+    "state": "PR",
+    "population": 45628,
+    "current_pros": 0
+  },
+  {
+    "city": "Serrana",
+    "state": "SP",
+    "population": 45580,
+    "current_pros": 0
+  },
+  {
+    "city": "Santa Maria de Jetibá",
+    "state": "ES",
+    "population": 45575,
+    "current_pros": 0
+  },
+  {
+    "city": "Porangatu",
+    "state": "GO",
+    "population": 45512,
+    "current_pros": 0
+  },
+  {
+    "city": "Barra de São Francisco",
+    "state": "ES",
+    "population": 45415,
+    "current_pros": 0
+  },
+  {
+    "city": "Salto de Pirapora",
+    "state": "SP",
+    "population": 45262,
+    "current_pros": 0
+  },
+  {
+    "city": "Itararé",
+    "state": "SP",
+    "population": 45213,
+    "current_pros": 0
+  },
+  {
+    "city": "Vera Cruz",
+    "state": "BA",
+    "population": 45191,
+    "current_pros": 0
+  },
+  {
+    "city": "Barra dos Coqueiros",
+    "state": "SE",
+    "population": 45175,
+    "current_pros": 0
+  },
+  {
+    "city": "Panambi",
+    "state": "RS",
+    "population": 45102,
+    "current_pros": 0
+  },
+  {
+    "city": "Mata de São João",
+    "state": "BA",
+    "population": 44962,
+    "current_pros": 0
+  },
+  {
+    "city": "Curuçá",
+    "state": "PA",
+    "population": 44880,
+    "current_pros": 0
+  },
+  {
+    "city": "Marialva",
+    "state": "PR",
+    "population": 44749,
+    "current_pros": 0
+  },
+  {
+    "city": "José de Freitas",
+    "state": "PI",
+    "population": 44689,
+    "current_pros": 0
+  },
+  {
+    "city": "Amontada",
+    "state": "CE",
+    "population": 44584,
+    "current_pros": 0
+  },
+  {
+    "city": "Guaraciaba do Norte",
+    "state": "CE",
+    "population": 44565,
+    "current_pros": 0
+  },
+  {
+    "city": "Uruaçu",
+    "state": "GO",
+    "population": 44533,
+    "current_pros": 0
+  },
+  {
+    "city": "Simão Dias",
+    "state": "SE",
+    "population": 44503,
+    "current_pros": 0
+  },
+  {
+    "city": "Paraíba do Sul",
+    "state": "RJ",
+    "population": 44479,
+    "current_pros": 0
+  },
+  {
+    "city": "Vargem Grande",
+    "state": "MA",
+    "population": 44444,
+    "current_pros": 0
+  },
+  {
+    "city": "Santo Antônio da Patrulha",
+    "state": "RS",
+    "population": 44431,
+    "current_pros": 0
+  },
+  {
+    "city": "Pedreira",
+    "state": "SP",
+    "population": 44385,
+    "current_pros": 0
+  },
+  {
+    "city": "Porto de Moz",
+    "state": "PA",
+    "population": 44121,
+    "current_pros": 0
+  },
+  {
+    "city": "Sena Madureira",
+    "state": "AC",
+    "population": 44049,
+    "current_pros": 0
+  },
+  {
+    "city": "Itapemirim",
+    "state": "ES",
+    "population": 44020,
+    "current_pros": 0
+  },
+  {
+    "city": "Toritama",
+    "state": "PE",
+    "population": 43921,
+    "current_pros": 0
+  },
+  {
+    "city": "São Gotardo",
+    "state": "MG",
+    "population": 43851,
+    "current_pros": 0
+  },
+  {
+    "city": "Águas Belas",
+    "state": "PE",
+    "population": 43822,
+    "current_pros": 0
+  },
+  {
+    "city": "Pacajá",
+    "state": "PA",
+    "population": 43741,
+    "current_pros": 0
+  },
+  {
+    "city": "Santo Antônio de Pádua",
+    "state": "RJ",
+    "population": 43697,
+    "current_pros": 0
+  },
+  {
+    "city": "Nossa Senhora da Glória",
+    "state": "SE",
+    "population": 43686,
+    "current_pros": 0
+  },
+  {
+    "city": "Mangaratiba",
+    "state": "RJ",
+    "population": 43660,
+    "current_pros": 0
+  },
+  {
+    "city": "Macaúbas",
+    "state": "BA",
+    "population": 43653,
+    "current_pros": 0
+  },
+  {
+    "city": "Arcos",
+    "state": "MG",
+    "population": 43653,
+    "current_pros": 0
+  },
+  {
+    "city": "Paracambi",
+    "state": "RJ",
+    "population": 43627,
+    "current_pros": 0
+  },
+  {
+    "city": "Guajará-Mirim",
+    "state": "RO",
+    "population": 43594,
+    "current_pros": 0
+  },
+  {
+    "city": "São Mateus do Sul",
+    "state": "PR",
+    "population": 43490,
+    "current_pros": 0
+  },
+  {
+    "city": "São Lourenço do Sul",
+    "state": "RS",
+    "population": 43278,
+    "current_pros": 0
+  },
+  {
+    "city": "Santos Dumont",
+    "state": "MG",
+    "population": 43218,
+    "current_pros": 0
+  },
+  {
+    "city": "Santa Helena",
+    "state": "MA",
+    "population": 43200,
+    "current_pros": 0
+  },
+  {
+    "city": "Ipu",
+    "state": "CE",
+    "population": 43084,
+    "current_pros": 0
+  },
+  {
+    "city": "Garça",
+    "state": "SP",
+    "population": 43081,
+    "current_pros": 0
+  },
+  {
+    "city": "São Sebastião do Passé",
+    "state": "BA",
+    "population": 42944,
+    "current_pros": 0
+  },
+  {
+    "city": "Currais Novos",
+    "state": "RN",
+    "population": 42922,
+    "current_pros": 0
+  },
+  {
+    "city": "Tucumã",
+    "state": "PA",
+    "population": 42883,
+    "current_pros": 0
+  },
+  {
+    "city": "Remanso",
+    "state": "BA",
+    "population": 42855,
+    "current_pros": 0
+  },
+  {
+    "city": "Coelho Neto",
+    "state": "MA",
+    "population": 42841,
+    "current_pros": 0
+  },
+  {
+    "city": "Santa Maria da Boa Vista",
+    "state": "PE",
+    "population": 42782,
+    "current_pros": 0
+  },
+  {
+    "city": "Esperantina",
+    "state": "PI",
+    "population": 42710,
+    "current_pros": 0
+  },
+  {
+    "city": "Afogados da Ingazeira",
+    "state": "PE",
+    "population": 42672,
+    "current_pros": 0
+  },
+  {
+    "city": "Paranaíba",
+    "state": "MS",
+    "population": 42638,
+    "current_pros": 0
+  },
+  {
+    "city": "Santa Rita do Sapucaí",
+    "state": "MG",
+    "population": 42517,
+    "current_pros": 0
+  },
+  {
+    "city": "Andradas",
+    "state": "MG",
+    "population": 42501,
+    "current_pros": 0
+  },
+  {
+    "city": "Ipiaú",
+    "state": "BA",
+    "population": 42429,
+    "current_pros": 0
+  },
+  {
+    "city": "Itabaianinha",
+    "state": "SE",
+    "population": 42230,
+    "current_pros": 0
+  },
+  {
+    "city": "Pedra Branca",
+    "state": "CE",
+    "population": 42227,
+    "current_pros": 0
+  },
+  {
+    "city": "São Gonçalo dos Campos",
+    "state": "BA",
+    "population": 42171,
+    "current_pros": 0
+  },
+  {
+    "city": "Barreiros",
+    "state": "PE",
+    "population": 42083,
+    "current_pros": 0
+  },
+  {
+    "city": "Matinhos",
+    "state": "PR",
+    "population": 42063,
+    "current_pros": 0
+  },
+  {
+    "city": "Paraguaçu Paulista",
+    "state": "SP",
+    "population": 42049,
+    "current_pros": 0
+  },
+  {
+    "city": "Almenara",
+    "state": "MG",
+    "population": 42019,
+    "current_pros": 0
+  },
+  {
+    "city": "Lajedo",
+    "state": "PE",
+    "population": 41960,
+    "current_pros": 0
+  },
+  {
+    "city": "Paracuru",
+    "state": "CE",
+    "population": 41894,
+    "current_pros": 0
+  },
+  {
+    "city": "Capelinha",
+    "state": "MG",
+    "population": 41858,
+    "current_pros": 0
+  },
+  {
+    "city": "Zé Doca",
+    "state": "MA",
+    "population": 41815,
+    "current_pros": 0
+  },
+  {
+    "city": "Colinas",
+    "state": "MA",
+    "population": 41788,
+    "current_pros": 0
+  },
+  {
+    "city": "Amambai",
+    "state": "MS",
+    "population": 41751,
+    "current_pros": 0
+  },
+  {
+    "city": "Curitibanos",
+    "state": "SC",
+    "population": 41741,
+    "current_pros": 0
+  },
+  {
+    "city": "Salinas",
+    "state": "MG",
+    "population": 41736,
+    "current_pros": 0
+  },
+  {
+    "city": "Nova Viçosa",
+    "state": "BA",
+    "population": 41629,
+    "current_pros": 0
+  },
+  {
+    "city": "Santa Quitéria",
+    "state": "CE",
+    "population": 41569,
+    "current_pros": 0
+  },
+  {
+    "city": "Socorro",
+    "state": "SP",
+    "population": 41527,
+    "current_pros": 0
+  },
+  {
+    "city": "Jacarezinho",
+    "state": "PR",
+    "population": 41493,
+    "current_pros": 0
+  },
+  {
+    "city": "Boa Esperança",
+    "state": "MG",
+    "population": 41443,
+    "current_pros": 0
+  },
+  {
+    "city": "São Fidélis",
+    "state": "RJ",
+    "population": 41212,
+    "current_pros": 0
+  },
+  {
+    "city": "São Raimundo Nonato",
+    "state": "PI",
+    "population": 41139,
+    "current_pros": 0
+  },
+  {
+    "city": "São Francisco do Conde",
+    "state": "BA",
+    "population": 41110,
+    "current_pros": 0
+  },
+  {
+    "city": "Brumadinho",
+    "state": "MG",
+    "population": 41090,
+    "current_pros": 0
+  },
+  {
+    "city": "Eldorado do Sul",
+    "state": "RS",
+    "population": 41012,
+    "current_pros": 0
+  },
+  {
+    "city": "Benjamin Constant",
+    "state": "AM",
+    "population": 40908,
+    "current_pros": 0
+  },
+  {
+    "city": "Várzea Alegre",
+    "state": "CE",
+    "population": 40878,
+    "current_pros": 0
+  },
+  {
+    "city": "Mateus Leme",
+    "state": "MG",
+    "population": 40814,
+    "current_pros": 0
+  },
+  {
+    "city": "Visconde do Rio Branco",
+    "state": "MG",
+    "population": 40711,
+    "current_pros": 0
+  },
+  {
+    "city": "Ouro Branco",
+    "state": "MG",
+    "population": 40638,
+    "current_pros": 0
+  },
+  {
+    "city": "Espírito Santo do Pinhal",
+    "state": "SP",
+    "population": 40610,
+    "current_pros": 0
+  },
+  {
+    "city": "Oliveira",
+    "state": "MG",
+    "population": 40576,
+    "current_pros": 0
+  },
+  {
+    "city": "Guaíra",
+    "state": "SP",
+    "population": 40489,
+    "current_pros": 0
+  },
+  {
+    "city": "Santa Maria da Vitória",
+    "state": "BA",
+    "population": 40474,
+    "current_pros": 0
+  },
+  {
+    "city": "Afuá",
+    "state": "PA",
+    "population": 40473,
+    "current_pros": 0
+  },
+  {
+    "city": "Itápolis",
+    "state": "SP",
+    "population": 40445,
+    "current_pros": 0
+  },
+  {
+    "city": "Rio Brilhante",
+    "state": "MS",
+    "population": 40419,
+    "current_pros": 0
+  },
+  {
+    "city": "Presidente Epitácio",
+    "state": "SP",
+    "population": 40322,
+    "current_pros": 0
+  },
+  {
+    "city": "Rio Branco do Sul",
+    "state": "PR",
+    "population": 40308,
+    "current_pros": 0
+  },
+  {
+    "city": "Iturama",
+    "state": "MG",
+    "population": 40259,
+    "current_pros": 0
+  },
+  {
+    "city": "Sento Sé",
+    "state": "BA",
+    "population": 40232,
+    "current_pros": 0
+  },
+  {
+    "city": "Araioses",
+    "state": "MA",
+    "population": 40231,
+    "current_pros": 0
+  },
+  {
+    "city": "São Mateus do Maranhão",
+    "state": "MA",
+    "population": 40177,
+    "current_pros": 0
+  },
+  {
+    "city": "Rio Negrinho",
+    "state": "SC",
+    "population": 40132,
+    "current_pros": 0
+  },
+  {
+    "city": "Mucuri",
+    "state": "BA",
+    "population": 40114,
+    "current_pros": 0
+  },
+  {
+    "city": "Santaluz",
+    "state": "BA",
+    "population": 40066,
+    "current_pros": 0
+  },
+  {
+    "city": "Jarinu",
+    "state": "SP",
+    "population": 40007,
+    "current_pros": 0
+  },
+  {
+    "city": "Sarzedo",
+    "state": "MG",
+    "population": 39974,
+    "current_pros": 0
+  },
+  {
+    "city": "Pentecoste",
+    "state": "CE",
+    "population": 39903,
+    "current_pros": 0
+  },
+  {
+    "city": "Entre Rios",
+    "state": "BA",
+    "population": 39890,
+    "current_pros": 0
+  },
+  {
+    "city": "São Pedro",
+    "state": "SP",
+    "population": 39855,
+    "current_pros": 0
+  },
+  {
+    "city": "Massapê",
+    "state": "CE",
+    "population": 39840,
+    "current_pros": 0
+  },
+  {
+    "city": "Caeté",
+    "state": "MG",
+    "population": 39775,
+    "current_pros": 0
+  },
+  {
+    "city": "Rosário",
+    "state": "MA",
+    "population": 39761,
+    "current_pros": 0
+  },
+  {
+    "city": "Cansanção",
+    "state": "BA",
+    "population": 39725,
+    "current_pros": 0
+  },
+  {
+    "city": "Oeiras",
+    "state": "PI",
+    "population": 39687,
+    "current_pros": 0
+  },
+  {
+    "city": "Jaíba",
+    "state": "MG",
+    "population": 39639,
+    "current_pros": 0
+  },
+  {
+    "city": "Custódia",
+    "state": "PE",
+    "population": 39609,
+    "current_pros": 0
+  },
+  {
+    "city": "Castelo",
+    "state": "ES",
+    "population": 39575,
+    "current_pros": 0
+  },
+  {
+    "city": "Jeremoabo",
+    "state": "BA",
+    "population": 39539,
+    "current_pros": 0
+  },
+  {
+    "city": "Matozinhos",
+    "state": "MG",
+    "population": 39529,
+    "current_pros": 0
+  },
+  {
+    "city": "Novo Horizonte",
+    "state": "SP",
+    "population": 39494,
+    "current_pros": 0
+  },
+  {
+    "city": "Ulianópolis",
+    "state": "PA",
+    "population": 39360,
+    "current_pros": 0
+  },
+  {
+    "city": "Bom Jardim",
+    "state": "PE",
+    "population": 39289,
+    "current_pros": 0
+  },
+  {
+    "city": "São Caitano",
+    "state": "PE",
+    "population": 39243,
+    "current_pros": 0
+  },
+  {
+    "city": "Pimenta Bueno",
+    "state": "RO",
+    "population": 39220,
+    "current_pros": 0
+  },
+  {
+    "city": "Bonito",
+    "state": "PE",
+    "population": 39212,
+    "current_pros": 0
+  },
+  {
+    "city": "Sirinhaém",
+    "state": "PE",
+    "population": 39171,
+    "current_pros": 0
+  },
+  {
+    "city": "Orlândia",
+    "state": "SP",
+    "population": 39144,
+    "current_pros": 0
+  },
+  {
+    "city": "Teotônio Vilela",
+    "state": "AL",
+    "population": 39143,
+    "current_pros": 0
+  },
+  {
+    "city": "Santa Cruz",
+    "state": "RN",
+    "population": 39101,
+    "current_pros": 0
+  },
+  {
+    "city": "Pedro II",
+    "state": "PI",
+    "population": 39072,
+    "current_pros": 0
+  },
+  {
+    "city": "Campos Novos",
+    "state": "SC",
+    "population": 39049,
+    "current_pros": 2
+  },
+  {
+    "city": "Missão Velha",
+    "state": "CE",
+    "population": 38997,
+    "current_pros": 0
+  },
+  {
+    "city": "Turiaçu",
+    "state": "MA",
+    "population": 38993,
+    "current_pros": 0
+  },
+  {
+    "city": "Agudos",
+    "state": "SP",
+    "population": 38988,
+    "current_pros": 0
+  },
+  {
+    "city": "Machado",
+    "state": "MG",
+    "population": 38809,
+    "current_pros": 0
+  },
+  {
+    "city": "Boca do Acre",
+    "state": "AM",
+    "population": 38792,
+    "current_pros": 0
+  },
+  {
+    "city": "São João da Barra",
+    "state": "RJ",
+    "population": 38740,
+    "current_pros": 0
+  },
+  {
+    "city": "Prainha",
+    "state": "PA",
+    "population": 38733,
+    "current_pros": 0
+  },
+  {
+    "city": "Tietê",
+    "state": "SP",
+    "population": 38723,
+    "current_pros": 0
+  },
+  {
+    "city": "Porteirinha",
+    "state": "MG",
+    "population": 38692,
+    "current_pros": 0
+  },
+  {
+    "city": "Ouro Preto do Oeste",
+    "state": "RO",
+    "population": 38684,
+    "current_pros": 0
+  },
+  {
+    "city": "Guariba",
+    "state": "SP",
+    "population": 38678,
+    "current_pros": 0
+  },
+  {
+    "city": "Amargosa",
+    "state": "BA",
+    "population": 38585,
+    "current_pros": 0
+  },
+  {
+    "city": "Barra do Choça",
+    "state": "BA",
+    "population": 38581,
+    "current_pros": 0
+  },
+  {
+    "city": "Santa Rita",
+    "state": "MA",
+    "population": 38542,
+    "current_pros": 0
+  },
+  {
+    "city": "Atalaia",
+    "state": "AL",
+    "population": 38480,
+    "current_pros": 0
+  },
+  {
+    "city": "Confresa",
+    "state": "MT",
+    "population": 38460,
+    "current_pros": 0
+  },
+  {
+    "city": "Mombaça",
+    "state": "CE",
+    "population": 38451,
+    "current_pros": 0
+  },
+  {
+    "city": "Ituverava",
+    "state": "SP",
+    "population": 38413,
+    "current_pros": 0
+  },
+  {
+    "city": "Assis Chateaubriand",
+    "state": "PR",
+    "population": 38357,
+    "current_pros": 0
+  },
+  {
+    "city": "Amarante do Maranhão",
+    "state": "MA",
+    "population": 38335,
+    "current_pros": 0
+  },
+  {
+    "city": "Mandaguari",
+    "state": "PR",
+    "population": 38313,
+    "current_pros": 0
+  },
+  {
+    "city": "Ipueiras",
+    "state": "CE",
+    "population": 38287,
+    "current_pros": 0
+  },
+  {
+    "city": "Pontal",
+    "state": "SP",
+    "population": 38286,
+    "current_pros": 0
+  },
+  {
+    "city": "Iperó",
+    "state": "SP",
+    "population": 38277,
+    "current_pros": 0
+  },
+  {
+    "city": "Pedreiras",
+    "state": "MA",
+    "population": 38252,
+    "current_pros": 0
+  },
+  {
+    "city": "Domingos Martins",
+    "state": "ES",
+    "population": 38236,
+    "current_pros": 0
+  },
+  {
+    "city": "São Manuel",
+    "state": "SP",
+    "population": 38131,
+    "current_pros": 0
+  },
+  {
+    "city": "Dom Pedrito",
+    "state": "RS",
+    "population": 38080,
+    "current_pros": 0
+  },
+  {
+    "city": "Piumhi",
+    "state": "MG",
+    "population": 38007,
+    "current_pros": 0
+  },
+  {
+    "city": "José Bonifácio",
+    "state": "SP",
+    "population": 37992,
+    "current_pros": 0
+  },
+  {
+    "city": "Igarapé-Açu",
+    "state": "PA",
+    "population": 37925,
+    "current_pros": 0
+  },
+  {
+    "city": "Laranjal do Jari",
+    "state": "AP",
+    "population": 37872,
+    "current_pros": 0
+  },
+  {
+    "city": "Rorainópolis",
+    "state": "RR",
+    "population": 37787,
+    "current_pros": 0
+  },
+  {
+    "city": "Feijó",
+    "state": "AC",
+    "population": 37764,
+    "current_pros": 0
+  },
+  {
+    "city": "Jacundá",
+    "state": "PA",
+    "population": 37726,
+    "current_pros": 0
+  },
+  {
+    "city": "Rosário do Sul",
+    "state": "RS",
+    "population": 37674,
+    "current_pros": 0
+  },
+  {
+    "city": "Conceição do Jacuípe",
+    "state": "BA",
+    "population": 37622,
+    "current_pros": 0
+  },
+  {
+    "city": "Prado",
+    "state": "BA",
+    "population": 37533,
+    "current_pros": 0
+  },
+  {
+    "city": "Apodi",
+    "state": "RN",
+    "population": 37486,
+    "current_pros": 0
+  },
+  {
+    "city": "Mãe do Rio",
+    "state": "PA",
+    "population": 37473,
+    "current_pros": 0
+  },
+  {
+    "city": "Pilão Arcado",
+    "state": "BA",
+    "population": 37388,
+    "current_pros": 0
+  },
+  {
+    "city": "Tuntum",
+    "state": "MA",
+    "population": 37364,
+    "current_pros": 0
+  },
+  {
+    "city": "Aliança",
+    "state": "PE",
+    "population": 37349,
+    "current_pros": 0
+  },
+  {
+    "city": "Girau do Ponciano",
+    "state": "AL",
+    "population": 37337,
+    "current_pros": 0
+  },
+  {
+    "city": "Bela Vista de Goiás",
+    "state": "GO",
+    "population": 37305,
+    "current_pros": 0
+  },
+  {
+    "city": "Iporá",
+    "state": "GO",
+    "population": 37283,
+    "current_pros": 0
+  },
+  {
+    "city": "Padre Bernardo",
+    "state": "GO",
+    "population": 37207,
+    "current_pros": 0
+  },
+  {
+    "city": "Rurópolis",
+    "state": "PA",
+    "population": 37198,
+    "current_pros": 0
+  },
+  {
+    "city": "Bom Jesus do Itabapoana",
+    "state": "RJ",
+    "population": 37176,
+    "current_pros": 0
+  },
+  {
+    "city": "Baturité",
+    "state": "CE",
+    "population": 37147,
+    "current_pros": 0
+  },
+  {
+    "city": "Novo Progresso",
+    "state": "PA",
+    "population": 37054,
+    "current_pros": 0
+  },
+  {
+    "city": "Maragogipe",
+    "state": "BA",
+    "population": 37041,
+    "current_pros": 0
+  },
+  {
+    "city": "Palotina",
+    "state": "PR",
+    "population": 37039,
+    "current_pros": 0
+  },
+  {
+    "city": "São Joaquim de Bicas",
+    "state": "MG",
+    "population": 37017,
+    "current_pros": 0
+  },
+  {
+    "city": "Pomerode",
+    "state": "SC",
+    "population": 37003,
+    "current_pros": 0
+  },
+  {
+    "city": "Penha",
+    "state": "SC",
+    "population": 36995,
+    "current_pros": 9
+  },
+  {
+    "city": "Goiatuba",
+    "state": "GO",
+    "population": 36984,
+    "current_pros": 0
+  },
+  {
+    "city": "Rio Real",
+    "state": "BA",
+    "population": 36966,
+    "current_pros": 0
+  },
+  {
+    "city": "São José do Belmonte",
+    "state": "PE",
+    "population": 36890,
+    "current_pros": 0
+  },
+  {
+    "city": "Curralinho",
+    "state": "PA",
+    "population": 36814,
+    "current_pros": 0
+  },
+  {
+    "city": "Itaqui",
+    "state": "RS",
+    "population": 36811,
+    "current_pros": 0
+  },
+  {
+    "city": "Oeiras do Pará",
+    "state": "PA",
+    "population": 36734,
+    "current_pros": 0
+  },
+  {
+    "city": "Itambé",
+    "state": "PE",
+    "population": 36652,
+    "current_pros": 0
+  },
+  {
+    "city": "Pilar",
+    "state": "AL",
+    "population": 36525,
+    "current_pros": 0
+  },
+  {
+    "city": "Almeirim",
+    "state": "PA",
+    "population": 36442,
+    "current_pros": 0
+  },
+  {
+    "city": "Jaguariaíva",
+    "state": "PR",
+    "population": 36384,
+    "current_pros": 0
+  },
+  {
+    "city": "Posse",
+    "state": "GO",
+    "population": 36291,
+    "current_pros": 0
+  },
+  {
+    "city": "Santa Fé do Sul",
+    "state": "SP",
+    "population": 36288,
+    "current_pros": 0
+  },
+  {
+    "city": "Serra do Ramalho",
+    "state": "BA",
+    "population": 36252,
+    "current_pros": 0
+  },
+  {
+    "city": "Colinas do Tocantins",
+    "state": "TO",
+    "population": 36209,
+    "current_pros": 0
+  },
+  {
+    "city": "Bodocó",
+    "state": "PE",
+    "population": 36145,
+    "current_pros": 0
+  },
+  {
+    "city": "Curaçá",
+    "state": "BA",
+    "population": 36127,
+    "current_pros": 0
+  },
+  {
+    "city": "Charqueadas",
+    "state": "RS",
+    "population": 36110,
+    "current_pros": 0
+  },
+  {
+    "city": "Petrolândia",
+    "state": "PE",
+    "population": 36104,
+    "current_pros": 0
+  },
+  {
+    "city": "Juara",
+    "state": "MT",
+    "population": 36089,
+    "current_pros": 0
+  },
+  {
+    "city": "Itaporanga d'Ajuda",
+    "state": "SE",
+    "population": 36074,
+    "current_pros": 0
+  },
+  {
+    "city": "Itapoá",
+    "state": "SC",
+    "population": 36033,
+    "current_pros": 0
+  },
+  {
+    "city": "Braço do Norte",
+    "state": "SC",
+    "population": 35985,
+    "current_pros": 0
+  },
+  {
+    "city": "Promissão",
+    "state": "SP",
+    "population": 35973,
+    "current_pros": 0
+  },
+  {
+    "city": "Vassouras",
+    "state": "RJ",
+    "population": 35907,
+    "current_pros": 0
+  },
+  {
+    "city": "São Luiz Gonzaga",
+    "state": "RS",
+    "population": 35865,
+    "current_pros": 0
+  },
+  {
+    "city": "Presidente Venceslau",
+    "state": "SP",
+    "population": 35810,
+    "current_pros": 0
+  },
+  {
+    "city": "Eirunepé",
+    "state": "AM",
+    "population": 35793,
+    "current_pros": 0
+  },
+  {
+    "city": "Adamantina",
+    "state": "SP",
+    "population": 35673,
+    "current_pros": 0
+  },
+  {
+    "city": "Rio Pardo",
+    "state": "RS",
+    "population": 35641,
+    "current_pros": 0
+  },
+  {
+    "city": "Anapu",
+    "state": "PA",
+    "population": 35638,
+    "current_pros": 0
+  },
+  {
+    "city": "Garibaldi",
+    "state": "RS",
+    "population": 35563,
+    "current_pros": 0
+  },
+  {
+    "city": "Nova Cruz",
+    "state": "RN",
+    "population": 35523,
+    "current_pros": 0
+  },
+  {
+    "city": "Itiúba",
+    "state": "BA",
+    "population": 35490,
+    "current_pros": 0
+  },
+  {
+    "city": "São Paulo de Olivença",
+    "state": "AM",
+    "population": 35442,
+    "current_pros": 0
+  },
+  {
+    "city": "Capim Grosso",
+    "state": "BA",
+    "population": 35437,
+    "current_pros": 0
+  },
+  {
+    "city": "Inhambupe",
+    "state": "BA",
+    "population": 35390,
+    "current_pros": 0
+  },
+  {
+    "city": "Brejo",
+    "state": "MA",
+    "population": 35354,
+    "current_pros": 0
+  },
+  {
+    "city": "São João Batista",
+    "state": "SC",
+    "population": 35336,
+    "current_pros": 0
+  },
+  {
+    "city": "São Luís de Montes Belos",
+    "state": "GO",
+    "population": 35288,
+    "current_pros": 0
+  },
+  {
+    "city": "Portão",
+    "state": "RS",
+    "population": 35273,
+    "current_pros": 0
+  },
+  {
+    "city": "Nanuque",
+    "state": "MG",
+    "population": 35263,
+    "current_pros": 0
+  },
+  {
+    "city": "Ourilândia do Norte",
+    "state": "PA",
+    "population": 35252,
+    "current_pros": 0
+  },
+  {
+    "city": "São Domingos do Maranhão",
+    "state": "MA",
+    "population": 35247,
+    "current_pros": 0
+  },
+  {
+    "city": "Morro do Chapéu",
+    "state": "BA",
+    "population": 35235,
+    "current_pros": 0
+  },
+  {
+    "city": "Riachão do Jacuípe",
+    "state": "BA",
+    "population": 35188,
+    "current_pros": 0
+  },
+  {
+    "city": "Araçuaí",
+    "state": "MG",
+    "population": 35185,
+    "current_pros": 0
+  },
+  {
+    "city": "Bagre",
+    "state": "PA",
+    "population": 35147,
+    "current_pros": 0
+  },
+  {
+    "city": "Jaguaribe",
+    "state": "CE",
+    "population": 35143,
+    "current_pros": 0
+  },
+  {
+    "city": "Barra Bonita",
+    "state": "SP",
+    "population": 35129,
+    "current_pros": 0
+  },
+  {
+    "city": "São Desidério",
+    "state": "BA",
+    "population": 34982,
+    "current_pros": 0
+  },
+  {
+    "city": "Palmeira",
+    "state": "PR",
+    "population": 34948,
+    "current_pros": 0
+  },
+  {
+    "city": "Borba",
+    "state": "AM",
+    "population": 34869,
+    "current_pros": 0
+  },
+  {
+    "city": "João Câmara",
+    "state": "RN",
+    "population": 34849,
+    "current_pros": 0
+  },
+  {
+    "city": "Igrejinha",
+    "state": "RS",
+    "population": 34776,
+    "current_pros": 0
+  },
+  {
+    "city": "Forquilhinha",
+    "state": "SC",
+    "population": 34771,
+    "current_pros": 0
+  },
+  {
+    "city": "Touros",
+    "state": "RN",
+    "population": 34767,
+    "current_pros": 0
+  },
+  {
+    "city": "Bela Cruz",
+    "state": "CE",
+    "population": 34613,
+    "current_pros": 0
+  },
+  {
+    "city": "Chapadão do Sul",
+    "state": "MS",
+    "population": 34606,
+    "current_pros": 0
+  },
+  {
+    "city": "Várzea da Palma",
+    "state": "MG",
+    "population": 34555,
+    "current_pros": 0
+  },
+  {
+    "city": "Taiobeiras",
+    "state": "MG",
+    "population": 34537,
+    "current_pros": 0
+  },
+  {
+    "city": "Jaguarari",
+    "state": "BA",
+    "population": 34528,
+    "current_pros": 0
+  },
+  {
+    "city": "Pitanga",
+    "state": "PR",
+    "population": 34527,
+    "current_pros": 0
+  },
+  {
+    "city": "Xaxim",
+    "state": "SC",
+    "population": 34485,
+    "current_pros": 0
+  },
+  {
+    "city": "Ubajara",
+    "state": "CE",
+    "population": 34424,
+    "current_pros": 0
+  },
+  {
+    "city": "Canavieiras",
+    "state": "BA",
+    "population": 34392,
+    "current_pros": 0
+  },
+  {
+    "city": "Palmeiras de Goiás",
+    "state": "GO",
+    "population": 34375,
+    "current_pros": 0
+  },
+  {
+    "city": "Pitangueiras",
+    "state": "SP",
+    "population": 34361,
+    "current_pros": 0
+  },
+  {
+    "city": "Nísia Floresta",
+    "state": "RN",
+    "population": 34325,
+    "current_pros": 0
+  },
+  {
+    "city": "Estreito",
+    "state": "MA",
+    "population": 34321,
+    "current_pros": 0
+  },
+  {
+    "city": "Cravinhos",
+    "state": "SP",
+    "population": 34307,
+    "current_pros": 0
+  },
+  {
+    "city": "Nerópolis",
+    "state": "GO",
+    "population": 34273,
+    "current_pros": 0
+  },
+  {
+    "city": "São Gabriel da Palha",
+    "state": "ES",
+    "population": 34272,
+    "current_pros": 0
+  },
+  {
+    "city": "Sertânia",
+    "state": "PE",
+    "population": 34271,
+    "current_pros": 0
+  },
+  {
+    "city": "Correntina",
+    "state": "BA",
+    "population": 34266,
+    "current_pros": 0
+  },
+  {
+    "city": "Palmeira das Missões",
+    "state": "RS",
+    "population": 34227,
+    "current_pros": 0
+  },
+  {
+    "city": "Itamarandiba",
+    "state": "MG",
+    "population": 34210,
+    "current_pros": 0
+  },
+  {
+    "city": "Esplanada",
+    "state": "BA",
+    "population": 34163,
+    "current_pros": 0
+  },
+  {
+    "city": "Machadinho D'Oeste",
+    "state": "RO",
+    "population": 34149,
+    "current_pros": 0
+  },
+  {
+    "city": "Urbano Santos",
+    "state": "MA",
+    "population": 34143,
+    "current_pros": 0
+  },
+  {
+    "city": "Gurupá",
+    "state": "PA",
+    "population": 34137,
+    "current_pros": 0
+  },
+  {
+    "city": "Paraipaba",
+    "state": "CE",
+    "population": 34086,
+    "current_pros": 0
+  },
+  {
+    "city": "Garopaba",
+    "state": "SC",
+    "population": 34070,
+    "current_pros": 0
+  },
+  {
+    "city": "Fraiburgo",
+    "state": "SC",
+    "population": 34065,
+    "current_pros": 0
+  },
+  {
+    "city": "Gandu",
+    "state": "BA",
+    "population": 34051,
+    "current_pros": 0
+  },
+  {
+    "city": "Teutônia",
+    "state": "RS",
+    "population": 34023,
+    "current_pros": 0
+  },
+  {
+    "city": "Itaíba",
+    "state": "PE",
+    "population": 33995,
+    "current_pros": 0
+  },
+  {
+    "city": "Bom Jardim",
+    "state": "MA",
+    "population": 33936,
+    "current_pros": 0
+  },
+  {
+    "city": "Niquelândia",
+    "state": "GO",
+    "population": 33890,
+    "current_pros": 0
+  },
+  {
+    "city": "Monteiro",
+    "state": "PB",
+    "population": 33886,
+    "current_pros": 0
+  },
+  {
+    "city": "Pombal",
+    "state": "PB",
+    "population": 33866,
+    "current_pros": 0
+  },
+  {
+    "city": "São Bento",
+    "state": "PB",
+    "population": 33845,
+    "current_pros": 0
+  },
+  {
+    "city": "Ribeirão",
+    "state": "PE",
+    "population": 33843,
+    "current_pros": 0
+  },
+  {
+    "city": "Araçoiaba da Serra",
+    "state": "SP",
+    "population": 33832,
+    "current_pros": 0
+  },
+  {
+    "city": "Peixoto de Azevedo",
+    "state": "MT",
+    "population": 33754,
+    "current_pros": 0
+  },
+  {
+    "city": "Pires do Rio",
+    "state": "GO",
+    "population": 33736,
+    "current_pros": 0
+  },
+  {
+    "city": "Frederico Westphalen",
+    "state": "RS",
+    "population": 33726,
+    "current_pros": 0
+  },
+  {
+    "city": "Barreirinha",
+    "state": "AM",
+    "population": 33722,
+    "current_pros": 0
+  },
+  {
+    "city": "Américo Brasiliense",
+    "state": "SP",
+    "population": 33708,
+    "current_pros": 0
+  },
+  {
+    "city": "Porto União",
+    "state": "SC",
+    "population": 33694,
+    "current_pros": 0
+  },
+  {
+    "city": "Canindé de São Francisco",
+    "state": "SE",
+    "population": 33641,
+    "current_pros": 0
+  },
+  {
+    "city": "Pojuca",
+    "state": "BA",
+    "population": 33573,
+    "current_pros": 0
+  },
+  {
+    "city": "Ivaiporã",
+    "state": "PR",
+    "population": 33566,
+    "current_pros": 0
+  },
+  {
+    "city": "Guanhães",
+    "state": "MG",
+    "population": 33517,
+    "current_pros": 0
+  },
+  {
+    "city": "Caçapava do Sul",
+    "state": "RS",
+    "population": 33501,
+    "current_pros": 0
+  },
+  {
+    "city": "Penalva",
+    "state": "MA",
+    "population": 33496,
+    "current_pros": 0
+  },
+  {
+    "city": "Exu",
+    "state": "PE",
+    "population": 33486,
+    "current_pros": 0
+  },
+  {
+    "city": "Coxim",
+    "state": "MS",
+    "population": 33440,
+    "current_pros": 0
+  },
+  {
+    "city": "Matões",
+    "state": "MA",
+    "population": 33327,
+    "current_pros": 0
+  },
+  {
+    "city": "Itaperuçu",
+    "state": "PR",
+    "population": 33310,
+    "current_pros": 0
+  },
+  {
+    "city": "Barrinha",
+    "state": "SP",
+    "population": 33304,
+    "current_pros": 0
+  },
+  {
+    "city": "Presidente Figueiredo",
+    "state": "AM",
+    "population": 33291,
+    "current_pros": 0
+  },
+  {
+    "city": "Araguatins",
+    "state": "TO",
+    "population": 33286,
+    "current_pros": 0
+  },
+  {
+    "city": "Ouro Fino",
+    "state": "MG",
+    "population": 33285,
+    "current_pros": 0
+  },
+  {
+    "city": "Itapicuru",
+    "state": "BA",
+    "population": 33284,
+    "current_pros": 0
+  },
+  {
+    "city": "Maragogi",
+    "state": "AL",
+    "population": 33269,
+    "current_pros": 0
+  },
+  {
+    "city": "Estrela",
+    "state": "RS",
+    "population": 33263,
+    "current_pros": 0
+  },
+  {
+    "city": "Brasília de Minas",
+    "state": "MG",
+    "population": 33262,
+    "current_pros": 0
+  },
+  {
+    "city": "Turilândia",
+    "state": "MA",
+    "population": 33219,
+    "current_pros": 0
+  },
+  {
+    "city": "Laranjeiras do Sul",
+    "state": "PR",
+    "population": 33179,
+    "current_pros": 0
+  },
+  {
+    "city": "Ibaté",
+    "state": "SP",
+    "population": 33160,
+    "current_pros": 0
+  },
+  {
+    "city": "Aparecida",
+    "state": "SP",
+    "population": 33141,
+    "current_pros": 0
+  },
+  {
+    "city": "Jaguaruana",
+    "state": "CE",
+    "population": 33115,
+    "current_pros": 0
+  },
+  {
+    "city": "Catende",
+    "state": "PE",
+    "population": 33086,
+    "current_pros": 0
+  },
+  {
+    "city": "Miguel Alves",
+    "state": "PI",
+    "population": 33074,
+    "current_pros": 0
+  },
+  {
+    "city": "Guaíra",
+    "state": "PR",
+    "population": 33058,
+    "current_pros": 0
+  },
+  {
+    "city": "Anchieta",
+    "state": "ES",
+    "population": 33017,
+    "current_pros": 0
+  },
+  {
+    "city": "São Miguel Arcanjo",
+    "state": "SP",
+    "population": 32924,
+    "current_pros": 0
+  },
+  {
+    "city": "Aguaí",
+    "state": "SP",
+    "population": 32886,
+    "current_pros": 0
+  },
+  {
+    "city": "Parambu",
+    "state": "CE",
+    "population": 32867,
+    "current_pros": 0
+  },
+  {
+    "city": "Tanguá",
+    "state": "RJ",
+    "population": 32865,
+    "current_pros": 0
+  },
+  {
+    "city": "Espigão D'Oeste",
+    "state": "RO",
+    "population": 32842,
+    "current_pros": 0
+  },
+  {
+    "city": "Baixo Guandu",
+    "state": "ES",
+    "population": 32829,
+    "current_pros": 0
+  },
+  {
+    "city": "Capela",
+    "state": "SE",
+    "population": 32783,
+    "current_pros": 0
+  },
+  {
+    "city": "Caarapó",
+    "state": "MS",
+    "population": 32748,
+    "current_pros": 0
+  },
+  {
+    "city": "Irituia",
+    "state": "PA",
+    "population": 32740,
+    "current_pros": 0
+  },
+  {
+    "city": "Itatiaia",
+    "state": "RJ",
+    "population": 32713,
+    "current_pros": 0
+  },
+  {
+    "city": "São Sebastião",
+    "state": "AL",
+    "population": 32707,
+    "current_pros": 0
+  },
+  {
+    "city": "Descalvado",
+    "state": "SP",
+    "population": 32663,
+    "current_pros": 0
+  },
+  {
+    "city": "Guararema",
+    "state": "SP",
+    "population": 32620,
+    "current_pros": 0
+  },
+  {
+    "city": "Cururupu",
+    "state": "MA",
+    "population": 32602,
+    "current_pros": 0
+  },
+  {
+    "city": "Esperança",
+    "state": "PB",
+    "population": 32599,
+    "current_pros": 0
+  },
+  {
+    "city": "Campo Alegre",
+    "state": "AL",
+    "population": 32558,
+    "current_pros": 0
+  },
+  {
+    "city": "São Domingos do Capim",
+    "state": "PA",
+    "population": 32554,
+    "current_pros": 0
+  },
+  {
+    "city": "Pindaré-Mirim",
+    "state": "MA",
+    "population": 32542,
+    "current_pros": 0
+  },
+  {
+    "city": "Cachoeira Paulista",
+    "state": "SP",
+    "population": 32534,
+    "current_pros": 0
+  },
+  {
+    "city": "Sapezal",
+    "state": "MT",
+    "population": 32514,
+    "current_pros": 0
+  },
+  {
+    "city": "São José do Egito",
+    "state": "PE",
+    "population": 32508,
+    "current_pros": 0
+  },
+  {
+    "city": "Campo Alegre de Lourdes",
+    "state": "BA",
+    "population": 32500,
+    "current_pros": 0
+  },
+  {
+    "city": "Afonso Cláudio",
+    "state": "ES",
+    "population": 32456,
+    "current_pros": 0
+  },
+  {
+    "city": "Pompéu",
+    "state": "MG",
+    "population": 32441,
+    "current_pros": 0
+  },
+  {
+    "city": "Bariri",
+    "state": "SP",
+    "population": 32406,
+    "current_pros": 0
+  },
+  {
+    "city": "Careiro",
+    "state": "AM",
+    "population": 32336,
+    "current_pros": 0
+  },
+  {
+    "city": "Rio das Pedras",
+    "state": "SP",
+    "population": 32329,
+    "current_pros": 0
+  },
+  {
+    "city": "Cícero Dantas",
+    "state": "BA",
+    "population": 32292,
+    "current_pros": 0
+  },
+  {
+    "city": "Cruz",
+    "state": "CE",
+    "population": 32288,
+    "current_pros": 0
+  },
+  {
+    "city": "Catolé do Rocha",
+    "state": "PB",
+    "population": 32288,
+    "current_pros": 0
+  },
+  {
+    "city": "Barão de Cocais",
+    "state": "MG",
+    "population": 32264,
+    "current_pros": 0
+  },
+  {
+    "city": "Trindade",
+    "state": "PE",
+    "population": 32257,
+    "current_pros": 0
+  },
+  {
+    "city": "Parnarama",
+    "state": "MA",
+    "population": 32232,
+    "current_pros": 0
+  },
+  {
+    "city": "São Gabriel do Oeste",
+    "state": "MS",
+    "population": 32207,
+    "current_pros": 0
+  },
+  {
+    "city": "Nazaré da Mata",
+    "state": "PE",
+    "population": 32187,
+    "current_pros": 0
+  },
+  {
+    "city": "Lavras da Mangabeira",
+    "state": "CE",
+    "population": 32163,
+    "current_pros": 0
+  },
+  {
+    "city": "Carangola",
+    "state": "MG",
+    "population": 32134,
+    "current_pros": 0
+  },
+  {
+    "city": "Santana do Acaraú",
+    "state": "CE",
+    "population": 32133,
+    "current_pros": 0
+  },
+  {
+    "city": "Pau dos Ferros",
+    "state": "RN",
+    "population": 32123,
+    "current_pros": 0
+  },
+  {
+    "city": "Tabuleiro do Norte",
+    "state": "CE",
+    "population": 32122,
+    "current_pros": 0
+  },
+  {
+    "city": "Osvaldo Cruz",
+    "state": "SP",
+    "population": 32112,
+    "current_pros": 0
+  },
+  {
+    "city": "Água Boa",
+    "state": "MT",
+    "population": 32099,
+    "current_pros": 0
+  },
+  {
+    "city": "Limoeiro do Ajuru",
+    "state": "PA",
+    "population": 32088,
+    "current_pros": 0
+  },
+  {
+    "city": "Riacho de Santana",
+    "state": "BA",
+    "population": 32060,
+    "current_pros": 0
+  },
+  {
+    "city": "Colíder",
+    "state": "MT",
+    "population": 32054,
+    "current_pros": 0
+  },
+  {
+    "city": "Nova Russas",
+    "state": "CE",
+    "population": 32053,
+    "current_pros": 0
+  },
+  {
+    "city": "Flores da Cunha",
+    "state": "RS",
+    "population": 32015,
+    "current_pros": 0
+  },
+  {
+    "city": "Santa Vitória do Palmar",
+    "state": "RS",
+    "population": 31965,
+    "current_pros": 0
+  },
+  {
+    "city": "Rio Negro",
+    "state": "PR",
+    "population": 31951,
+    "current_pros": 0
+  },
+  {
+    "city": "Cláudio",
+    "state": "MG",
+    "population": 31936,
+    "current_pros": 0
+  },
+  {
+    "city": "Vitorino Freire",
+    "state": "MA",
+    "population": 31920,
+    "current_pros": 0
+  },
+  {
+    "city": "Santa Bárbara",
+    "state": "MG",
+    "population": 31916,
+    "current_pros": 3
+  },
+  {
+    "city": "Luís Correia",
+    "state": "PI",
+    "population": 31901,
+    "current_pros": 0
+  },
+  {
+    "city": "Guararapes",
+    "state": "SP",
+    "population": 31888,
+    "current_pros": 0
+  },
+  {
+    "city": "Campo Magro",
+    "state": "PR",
+    "population": 31888,
+    "current_pros": 0
+  },
+  {
+    "city": "Vitória do Mearim",
+    "state": "MA",
+    "population": 31859,
+    "current_pros": 0
+  },
+  {
+    "city": "Joaçaba",
+    "state": "SC",
+    "population": 31809,
+    "current_pros": 0
+  },
+  {
+    "city": "Dois Irmãos",
+    "state": "RS",
+    "population": 31804,
+    "current_pros": 0
+  },
+  {
+    "city": "São Luís do Quitunde",
+    "state": "AL",
+    "population": 31785,
+    "current_pros": 0
+  },
+  {
+    "city": "Cabrobó",
+    "state": "PE",
+    "population": 31762,
+    "current_pros": 0
+  },
+  {
+    "city": "Bandeirantes",
+    "state": "PR",
+    "population": 31747,
+    "current_pros": 0
+  },
+  {
+    "city": "Sombrio",
+    "state": "SC",
+    "population": 31722,
+    "current_pros": 0
+  },
+  {
+    "city": "Floresta",
+    "state": "PE",
+    "population": 31702,
+    "current_pros": 0
+  },
+  {
+    "city": "Camamu",
+    "state": "BA",
+    "population": 31694,
+    "current_pros": 0
+  },
+  {
+    "city": "Carlos Barbosa",
+    "state": "RS",
+    "population": 31585,
+    "current_pros": 0
+  },
+  {
+    "city": "São José da Tapera",
+    "state": "AL",
+    "population": 31569,
+    "current_pros": 0
+  },
+  {
+    "city": "Porto Belo",
+    "state": "SC",
+    "population": 31557,
+    "current_pros": 8
+  },
+  {
+    "city": "Jaguaré",
+    "state": "ES",
+    "population": 31551,
+    "current_pros": 0
+  },
+  {
+    "city": "Quedas do Iguaçu",
+    "state": "PR",
+    "population": 31423,
+    "current_pros": 0
+  },
+  {
+    "city": "Guaçuí",
+    "state": "ES",
+    "population": 31418,
+    "current_pros": 0
+  },
+  {
+    "city": "Espinosa",
+    "state": "MG",
+    "population": 31375,
+    "current_pros": 0
+  },
+  {
+    "city": "Paty do Alferes",
+    "state": "RJ",
+    "population": 31370,
+    "current_pros": 0
+  },
+  {
+    "city": "Pedras de Fogo",
+    "state": "PB",
+    "population": 31356,
+    "current_pros": 0
+  },
+  {
+    "city": "Guarantã do Norte",
+    "state": "MT",
+    "population": 31209,
+    "current_pros": 0
+  },
+  {
+    "city": "Poconé",
+    "state": "MT",
+    "population": 31203,
+    "current_pros": 0
+  },
+  {
+    "city": "Além Paraíba",
+    "state": "MG",
+    "population": 31159,
+    "current_pros": 0
+  },
+  {
+    "city": "Carauari",
+    "state": "AM",
+    "population": 31130,
+    "current_pros": 0
+  },
+  {
+    "city": "Querência",
+    "state": "MT",
+    "population": 31100,
+    "current_pros": 0
+  },
+  {
+    "city": "Cambuí",
+    "state": "MG",
+    "population": 31066,
+    "current_pros": 0
+  },
+  {
+    "city": "Serra Negra",
+    "state": "SP",
+    "population": 31047,
+    "current_pros": 0
+  },
+  {
+    "city": "Santa Cruz Cabrália",
+    "state": "BA",
+    "population": 31007,
+    "current_pros": 0
+  },
+  {
+    "city": "Soledade",
+    "state": "RS",
+    "population": 30939,
+    "current_pros": 0
+  },
+  {
+    "city": "Buriti",
+    "state": "MA",
+    "population": 30866,
+    "current_pros": 0
+  },
+  {
+    "city": "Imbituva",
+    "state": "PR",
+    "population": 30849,
+    "current_pros": 0
+  },
+  {
+    "city": "Canguaretama",
+    "state": "RN",
+    "population": 30789,
+    "current_pros": 0
+  },
+  {
+    "city": "Oiapoque",
+    "state": "AP",
+    "population": 30786,
+    "current_pros": 0
+  },
+  {
+    "city": "Maravilha",
+    "state": "SC",
+    "population": 30743,
+    "current_pros": 0
+  },
+  {
+    "city": "Ipubi",
+    "state": "PE",
+    "population": 30720,
+    "current_pros": 0
+  },
+  {
+    "city": "Alegre",
+    "state": "ES",
+    "population": 30702,
+    "current_pros": 0
+  },
+  {
+    "city": "Paratinga",
+    "state": "BA",
+    "population": 30680,
+    "current_pros": 0
+  },
+  {
+    "city": "Santo Antônio do Içá",
+    "state": "AM",
+    "population": 30679,
+    "current_pros": 0
+  },
+  {
+    "city": "Bom Jesus",
+    "state": "PI",
+    "population": 30658,
+    "current_pros": 0
+  },
+  {
+    "city": "Buritis",
+    "state": "RO",
+    "population": 30649,
+    "current_pros": 0
+  },
+  {
+    "city": "Hidrolândia",
+    "state": "GO",
+    "population": 30587,
+    "current_pros": 0
+  },
+  {
+    "city": "Caetés",
+    "state": "PE",
+    "population": 30571,
+    "current_pros": 0
+  },
+  {
+    "city": "Biritiba Mirim",
+    "state": "SP",
+    "population": 30564,
+    "current_pros": 0
+  },
+  {
+    "city": "Iúna",
+    "state": "ES",
+    "population": 30556,
+    "current_pros": 0
+  },
+  {
+    "city": "Arari",
+    "state": "MA",
+    "population": 30555,
+    "current_pros": 0
+  },
+  {
+    "city": "Cachoeira",
+    "state": "BA",
+    "population": 30498,
+    "current_pros": 0
+  },
+  {
+    "city": "Tracuateua",
+    "state": "PA",
+    "population": 30494,
+    "current_pros": 0
+  },
+  {
+    "city": "Santana do Araguaia",
+    "state": "PA",
+    "population": 30455,
+    "current_pros": 0
+  },
+  {
+    "city": "Pinhão",
+    "state": "PR",
+    "population": 30451,
+    "current_pros": 0
+  },
+  {
+    "city": "Carinhanha",
+    "state": "BA",
+    "population": 30439,
+    "current_pros": 0
+  },
+  {
+    "city": "Glória do Goitá",
+    "state": "PE",
+    "population": 30420,
+    "current_pros": 0
+  },
+  {
+    "city": "São Miguel do Iguaçu",
+    "state": "PR",
+    "population": 30416,
+    "current_pros": 0
+  },
+  {
+    "city": "Piraju",
+    "state": "SP",
+    "population": 30294,
+    "current_pros": 0
+  },
+  {
+    "city": "Conceição das Alagoas",
+    "state": "MG",
+    "population": 30278,
+    "current_pros": 0
+  },
+  {
+    "city": "Anajás",
+    "state": "PA",
+    "population": 30247,
+    "current_pros": 0
+  },
+  {
+    "city": "Nova Santa Rita",
+    "state": "RS",
+    "population": 30189,
+    "current_pros": 0
+  },
+  {
+    "city": "Muritiba",
+    "state": "BA",
+    "population": 30180,
+    "current_pros": 0
+  },
+  {
+    "city": "Cândido Mota",
+    "state": "SP",
+    "population": 30157,
+    "current_pros": 0
+  },
+  {
+    "city": "Coromandel",
+    "state": "MG",
+    "population": 30114,
+    "current_pros": 0
+  },
+  {
+    "city": "Santo Amaro da Imperatriz",
+    "state": "SC",
+    "population": 30099,
+    "current_pros": 0
+  },
+  {
+    "city": "Melgaço",
+    "state": "PA",
+    "population": 30080,
+    "current_pros": 0
+  },
+  {
+    "city": "Conde",
+    "state": "PB",
+    "population": 30007,
+    "current_pros": 0
+  },
+  {
+    "city": "Ivinhema",
+    "state": "MS",
+    "population": 30001,
+    "current_pros": 0
+  },
+  {
+    "city": "Três Marias",
+    "state": "MG",
+    "population": 29985,
+    "current_pros": 0
+  },
+  {
+    "city": "Iguape",
+    "state": "SP",
+    "population": 29891,
+    "current_pros": 0
+  },
+  {
+    "city": "Carmo do Paranaíba",
+    "state": "MG",
+    "population": 29885,
+    "current_pros": 0
+  },
+  {
+    "city": "Aparecida do Taboado",
+    "state": "MS",
+    "population": 29826,
+    "current_pros": 0
+  },
+  {
+    "city": "Jaciara",
+    "state": "MT",
+    "population": 29803,
+    "current_pros": 0
+  },
+  {
+    "city": "Candelária",
+    "state": "RS",
+    "population": 29775,
+    "current_pros": 0
+  },
+  {
+    "city": "Bom Jardim",
+    "state": "RJ",
+    "population": 29758,
+    "current_pros": 0
+  },
+  {
+    "city": "Prata",
+    "state": "MG",
+    "population": 29745,
+    "current_pros": 0
+  },
+  {
+    "city": "Passira",
+    "state": "PE",
+    "population": 29744,
+    "current_pros": 0
+  },
+  {
+    "city": "Piracuruca",
+    "state": "PI",
+    "population": 29721,
+    "current_pros": 0
+  },
+  {
+    "city": "Itapissuma",
+    "state": "PE",
+    "population": 29669,
+    "current_pros": 0
+  },
+  {
+    "city": "Iguaba Grande",
+    "state": "RJ",
+    "population": 29616,
+    "current_pros": 0
+  },
+  {
+    "city": "Bom Jesus das Selvas",
+    "state": "MA",
+    "population": 29606,
+    "current_pros": 0
+  },
+  {
+    "city": "Ruy Barbosa",
+    "state": "BA",
+    "population": 29590,
+    "current_pros": 0
+  },
+  {
+    "city": "Itabela",
+    "state": "BA",
+    "population": 29588,
+    "current_pros": 0
+  },
+  {
+    "city": "Irará",
+    "state": "BA",
+    "population": 29572,
+    "current_pros": 0
+  },
+  {
+    "city": "Presidente Tancredo Neves",
+    "state": "BA",
+    "population": 29489,
+    "current_pros": 0
+  },
+  {
+    "city": "Santa Cruz das Palmeiras",
+    "state": "SP",
+    "population": 29489,
+    "current_pros": 0
+  },
+  {
+    "city": "Ibaiti",
+    "state": "PR",
+    "population": 29464,
+    "current_pros": 0
+  },
+  {
+    "city": "Barra do Bugres",
+    "state": "MT",
+    "population": 29406,
+    "current_pros": 0
+  },
+  {
+    "city": "Rancharia",
+    "state": "SP",
+    "population": 29387,
+    "current_pros": 0
+  },
+  {
+    "city": "Bady Bassitt",
+    "state": "SP",
+    "population": 29346,
+    "current_pros": 0
+  },
+  {
+    "city": "Maracás",
+    "state": "BA",
+    "population": 29330,
+    "current_pros": 0
+  },
+  {
+    "city": "Cocal",
+    "state": "PI",
+    "population": 29302,
+    "current_pros": 0
+  },
+  {
+    "city": "Eldorado do Carajás",
+    "state": "PA",
+    "population": 29287,
+    "current_pros": 0
+  },
+  {
+    "city": "Ipixuna do Pará",
+    "state": "PA",
+    "population": 29264,
+    "current_pros": 0
+  },
+  {
+    "city": "Cajati",
+    "state": "SP",
+    "population": 29262,
+    "current_pros": 0
+  },
+  {
+    "city": "Poço Redondo",
+    "state": "SE",
+    "population": 29238,
+    "current_pros": 0
+  },
+  {
+    "city": "Santo Antônio do Tauá",
+    "state": "PA",
+    "population": 29234,
+    "current_pros": 0
+  },
+  {
+    "city": "Lagoa Seca",
+    "state": "PB",
+    "population": 29209,
+    "current_pros": 0
+  },
+  {
+    "city": "Tabira",
+    "state": "PE",
+    "population": 29180,
+    "current_pros": 0
+  },
+  {
+    "city": "Conchal",
+    "state": "SP",
+    "population": 29132,
+    "current_pros": 0
+  },
+  {
+    "city": "Mandirituba",
+    "state": "PR",
+    "population": 29104,
+    "current_pros": 0
+  },
+  {
+    "city": "Rio Pardo de Minas",
+    "state": "MG",
+    "population": 29103,
+    "current_pros": 0
+  },
+  {
+    "city": "Novo Oriente",
+    "state": "CE",
+    "population": 29097,
+    "current_pros": 0
+  },
+  {
+    "city": "Piraí",
+    "state": "RJ",
+    "population": 29066,
+    "current_pros": 0
+  },
+  {
+    "city": "Goioerê",
+    "state": "PR",
+    "population": 28931,
+    "current_pros": 0
+  },
+  {
+    "city": "Conceição da Barra",
+    "state": "ES",
+    "population": 28923,
+    "current_pros": 0
+  },
+  {
+    "city": "Mocajuba",
+    "state": "PA",
+    "population": 28903,
+    "current_pros": 0
+  },
+  {
+    "city": "Santa Rita de Cássia",
+    "state": "BA",
+    "population": 28890,
+    "current_pros": 0
+  },
+  {
+    "city": "Paranatinga",
+    "state": "MT",
+    "population": 28870,
+    "current_pros": 0
+  },
+  {
+    "city": "João Alfredo",
+    "state": "PE",
+    "population": 28842,
+    "current_pros": 0
+  },
+  {
+    "city": "Ibimirim",
+    "state": "PE",
+    "population": 28825,
+    "current_pros": 0
+  },
+  {
+    "city": "Jardim",
+    "state": "CE",
+    "population": 28801,
+    "current_pros": 0
+  },
+  {
+    "city": "Casa Branca",
+    "state": "SP",
+    "population": 28779,
+    "current_pros": 0
+  },
+  {
+    "city": "Mirandópolis",
+    "state": "SP",
+    "population": 28754,
+    "current_pros": 0
+  },
+  {
+    "city": "Mutum",
+    "state": "MG",
+    "population": 28749,
+    "current_pros": 0
+  },
+  {
+    "city": "Costa Rica",
+    "state": "MS",
+    "population": 28740,
+    "current_pros": 0
+  },
+  {
+    "city": "Nova Mamoré",
+    "state": "RO",
+    "population": 28701,
+    "current_pros": 0
+  },
+  {
+    "city": "Medicilândia",
+    "state": "PA",
+    "population": 28677,
+    "current_pros": 0
+  },
+  {
+    "city": "Sooretama",
+    "state": "ES",
+    "population": 28668,
+    "current_pros": 0
+  },
+  {
+    "city": "Lagoa Vermelha",
+    "state": "RS",
+    "population": 28622,
+    "current_pros": 0
+  },
+  {
+    "city": "Monção",
+    "state": "MA",
+    "population": 28563,
+    "current_pros": 0
+  },
+  {
+    "city": "Morro Agudo",
+    "state": "SP",
+    "population": 28521,
+    "current_pros": 0
+  },
+  {
+    "city": "Pilar do Sul",
+    "state": "SP",
+    "population": 28459,
+    "current_pros": 0
+  },
+  {
+    "city": "Santo Antônio do Monte",
+    "state": "MG",
+    "population": 28456,
+    "current_pros": 0
+  },
+  {
+    "city": "Triunfo",
+    "state": "RS",
+    "population": 28435,
+    "current_pros": 0
+  },
+  {
+    "city": "Nazaré",
+    "state": "BA",
+    "population": 28427,
+    "current_pros": 0
+  },
+  {
+    "city": "Miracema",
+    "state": "RJ",
+    "population": 28416,
+    "current_pros": 0
+  },
+  {
+    "city": "Baraúna",
+    "state": "RN",
+    "population": 28415,
+    "current_pros": 0
+  },
+  {
+    "city": "Coração de Maria",
+    "state": "BA",
+    "population": 28408,
+    "current_pros": 0
+  },
+  {
+    "city": "Álvares Machado",
+    "state": "SP",
+    "population": 28386,
+    "current_pros": 0
+  },
+  {
+    "city": "Redenção",
+    "state": "CE",
+    "population": 28382,
+    "current_pros": 0
+  },
+  {
+    "city": "Corrente",
+    "state": "PI",
+    "population": 28381,
+    "current_pros": 0
+  },
+  {
+    "city": "Macau",
+    "state": "RN",
+    "population": 28350,
+    "current_pros": 0
+  },
+  {
+    "city": "Canarana",
+    "state": "MT",
+    "population": 28324,
+    "current_pros": 0
+  },
+  {
+    "city": "Concórdia do Pará",
+    "state": "PA",
+    "population": 28270,
+    "current_pros": 0
+  },
+  {
+    "city": "Alexânia",
+    "state": "GO",
+    "population": 28244,
+    "current_pros": 0
+  },
+  {
+    "city": "Fonte Boa",
+    "state": "AM",
+    "population": 28227,
+    "current_pros": 0
+  },
+  {
+    "city": "Jutaí",
+    "state": "AM",
+    "population": 28202,
+    "current_pros": 0
+  },
+  {
+    "city": "Marapanim",
+    "state": "PA",
+    "population": 28159,
+    "current_pros": 0
+  },
+  {
+    "city": "Miguel Pereira",
+    "state": "RJ",
+    "population": 28142,
+    "current_pros": 0
+  },
+  {
+    "city": "Tupanatinga",
+    "state": "PE",
+    "population": 28141,
+    "current_pros": 0
+  },
+  {
+    "city": "Nova Olinda do Norte",
+    "state": "AM",
+    "population": 28123,
+    "current_pros": 0
+  },
+  {
+    "city": "São José da Lapa",
+    "state": "MG",
+    "population": 28087,
+    "current_pros": 0
+  },
+  {
+    "city": "Sacramento",
+    "state": "MG",
+    "population": 28076,
+    "current_pros": 0
+  },
+  {
+    "city": "Brasiléia",
+    "state": "AC",
+    "population": 28028,
+    "current_pros": 0
+  },
+  {
+    "city": "Imbé",
+    "state": "RS",
+    "population": 28027,
+    "current_pros": 0
+  },
+  {
+    "city": "Juquitiba",
+    "state": "SP",
+    "population": 27969,
+    "current_pros": 0
+  },
+  {
+    "city": "São Bernardo",
+    "state": "MA",
+    "population": 27910,
+    "current_pros": 0
+  },
+  {
+    "city": "Paripiranga",
+    "state": "BA",
+    "population": 27860,
+    "current_pros": 0
+  },
+  {
+    "city": "Camanducaia",
+    "state": "MG",
+    "population": 27860,
+    "current_pros": 0
+  },
+  {
+    "city": "Pitangui",
+    "state": "MG",
+    "population": 27834,
+    "current_pros": 0
+  },
+  {
+    "city": "Inajá",
+    "state": "PE",
+    "population": 27758,
+    "current_pros": 0
+  },
+  {
+    "city": "Solânea",
+    "state": "PB",
+    "population": 27748,
+    "current_pros": 0
+  },
+  {
+    "city": "Barra da Estiva",
+    "state": "BA",
+    "population": 27743,
+    "current_pros": 0
+  },
+  {
+    "city": "Ibotirama",
+    "state": "BA",
+    "population": 27723,
+    "current_pros": 0
+  },
+  {
+    "city": "Vera Cruz",
+    "state": "RS",
+    "population": 27670,
+    "current_pros": 0
+  },
+  {
+    "city": "São Sebastião da Boa Vista",
+    "state": "PA",
+    "population": 27651,
+    "current_pros": 0
+  },
+  {
+    "city": "Mirassol d'Oeste",
+    "state": "MT",
+    "population": 27637,
+    "current_pros": 0
+  },
+  {
+    "city": "Formosa do Rio Preto",
+    "state": "BA",
+    "population": 27567,
+    "current_pros": 0
+  },
+  {
+    "city": "Ibatiba",
+    "state": "ES",
+    "population": 27543,
+    "current_pros": 0
+  },
+  {
+    "city": "Caririaçu",
+    "state": "CE",
+    "population": 27532,
+    "current_pros": 0
+  },
+  {
+    "city": "Queimadas",
+    "state": "BA",
+    "population": 27429,
+    "current_pros": 0
+  },
+  {
+    "city": "Elói Mendes",
+    "state": "MG",
+    "population": 27429,
+    "current_pros": 0
+  },
+  {
+    "city": "Capão do Leão",
+    "state": "RS",
+    "population": 27416,
+    "current_pros": 0
+  },
+  {
+    "city": "Jaguarão",
+    "state": "RS",
+    "population": 27396,
+    "current_pros": 0
+  },
+  {
+    "city": "Mantena",
+    "state": "MG",
+    "population": 27350,
+    "current_pros": 0
+  },
+  {
+    "city": "Porto da Folha",
+    "state": "SE",
+    "population": 27348,
+    "current_pros": 0
+  },
+  {
+    "city": "Timbiras",
+    "state": "MA",
+    "population": 27328,
+    "current_pros": 0
+  },
+  {
+    "city": "Novo Cruzeiro",
+    "state": "MG",
+    "population": 27268,
+    "current_pros": 0
+  },
+  {
+    "city": "Propriá",
+    "state": "SE",
+    "population": 27213,
+    "current_pros": 0
+  },
+  {
+    "city": "Cocalzinho de Goiás",
+    "state": "GO",
+    "population": 27196,
+    "current_pros": 0
+  },
+  {
+    "city": "Marco",
+    "state": "CE",
+    "population": 27177,
+    "current_pros": 0
+  },
+  {
+    "city": "Vicência",
+    "state": "PE",
+    "population": 27151,
+    "current_pros": 0
+  },
+  {
+    "city": "Nova Esperança",
+    "state": "PR",
+    "population": 27142,
+    "current_pros": 0
+  },
+  {
+    "city": "Brasil Novo",
+    "state": "PA",
+    "population": 27130,
+    "current_pros": 0
+  },
+  {
+    "city": "Maracanã",
+    "state": "PA",
+    "population": 27129,
+    "current_pros": 0
+  },
+  {
+    "city": "Batalha",
+    "state": "PI",
+    "population": 27129,
+    "current_pros": 0
+  },
+  {
+    "city": "Sobradinho",
+    "state": "BA",
+    "population": 27097,
+    "current_pros": 0
+  },
+  {
+    "city": "Manari",
+    "state": "PE",
+    "population": 27046,
+    "current_pros": 0
+  },
+  {
+    "city": "Laranjal Paulista",
+    "state": "SP",
+    "population": 27044,
+    "current_pros": 0
+  },
+  {
+    "city": "Lapão",
+    "state": "BA",
+    "population": 27014,
+    "current_pros": 0
+  },
+  {
+    "city": "São Joaquim",
+    "state": "SC",
+    "population": 26982,
+    "current_pros": 0
+  },
+  {
+    "city": "Água Preta",
+    "state": "PE",
+    "population": 26981,
+    "current_pros": 0
+  },
+  {
+    "city": "Pombos",
+    "state": "PE",
+    "population": 26942,
+    "current_pros": 0
+  },
+  {
+    "city": "Ibirapitanga",
+    "state": "BA",
+    "population": 26917,
+    "current_pros": 0
+  },
+  {
+    "city": "Jacutinga",
+    "state": "MG",
+    "population": 26888,
+    "current_pros": 0
+  },
+  {
+    "city": "Milagres",
+    "state": "CE",
+    "population": 26819,
+    "current_pros": 0
+  },
+  {
+    "city": "Uruçuí",
+    "state": "PI",
+    "population": 26779,
+    "current_pros": 0
+  },
+  {
+    "city": "Aracoiaba",
+    "state": "CE",
+    "population": 26752,
+    "current_pros": 0
+  },
+  {
+    "city": "Campos Gerais",
+    "state": "MG",
+    "population": 26749,
+    "current_pros": 0
+  },
+  {
+    "city": "Anagé",
+    "state": "BA",
+    "population": 26745,
+    "current_pros": 0
+  },
+  {
+    "city": "Goianésia do Pará",
+    "state": "PA",
+    "population": 26703,
+    "current_pros": 0
+  },
+  {
+    "city": "Igarapava",
+    "state": "SP",
+    "population": 26696,
+    "current_pros": 0
+  },
+  {
+    "city": "Alagoa Grande",
+    "state": "PB",
+    "population": 26655,
+    "current_pros": 0
+  },
+  {
+    "city": "Guabiruba",
+    "state": "SC",
+    "population": 26645,
+    "current_pros": 0
+  },
+  {
+    "city": "Nova Prata",
+    "state": "RS",
+    "population": 26637,
+    "current_pros": 0
+  },
+  {
+    "city": "Minaçu",
+    "state": "GO",
+    "population": 26616,
+    "current_pros": 0
+  },
+  {
+    "city": "Tupaciguara",
+    "state": "MG",
+    "population": 26583,
+    "current_pros": 0
+  },
+  {
+    "city": "Jacareacanga",
+    "state": "PA",
+    "population": 26579,
+    "current_pros": 0
+  },
+  {
+    "city": "Aripuanã",
+    "state": "MT",
+    "population": 26558,
+    "current_pros": 0
+  },
+  {
+    "city": "Itapuranga",
+    "state": "GO",
+    "population": 26553,
+    "current_pros": 0
+  },
+  {
+    "city": "Humberto de Campos",
+    "state": "MA",
+    "population": 26550,
+    "current_pros": 0
+  },
+  {
+    "city": "São João Nepomuceno",
+    "state": "MG",
+    "population": 26529,
+    "current_pros": 0
+  },
+  {
+    "city": "Miranda",
+    "state": "MS",
+    "population": 26512,
+    "current_pros": 0
+  },
+  {
+    "city": "Boa Vista do Ramos",
+    "state": "AM",
+    "population": 26479,
+    "current_pros": 0
+  },
+  {
+    "city": "Cândido Sales",
+    "state": "BA",
+    "population": 26469,
+    "current_pros": 0
+  },
+  {
+    "city": "Santa Helena",
+    "state": "PR",
+    "population": 26461,
+    "current_pros": 0
+  },
+  {
+    "city": "Quijingue",
+    "state": "BA",
+    "population": 26443,
+    "current_pros": 0
+  },
+  {
+    "city": "Arapoti",
+    "state": "PR",
+    "population": 26325,
+    "current_pros": 0
+  },
+  {
+    "city": "Alto Alegre do Pindaré",
+    "state": "MA",
+    "population": 26321,
+    "current_pros": 0
+  },
+  {
+    "city": "Brodowski",
+    "state": "SP",
+    "population": 26314,
+    "current_pros": 0
+  },
+  {
+    "city": "Três Passos",
+    "state": "RS",
+    "population": 26304,
+    "current_pros": 0
+  },
+  {
+    "city": "Ilha Solteira",
+    "state": "SP",
+    "population": 26257,
+    "current_pros": 0
+  },
+  {
+    "city": "Anajatuba",
+    "state": "MA",
+    "population": 26250,
+    "current_pros": 0
+  },
+  {
+    "city": "São José do Norte",
+    "state": "RS",
+    "population": 26248,
+    "current_pros": 0
+  },
+  {
+    "city": "Ipameri",
+    "state": "GO",
+    "population": 26223,
+    "current_pros": 0
+  },
+  {
+    "city": "Aimorés",
+    "state": "MG",
+    "population": 26212,
+    "current_pros": 0
+  },
+  {
+    "city": "Astorga",
+    "state": "PR",
+    "population": 26203,
+    "current_pros": 0
+  },
+  {
+    "city": "Guaporé",
+    "state": "RS",
+    "population": 26168,
+    "current_pros": 0
+  },
+  {
+    "city": "Craíbas",
+    "state": "AL",
+    "population": 26144,
+    "current_pros": 0
+  },
+  {
+    "city": "Luzilândia",
+    "state": "PI",
+    "population": 26143,
+    "current_pros": 0
+  },
+  {
+    "city": "Coração de Jesus",
+    "state": "MG",
+    "population": 26138,
+    "current_pros": 0
+  },
+  {
+    "city": "Pirapozinho",
+    "state": "SP",
+    "population": 26097,
+    "current_pros": 0
+  },
+  {
+    "city": "Arame",
+    "state": "MA",
+    "population": 26089,
+    "current_pros": 0
+  },
+  {
+    "city": "Tanabi",
+    "state": "SP",
+    "population": 26071,
+    "current_pros": 0
+  },
+  {
+    "city": "São Lourenço do Oeste",
+    "state": "SC",
+    "population": 26056,
+    "current_pros": 0
+  },
+  {
+    "city": "Campos Sales",
+    "state": "CE",
+    "population": 26049,
+    "current_pros": 0
+  },
+  {
+    "city": "Colniza",
+    "state": "MT",
+    "population": 26026,
+    "current_pros": 0
+  },
+  {
+    "city": "Itaí",
+    "state": "SP",
+    "population": 25979,
+    "current_pros": 0
+  },
+  {
+    "city": "Urucurituba",
+    "state": "AM",
+    "population": 25965,
+    "current_pros": 0
+  },
+  {
+    "city": "Taquari",
+    "state": "RS",
+    "population": 25963,
+    "current_pros": 0
+  },
+  {
+    "city": "Murici",
+    "state": "AL",
+    "population": 25926,
+    "current_pros": 0
+  },
+  {
+    "city": "Nova Xavantina",
+    "state": "MT",
+    "population": 25915,
+    "current_pros": 0
+  },
+  {
+    "city": "São João dos Patos",
+    "state": "MA",
+    "population": 25910,
+    "current_pros": 0
+  },
+  {
+    "city": "João Dourado",
+    "state": "BA",
+    "population": 25892,
+    "current_pros": 0
+  },
+  {
+    "city": "Guaraí",
+    "state": "TO",
+    "population": 25831,
+    "current_pros": 0
+  },
+  {
+    "city": "Mojuí dos Campos",
+    "state": "PA",
+    "population": 25818,
+    "current_pros": 0
+  },
+  {
+    "city": "Santa Maria do Pará",
+    "state": "PA",
+    "population": 25815,
+    "current_pros": 0
+  },
+  {
+    "city": "Maraú",
+    "state": "BA",
+    "population": 25804,
+    "current_pros": 0
+  },
+  {
+    "city": "Nepomuceno",
+    "state": "MG",
+    "population": 25757,
+    "current_pros": 0
+  },
+  {
+    "city": "Ponta de Pedras",
+    "state": "PA",
+    "population": 25736,
+    "current_pros": 0
+  },
+  {
+    "city": "Ubiratã",
+    "state": "PR",
+    "population": 25732,
+    "current_pros": 0
+  },
+  {
+    "city": "Salvaterra",
+    "state": "PA",
+    "population": 25687,
+    "current_pros": 0
+  },
+  {
+    "city": "Ilha de Itamaracá",
+    "state": "PE",
+    "population": 25658,
+    "current_pros": 0
+  },
+  {
+    "city": "Ipixuna",
+    "state": "AM",
+    "population": 25629,
+    "current_pros": 0
+  },
+  {
+    "city": "Alcobaça",
+    "state": "BA",
+    "population": 25601,
+    "current_pros": 0
+  },
+  {
+    "city": "Nossa Senhora das Dores",
+    "state": "SE",
+    "population": 25569,
+    "current_pros": 0
+  },
+  {
+    "city": "Garrafão do Norte",
+    "state": "PA",
+    "population": 25558,
+    "current_pros": 0
+  },
+  {
+    "city": "Wenceslau Guimarães",
+    "state": "BA",
+    "population": 25535,
+    "current_pros": 0
+  },
+  {
+    "city": "Santana",
+    "state": "BA",
+    "population": 25521,
+    "current_pros": 0
+  },
+  {
+    "city": "Taquaritinga do Norte",
+    "state": "PE",
+    "population": 25511,
+    "current_pros": 0
+  },
+  {
+    "city": "Rio Tinto",
+    "state": "PB",
+    "population": 25500,
+    "current_pros": 0
+  },
+  {
+    "city": "Castro Alves",
+    "state": "BA",
+    "population": 25470,
+    "current_pros": 0
+  },
+  {
+    "city": "Cachoeira do Arari",
+    "state": "PA",
+    "population": 25467,
+    "current_pros": 0
+  },
+  {
+    "city": "Três de Maio",
+    "state": "RS",
+    "population": 25466,
+    "current_pros": 0
+  },
+  {
+    "city": "Uauá",
+    "state": "BA",
+    "population": 25449,
+    "current_pros": 0
+  },
+  {
+    "city": "Condado",
+    "state": "PE",
+    "population": 25416,
+    "current_pros": 0
+  },
+  {
+    "city": "Quatro Barras",
+    "state": "PR",
+    "population": 25397,
+    "current_pros": 0
+  },
+  {
+    "city": "Venda Nova do Imigrante",
+    "state": "ES",
+    "population": 25395,
+    "current_pros": 0
+  },
+  {
+    "city": "Piracanjuba",
+    "state": "GO",
+    "population": 25373,
+    "current_pros": 0
+  },
+  {
+    "city": "Rio Preto da Eva",
+    "state": "AM",
+    "population": 25364,
+    "current_pros": 0
+  },
+  {
+    "city": "Icatu",
+    "state": "MA",
+    "population": 25332,
+    "current_pros": 0
+  },
+  {
+    "city": "Novo Aripuanã",
+    "state": "AM",
+    "population": 25325,
+    "current_pros": 0
+  },
+  {
+    "city": "Soure",
+    "state": "PA",
+    "population": 25315,
+    "current_pros": 0
+  },
+  {
+    "city": "Iaçu",
+    "state": "BA",
+    "population": 25315,
+    "current_pros": 0
+  },
+  {
+    "city": "João Lisboa",
+    "state": "MA",
+    "population": 25311,
+    "current_pros": 0
+  },
+  {
+    "city": "Santa Terezinha de Itaipu",
+    "state": "PR",
+    "population": 25300,
+    "current_pros": 0
+  },
+  {
+    "city": "Forquilha",
+    "state": "CE",
+    "population": 25298,
+    "current_pros": 0
+  },
+  {
+    "city": "Tamboril",
+    "state": "CE",
+    "population": 25287,
+    "current_pros": 0
+  },
+  {
+    "city": "Cordeirópolis",
+    "state": "SP",
+    "population": 25286,
+    "current_pros": 0
+  },
+  {
+    "city": "Ocara",
+    "state": "CE",
+    "population": 25272,
+    "current_pros": 0
+  },
+  {
+    "city": "Miguel Calmon",
+    "state": "BA",
+    "population": 25263,
+    "current_pros": 0
+  },
+  {
+    "city": "Itaporã",
+    "state": "MS",
+    "population": 25263,
+    "current_pros": 0
+  },
+  {
+    "city": "Tapejara",
+    "state": "RS",
+    "population": 25256,
+    "current_pros": 0
+  },
+  {
+    "city": "Martinópolis",
+    "state": "SP",
+    "population": 25240,
+    "current_pros": 0
+  },
+  {
+    "city": "Limoeiro de Anadia",
+    "state": "AL",
+    "population": 25184,
+    "current_pros": 0
+  },
+  {
+    "city": "Guaiúba",
+    "state": "CE",
+    "population": 25158,
+    "current_pros": 0
+  },
+  {
+    "city": "Valente",
+    "state": "BA",
+    "population": 25132,
+    "current_pros": 0
+  },
+  {
+    "city": "Senador Pompeu",
+    "state": "CE",
+    "population": 25108,
+    "current_pros": 0
+  },
+  {
+    "city": "Monte Sião",
+    "state": "MG",
+    "population": 25107,
+    "current_pros": 0
+  },
+  {
+    "city": "Satuba",
+    "state": "AL",
+    "population": 25105,
+    "current_pros": 0
+  },
+  {
+    "city": "Canhotinho",
+    "state": "PE",
+    "population": 25103,
+    "current_pros": 0
+  },
+  {
+    "city": "Poxoréu",
+    "state": "MT",
+    "population": 25103,
+    "current_pros": 0
+  },
+  {
+    "city": "Pinheiral",
+    "state": "RJ",
+    "population": 25096,
+    "current_pros": 0
+  },
+  {
+    "city": "Itambé",
+    "state": "BA",
+    "population": 25088,
+    "current_pros": 0
+  },
+  {
+    "city": "Mimoso do Sul",
+    "state": "ES",
+    "population": 25088,
+    "current_pros": 0
+  },
+  {
+    "city": "Bujaru",
+    "state": "PA",
+    "population": 25065,
+    "current_pros": 0
+  },
+  {
+    "city": "Cantanhede",
+    "state": "MA",
+    "population": 25059,
+    "current_pros": 0
+  },
+  {
+    "city": "Pedra Azul",
+    "state": "MG",
+    "population": 25045,
+    "current_pros": 0
+  },
+  {
+    "city": "Capivari de Baixo",
+    "state": "SC",
+    "population": 25015,
+    "current_pros": 0
+  },
+  {
+    "city": "Boquim",
+    "state": "SE",
+    "population": 25007,
+    "current_pros": 0
+  },
+  {
+    "city": "Canarana",
+    "state": "BA",
+    "population": 25007,
+    "current_pros": 0
+  },
+  {
+    "city": "Santa Rita do Passa Quatro",
+    "state": "SP",
+    "population": 24996,
+    "current_pros": 0
+  },
+  {
+    "city": "Senador José Porfírio",
+    "state": "PA",
+    "population": 24989,
+    "current_pros": 0
+  },
+  {
+    "city": "Santo Antônio do Sudoeste",
+    "state": "PR",
+    "population": 24980,
+    "current_pros": 0
+  },
+  {
+    "city": "Pedro do Rosário",
+    "state": "MA",
+    "population": 24955,
+    "current_pros": 0
+  },
+  {
+    "city": "Lagoa Grande",
+    "state": "PE",
+    "population": 24951,
+    "current_pros": 0
+  },
+  {
+    "city": "Taquarituba",
+    "state": "SP",
+    "population": 24932,
+    "current_pros": 0
+  },
+  {
+    "city": "São Geraldo do Araguaia",
+    "state": "PA",
+    "population": 24929,
+    "current_pros": 0
+  },
+  {
+    "city": "Bom Jesus de Goiás",
+    "state": "GO",
+    "population": 24925,
+    "current_pros": 0
+  },
+  {
+    "city": "Pindoretama",
+    "state": "CE",
+    "population": 24919,
+    "current_pros": 0
+  },
+  {
+    "city": "Carutapera",
+    "state": "MA",
+    "population": 24906,
+    "current_pros": 0
+  },
+  {
+    "city": "Paraopeba",
+    "state": "MG",
+    "population": 24899,
+    "current_pros": 0
+  },
+  {
+    "city": "Tacaratu",
+    "state": "PE",
+    "population": 24898,
+    "current_pros": 0
+  },
+  {
+    "city": "São Sebastião do Caí",
+    "state": "RS",
+    "population": 24898,
+    "current_pros": 0
+  },
+  {
+    "city": "São João",
+    "state": "PE",
+    "population": 24895,
+    "current_pros": 0
+  },
+  {
+    "city": "Santa Luzia do Paruá",
+    "state": "MA",
+    "population": 24890,
+    "current_pros": 0
+  },
+  {
+    "city": "Reserva",
+    "state": "PR",
+    "population": 24878,
+    "current_pros": 0
+  },
+  {
+    "city": "Irauçuba",
+    "state": "CE",
+    "population": 24867,
+    "current_pros": 0
+  },
+  {
+    "city": "Nova Soure",
+    "state": "BA",
+    "population": 24865,
+    "current_pros": 0
+  },
+  {
+    "city": "Cruzeiro do Oeste",
+    "state": "PR",
+    "population": 24859,
+    "current_pros": 0
+  },
+  {
+    "city": "Apiaí",
+    "state": "SP",
+    "population": 24857,
+    "current_pros": 0
+  },
+  {
+    "city": "Dois Córregos",
+    "state": "SP",
+    "population": 24847,
+    "current_pros": 0
+  },
+  {
+    "city": "Espera Feliz",
+    "state": "MG",
+    "population": 24844,
+    "current_pros": 0
+  },
+  {
+    "city": "Pinheiros",
+    "state": "ES",
+    "population": 24843,
+    "current_pros": 0
+  },
+  {
+    "city": "Iraquara",
+    "state": "BA",
+    "population": 24833,
+    "current_pros": 0
+  },
+  {
+    "city": "Amélia Rodrigues",
+    "state": "BA",
+    "population": 24830,
+    "current_pros": 0
+  },
+  {
+    "city": "Anastácio",
+    "state": "MS",
+    "population": 24781,
+    "current_pros": 0
+  },
+  {
+    "city": "Buritis",
+    "state": "MG",
+    "population": 24779,
+    "current_pros": 0
+  },
+  {
+    "city": "Valparaíso",
+    "state": "SP",
+    "population": 24779,
+    "current_pros": 0
+  },
+  {
+    "city": "Itaporanga",
+    "state": "PB",
+    "population": 24766,
+    "current_pros": 0
+  },
+  {
+    "city": "São João do Paraíso",
+    "state": "MG",
+    "population": 24706,
+    "current_pros": 0
+  },
+  {
+    "city": "Ortigueira",
+    "state": "PR",
+    "population": 24706,
+    "current_pros": 0
+  },
+  {
+    "city": "Ibiapina",
+    "state": "CE",
+    "population": 24689,
+    "current_pros": 0
+  },
+  {
+    "city": "Orleans",
+    "state": "SC",
+    "population": 24686,
+    "current_pros": 0
+  },
+  {
+    "city": "Agrestina",
+    "state": "PE",
+    "population": 24680,
+    "current_pros": 0
+  },
+  {
+    "city": "Tamandaré",
+    "state": "PE",
+    "population": 24670,
+    "current_pros": 0
+  },
+  {
+    "city": "Macaparana",
+    "state": "PE",
+    "population": 24642,
+    "current_pros": 0
+  },
+  {
+    "city": "Jucás",
+    "state": "CE",
+    "population": 24624,
+    "current_pros": 0
+  },
+  {
+    "city": "Carolina",
+    "state": "MA",
+    "population": 24619,
+    "current_pros": 0
+  },
+  {
+    "city": "Umbaúba",
+    "state": "SE",
+    "population": 24618,
+    "current_pros": 0
+  },
+  {
+    "city": "Areia Branca",
+    "state": "RN",
+    "population": 24607,
+    "current_pros": 0
+  },
+  {
+    "city": "Carmo do Cajuru",
+    "state": "MG",
+    "population": 24581,
+    "current_pros": 0
+  },
+  {
+    "city": "Angatuba",
+    "state": "SP",
+    "population": 24573,
+    "current_pros": 0
+  },
+  {
+    "city": "Codajás",
+    "state": "AM",
+    "population": 24572,
+    "current_pros": 0
+  },
+  {
+    "city": "Porto Franco",
+    "state": "MA",
+    "population": 24571,
+    "current_pros": 0
+  },
+  {
+    "city": "Conceição do Mato Dentro",
+    "state": "MG",
+    "population": 24559,
+    "current_pros": 0
+  },
+  {
+    "city": "Veranópolis",
+    "state": "RS",
+    "population": 24554,
+    "current_pros": 0
+  },
+  {
+    "city": "Belo Oriente",
+    "state": "MG",
+    "population": 24546,
+    "current_pros": 0
+  },
+  {
+    "city": "Alto Alegre do Maranhão",
+    "state": "MA",
+    "population": 24528,
+    "current_pros": 0
+  },
+  {
+    "city": "Jequitinhonha",
+    "state": "MG",
+    "population": 24516,
+    "current_pros": 0
+  },
+  {
+    "city": "Porto Calvo",
+    "state": "AL",
+    "population": 24509,
+    "current_pros": 0
+  },
+  {
+    "city": "Jardim",
+    "state": "MS",
+    "population": 24504,
+    "current_pros": 0
+  },
+  {
+    "city": "Brotas",
+    "state": "SP",
+    "population": 24501,
+    "current_pros": 0
+  },
+  {
+    "city": "São Gonçalo do Sapucaí",
+    "state": "MG",
+    "population": 24497,
+    "current_pros": 0
+  },
+  {
+    "city": "Santa Quitéria do Maranhão",
+    "state": "MA",
+    "population": 24495,
+    "current_pros": 0
+  },
+  {
+    "city": "Carambeí",
+    "state": "PR",
+    "population": 24469,
+    "current_pros": 0
+  },
+  {
+    "city": "Independência",
+    "state": "CE",
+    "population": 24463,
+    "current_pros": 0
+  },
+  {
+    "city": "Conde",
+    "state": "BA",
+    "population": 24460,
+    "current_pros": 0
+  },
+  {
+    "city": "Igaci",
+    "state": "AL",
+    "population": 24445,
+    "current_pros": 0
+  },
+  {
+    "city": "Três Coroas",
+    "state": "RS",
+    "population": 24428,
+    "current_pros": 0
+  },
+  {
+    "city": "São Miguel",
+    "state": "RN",
+    "population": 24422,
+    "current_pros": 0
+  },
+  {
+    "city": "Viçosa",
+    "state": "AL",
+    "population": 24414,
+    "current_pros": 0
+  },
+  {
+    "city": "Capinzal",
+    "state": "SC",
+    "population": 24414,
+    "current_pros": 0
+  },
+  {
+    "city": "Carandaí",
+    "state": "MG",
+    "population": 24403,
+    "current_pros": 0
+  },
+  {
+    "city": "Junqueiro",
+    "state": "AL",
+    "population": 24382,
+    "current_pros": 0
+  },
+  {
+    "city": "Miranda do Norte",
+    "state": "MA",
+    "population": 24373,
+    "current_pros": 0
+  },
+  {
+    "city": "Pereira Barreto",
+    "state": "SP",
+    "population": 24360,
+    "current_pros": 0
+  },
+  {
+    "city": "Cupira",
+    "state": "PE",
+    "population": 24343,
+    "current_pros": 0
+  },
+  {
+    "city": "Matriz de Camaragibe",
+    "state": "AL",
+    "population": 24331,
+    "current_pros": 0
+  },
+  {
+    "city": "Candeias do Jamari",
+    "state": "RO",
+    "population": 24313,
+    "current_pros": 0
+  },
+  {
+    "city": "Pão de Açúcar",
+    "state": "AL",
+    "population": 24291,
+    "current_pros": 0
+  },
+  {
+    "city": "Encruzilhada do Sul",
+    "state": "RS",
+    "population": 24275,
+    "current_pros": 0
+  },
+  {
+    "city": "Aurora",
+    "state": "CE",
+    "population": 24244,
+    "current_pros": 0
+  },
+  {
+    "city": "Cajuru",
+    "state": "SP",
+    "population": 24233,
+    "current_pros": 0
+  },
+  {
+    "city": "Bataguassu",
+    "state": "MS",
+    "population": 24222,
+    "current_pros": 0
+  },
+  {
+    "city": "Bambuí",
+    "state": "MG",
+    "population": 24203,
+    "current_pros": 0
+  },
+  {
+    "city": "São João da Ponte",
+    "state": "MG",
+    "population": 24197,
+    "current_pros": 0
+  },
+  {
+    "city": "Aurora do Pará",
+    "state": "PA",
+    "population": 24193,
+    "current_pros": 0
+  },
+  {
+    "city": "Goiás",
+    "state": "GO",
+    "population": 24172,
+    "current_pros": 0
+  },
+  {
+    "city": "Ribas do Rio Pardo",
+    "state": "MS",
+    "population": 24152,
+    "current_pros": 0
+  },
+  {
+    "city": "Bananeiras",
+    "state": "PB",
+    "population": 24134,
+    "current_pros": 0
+  },
+  {
+    "city": "Traipu",
+    "state": "AL",
+    "population": 24106,
+    "current_pros": 0
+  },
+  {
+    "city": "Laranjeiras",
+    "state": "SE",
+    "population": 24047,
+    "current_pros": 0
+  },
+  {
+    "city": "Siqueira Campos",
+    "state": "PR",
+    "population": 24031,
+    "current_pros": 0
+  },
+  {
+    "city": "Planalto",
+    "state": "BA",
+    "population": 24026,
+    "current_pros": 0
+  },
+  {
+    "city": "Coronel Vivida",
+    "state": "PR",
+    "population": 24010,
+    "current_pros": 0
+  },
+  {
+    "city": "Quaraí",
+    "state": "RS",
+    "population": 23995,
+    "current_pros": 0
+  },
+  {
+    "city": "Corinto",
+    "state": "MG",
+    "population": 23988,
+    "current_pros": 0
+  },
+  {
+    "city": "Piraí do Sul",
+    "state": "PR",
+    "population": 23977,
+    "current_pros": 0
+  },
+  {
+    "city": "Loanda",
+    "state": "PR",
+    "population": 23966,
+    "current_pros": 0
+  },
+  {
+    "city": "Monte Alegre",
+    "state": "RN",
+    "population": 23953,
+    "current_pros": 0
+  },
+  {
+    "city": "Nova Petrópolis",
+    "state": "RS",
+    "population": 23934,
+    "current_pros": 0
+  },
+  {
+    "city": "Piúma",
+    "state": "ES",
+    "population": 23912,
+    "current_pros": 0
+  },
+  {
+    "city": "Buritizeiro",
+    "state": "MG",
+    "population": 23908,
+    "current_pros": 0
+  },
+  {
+    "city": "Pinhalzinho",
+    "state": "SC",
+    "population": 23897,
+    "current_pros": 0
+  },
+  {
+    "city": "Raul Soares",
+    "state": "MG",
+    "population": 23874,
+    "current_pros": 0
+  },
+  {
+    "city": "Santa Teresa",
+    "state": "ES",
+    "population": 23872,
+    "current_pros": 0
+  },
+  {
+    "city": "Santo Antônio de Posse",
+    "state": "SP",
+    "population": 23867,
+    "current_pros": 0
+  },
+  {
+    "city": "Minas Novas",
+    "state": "MG",
+    "population": 23843,
+    "current_pros": 0
+  },
+  {
+    "city": "Capela do Alto",
+    "state": "SP",
+    "population": 23777,
+    "current_pros": 0
+  },
+  {
+    "city": "Aldeias Altas",
+    "state": "MA",
+    "population": 23776,
+    "current_pros": 0
+  },
+  {
+    "city": "Mazagão",
+    "state": "AP",
+    "population": 23773,
+    "current_pros": 0
+  },
+  {
+    "city": "Francisco Sá",
+    "state": "MG",
+    "population": 23753,
+    "current_pros": 0
+  },
+  {
+    "city": "Morrinhos",
+    "state": "CE",
+    "population": 23747,
+    "current_pros": 0
+  },
+  {
+    "city": "Santa Rosa de Viterbo",
+    "state": "SP",
+    "population": 23710,
+    "current_pros": 0
+  },
+  {
+    "city": "Pedra",
+    "state": "PE",
+    "population": 23671,
+    "current_pros": 0
+  },
+  {
+    "city": "Itaocara",
+    "state": "RJ",
+    "population": 23645,
+    "current_pros": 0
+  },
+  {
+    "city": "Dom Pedro",
+    "state": "MA",
+    "population": 23594,
+    "current_pros": 0
+  },
+  {
+    "city": "Alto Alegre",
+    "state": "RR",
+    "population": 23589,
+    "current_pros": 0
+  },
+  {
+    "city": "Ivoti",
+    "state": "RS",
+    "population": 23566,
+    "current_pros": 0
+  },
+  {
+    "city": "Itabaiana",
+    "state": "PB",
+    "population": 23558,
+    "current_pros": 0
+  },
+  {
+    "city": "Governador Nunes Freire",
+    "state": "MA",
+    "population": 23526,
+    "current_pros": 0
+  },
+  {
+    "city": "Encantado",
+    "state": "RS",
+    "population": 23520,
+    "current_pros": 0
+  },
+  {
+    "city": "Barreira",
+    "state": "CE",
+    "population": 23474,
+    "current_pros": 0
+  },
+  {
+    "city": "Igaraçu do Tietê",
+    "state": "SP",
+    "population": 23421,
+    "current_pros": 0
+  },
+  {
+    "city": "Nova Alvorada do Sul",
+    "state": "MS",
+    "population": 23409,
+    "current_pros": 0
+  },
+  {
+    "city": "Cambará",
+    "state": "PR",
+    "population": 23393,
+    "current_pros": 0
+  },
+  {
+    "city": "Sarandi",
+    "state": "RS",
+    "population": 23374,
+    "current_pros": 0
+  },
+  {
+    "city": "Panelas",
+    "state": "PE",
+    "population": 23337,
+    "current_pros": 0
+  },
+  {
+    "city": "Colorado",
+    "state": "PR",
+    "population": 23313,
+    "current_pros": 0
+  },
+  {
+    "city": "Caculé",
+    "state": "BA",
+    "population": 23293,
+    "current_pros": 0
+  },
+  {
+    "city": "Tocantinópolis",
+    "state": "TO",
+    "population": 23225,
+    "current_pros": 0
+  },
+  {
+    "city": "Feira Grande",
+    "state": "AL",
+    "population": 23204,
+    "current_pros": 0
+  },
+  {
+    "city": "Santa Gertrudes",
+    "state": "SP",
+    "population": 23192,
+    "current_pros": 0
+  },
+  {
+    "city": "Abaeté",
+    "state": "MG",
+    "population": 23173,
+    "current_pros": 0
+  },
+  {
+    "city": "Silvânia",
+    "state": "GO",
+    "population": 23150,
+    "current_pros": 0
+  },
+  {
+    "city": "Quissamã",
+    "state": "RJ",
+    "population": 23142,
+    "current_pros": 0
+  },
+  {
+    "city": "Vertentes",
+    "state": "PE",
+    "population": 23127,
+    "current_pros": 0
+  },
+  {
+    "city": "Pacaraima",
+    "state": "RR",
+    "population": 23112,
+    "current_pros": 0
+  },
+  {
+    "city": "Trizidela do Vale",
+    "state": "MA",
+    "population": 23097,
+    "current_pros": 0
+  },
+  {
+    "city": "Alhandra",
+    "state": "PB",
+    "population": 23065,
+    "current_pros": 0
+  },
+  {
+    "city": "Piranhas",
+    "state": "AL",
+    "population": 23053,
+    "current_pros": 0
+  },
+  {
+    "city": "Areia",
+    "state": "PB",
+    "population": 23031,
+    "current_pros": 0
+  },
+  {
+    "city": "Valença do Piauí",
+    "state": "PI",
+    "population": 23025,
+    "current_pros": 0
+  },
+  {
+    "city": "Olindina",
+    "state": "BA",
+    "population": 22956,
+    "current_pros": 0
+  },
+  {
+    "city": "Buriti Bravo",
+    "state": "MA",
+    "population": 22938,
+    "current_pros": 0
+  },
+  {
+    "city": "Inhapim",
+    "state": "MG",
+    "population": 22925,
+    "current_pros": 0
+  },
+  {
+    "city": "Itaiópolis",
+    "state": "SC",
+    "population": 22906,
+    "current_pros": 0
+  },
+  {
+    "city": "Itinga do Maranhão",
+    "state": "MA",
+    "population": 22896,
+    "current_pros": 0
+  },
+  {
+    "city": "São José do Vale do Rio Preto",
+    "state": "RJ",
+    "population": 22813,
+    "current_pros": 0
+  },
+  {
+    "city": "Medeiros Neto",
+    "state": "BA",
+    "population": 22801,
+    "current_pros": 0
+  },
+  {
+    "city": "Santo Antônio",
+    "state": "RN",
+    "population": 22793,
+    "current_pros": 0
+  },
+  {
+    "city": "Alta Floresta D'Oeste",
+    "state": "RO",
+    "population": 22787,
+    "current_pros": 0
+  },
+  {
+    "city": "Macarani",
+    "state": "BA",
+    "population": 22768,
+    "current_pros": 0
+  },
+  {
+    "city": "Caracaraí",
+    "state": "RR",
+    "population": 22750,
+    "current_pros": 0
+  },
+  {
+    "city": "Riachão",
+    "state": "MA",
+    "population": 22740,
+    "current_pros": 0
+  },
+  {
+    "city": "Pirajuí",
+    "state": "SP",
+    "population": 22734,
+    "current_pros": 0
+  },
+  {
+    "city": "Monte Aprazível",
+    "state": "SP",
+    "population": 22668,
+    "current_pros": 0
+  },
+  {
+    "city": "Serro",
+    "state": "MG",
+    "population": 22624,
+    "current_pros": 0
+  },
+  {
+    "city": "Diamantino",
+    "state": "MT",
+    "population": 22623,
+    "current_pros": 0
+  },
+  {
+    "city": "Muzambinho",
+    "state": "MG",
+    "population": 22620,
+    "current_pros": 0
+  },
+  {
+    "city": "Ecoporanga",
+    "state": "ES",
+    "population": 22611,
+    "current_pros": 0
+  },
+  {
+    "city": "Teodoro Sampaio",
+    "state": "SP",
+    "population": 22598,
+    "current_pros": 0
+  },
+  {
+    "city": "Bom Jesus dos Perdões",
+    "state": "SP",
+    "population": 22579,
+    "current_pros": 0
+  },
+  {
+    "city": "Ceres",
+    "state": "GO",
+    "population": 22570,
+    "current_pros": 0
+  },
+  {
+    "city": "Cedro",
+    "state": "CE",
+    "population": 22564,
+    "current_pros": 0
+  },
+  {
+    "city": "Icapuí",
+    "state": "CE",
+    "population": 22562,
+    "current_pros": 0
+  },
+  {
+    "city": "Ibiá",
+    "state": "MG",
+    "population": 22554,
+    "current_pros": 0
+  },
+  {
+    "city": "Matinha",
+    "state": "MA",
+    "population": 22540,
+    "current_pros": 0
+  },
+  {
+    "city": "Santa Bárbara do Pará",
+    "state": "PA",
+    "population": 22530,
+    "current_pros": 0
+  },
+  {
+    "city": "Arroio do Meio",
+    "state": "RS",
+    "population": 22523,
+    "current_pros": 0
+  },
+  {
+    "city": "Iracemápolis",
+    "state": "SP",
+    "population": 22500,
+    "current_pros": 0
+  },
+  {
+    "city": "Beruri",
+    "state": "AM",
+    "population": 22495,
+    "current_pros": 0
+  },
+  {
+    "city": "Camacan",
+    "state": "BA",
+    "population": 22485,
+    "current_pros": 0
+  },
+  {
+    "city": "Cunha",
+    "state": "SP",
+    "population": 22460,
+    "current_pros": 0
+  },
+  {
+    "city": "Paraguaçu",
+    "state": "MG",
+    "population": 22452,
+    "current_pros": 0
+  },
+  {
+    "city": "Guapiaçu",
+    "state": "SP",
+    "population": 22445,
+    "current_pros": 0
+  },
+  {
+    "city": "Ladário",
+    "state": "MS",
+    "population": 22425,
+    "current_pros": 0
+  },
+  {
+    "city": "Orobó",
+    "state": "PE",
+    "population": 22412,
+    "current_pros": 0
+  },
+  {
+    "city": "Senador Guiomard",
+    "state": "AC",
+    "population": 22402,
+    "current_pros": 0
+  },
+  {
+    "city": "São Francisco de Paula",
+    "state": "RS",
+    "population": 22388,
+    "current_pros": 0
+  },
+  {
+    "city": "Pio XII",
+    "state": "MA",
+    "population": 22374,
+    "current_pros": 0
+  },
+  {
+    "city": "Riachão das Neves",
+    "state": "BA",
+    "population": 22329,
+    "current_pros": 0
+  },
+  {
+    "city": "Araçariguama",
+    "state": "SP",
+    "population": 22314,
+    "current_pros": 0
+  },
+  {
+    "city": "São Miguel do Guaporé",
+    "state": "RO",
+    "population": 22305,
+    "current_pros": 0
+  },
+  {
+    "city": "Parelhas",
+    "state": "RN",
+    "population": 22242,
+    "current_pros": 0
+  },
+  {
+    "city": "Feira Nova",
+    "state": "PE",
+    "population": 22222,
+    "current_pros": 0
+  },
+  {
+    "city": "Herval d'Oeste",
+    "state": "SC",
+    "population": 22222,
+    "current_pros": 0
+  },
+  {
+    "city": "Poço Verde",
+    "state": "SE",
+    "population": 22217,
+    "current_pros": 0
+  },
+  {
+    "city": "Cerqueira César",
+    "state": "SP",
+    "population": 22210,
+    "current_pros": 0
+  },
+  {
+    "city": "Assaré",
+    "state": "CE",
+    "population": 22195,
+    "current_pros": 0
+  },
+  {
+    "city": "Mari",
+    "state": "PB",
+    "population": 22170,
+    "current_pros": 0
+  },
+  {
+    "city": "Uruçuca",
+    "state": "BA",
+    "population": 22155,
+    "current_pros": 0
+  },
+  {
+    "city": "Ituberá",
+    "state": "BA",
+    "population": 22154,
+    "current_pros": 0
+  },
+  {
+    "city": "São João do Piauí",
+    "state": "PI",
+    "population": 22137,
+    "current_pros": 0
+  },
+  {
+    "city": "Ibicaraí",
+    "state": "BA",
+    "population": 22131,
+    "current_pros": 0
+  },
+  {
+    "city": "Mata Grande",
+    "state": "AL",
+    "population": 22126,
+    "current_pros": 0
+  },
+  {
+    "city": "Igreja Nova",
+    "state": "AL",
+    "population": 22113,
+    "current_pros": 0
+  },
+  {
+    "city": "Ibirubá",
+    "state": "RS",
+    "population": 22106,
+    "current_pros": 0
+  },
+  {
+    "city": "Acreúna",
+    "state": "GO",
+    "population": 22079,
+    "current_pros": 0
+  },
+  {
+    "city": "Perdões",
+    "state": "MG",
+    "population": 22075,
+    "current_pros": 0
+  },
+  {
+    "city": "Abadia de Goiás",
+    "state": "GO",
+    "population": 22052,
+    "current_pros": 0
+  },
+  {
+    "city": "São Miguel do Araguaia",
+    "state": "GO",
+    "population": 22040,
+    "current_pros": 0
+  },
+  {
+    "city": "Silva Jardim",
+    "state": "RJ",
+    "population": 22028,
+    "current_pros": 0
+  },
+  {
+    "city": "Matupá",
+    "state": "MT",
+    "population": 21959,
+    "current_pros": 0
+  },
+  {
+    "city": "Caaporã",
+    "state": "PB",
+    "population": 21942,
+    "current_pros": 0
+  },
+  {
+    "city": "Bastos",
+    "state": "SP",
+    "population": 21936,
+    "current_pros": 0
+  },
+  {
+    "city": "Jandaia do Sul",
+    "state": "PR",
+    "population": 21930,
+    "current_pros": 0
+  },
+  {
+    "city": "Pedro Canário",
+    "state": "ES",
+    "population": 21923,
+    "current_pros": 0
+  },
+  {
+    "city": "Santa Vitória",
+    "state": "MG",
+    "population": 21914,
+    "current_pros": 0
+  },
+  {
+    "city": "Itapaci",
+    "state": "GO",
+    "population": 21891,
+    "current_pros": 0
+  },
+  {
+    "city": "Bela Vista",
+    "state": "MS",
+    "population": 21881,
+    "current_pros": 0
+  },
+  {
+    "city": "Ibicoara",
+    "state": "BA",
+    "population": 21827,
+    "current_pros": 0
+  },
+  {
+    "city": "Teofilândia",
+    "state": "BA",
+    "population": 21825,
+    "current_pros": 0
+  },
+  {
+    "city": "Alagoa Nova",
+    "state": "PB",
+    "population": 21823,
+    "current_pros": 0
+  },
+  {
+    "city": "Santa Bárbara",
+    "state": "BA",
+    "population": 21787,
+    "current_pros": 0
+  },
+  {
+    "city": "Tanhaçu",
+    "state": "BA",
+    "population": 21787,
+    "current_pros": 0
+  },
+  {
+    "city": "Apuí",
+    "state": "AM",
+    "population": 21781,
+    "current_pros": 0
+  },
+  {
+    "city": "Conceição de Macabu",
+    "state": "RJ",
+    "population": 21770,
+    "current_pros": 0
+  },
+  {
+    "city": "Presidente Getúlio",
+    "state": "SC",
+    "population": 21764,
+    "current_pros": 0
+  },
+  {
+    "city": "Iguaí",
+    "state": "BA",
+    "population": 21763,
+    "current_pros": 0
+  },
+  {
+    "city": "Rolante",
+    "state": "RS",
+    "population": 21752,
+    "current_pros": 0
+  },
+  {
+    "city": "Maracaçumé",
+    "state": "MA",
+    "population": 21730,
+    "current_pros": 0
+  },
+  {
+    "city": "Schroeder",
+    "state": "SC",
+    "population": 21710,
+    "current_pros": 0
+  },
+  {
+    "city": "Laje",
+    "state": "BA",
+    "population": 21705,
+    "current_pros": 0
+  },
+  {
+    "city": "Princesa Isabel",
+    "state": "PB",
+    "population": 21674,
+    "current_pros": 0
+  },
+  {
+    "city": "Quixeré",
+    "state": "CE",
+    "population": 21659,
+    "current_pros": 0
+  },
+  {
+    "city": "Palmeirândia",
+    "state": "MA",
+    "population": 21657,
+    "current_pros": 0
+  },
+  {
+    "city": "Tambaú",
+    "state": "SP",
+    "population": 21650,
+    "current_pros": 0
+  },
+  {
+    "city": "Paulistana",
+    "state": "PI",
+    "population": 21633,
+    "current_pros": 0
+  },
+  {
+    "city": "Chopinzinho",
+    "state": "PR",
+    "population": 21604,
+    "current_pros": 0
+  },
+  {
+    "city": "Jaguaruna",
+    "state": "SC",
+    "population": 21570,
+    "current_pros": 0
+  },
+  {
+    "city": "Cassilândia",
+    "state": "MS",
+    "population": 21565,
+    "current_pros": 0
+  },
+  {
+    "city": "São Domingos do Araguaia",
+    "state": "PA",
+    "population": 21555,
+    "current_pros": 0
+  },
+  {
+    "city": "São Sepé",
+    "state": "RS",
+    "population": 21551,
+    "current_pros": 0
+  },
+  {
+    "city": "São Marcos",
+    "state": "RS",
+    "population": 21549,
+    "current_pros": 0
+  },
+  {
+    "city": "Mirador",
+    "state": "MA",
+    "population": 21536,
+    "current_pros": 0
+  },
+  {
+    "city": "Conceição da Feira",
+    "state": "BA",
+    "population": 21529,
+    "current_pros": 0
+  },
+  {
+    "city": "Carmo do Rio Claro",
+    "state": "MG",
+    "population": 21506,
+    "current_pros": 0
+  },
+  {
+    "city": "Fátima do Sul",
+    "state": "MS",
+    "population": 21504,
+    "current_pros": 0
+  },
+  {
+    "city": "Lajinha",
+    "state": "MG",
+    "population": 21502,
+    "current_pros": 0
+  },
+  {
+    "city": "Chaves",
+    "state": "PA",
+    "population": 21501,
+    "current_pros": 0
+  },
+  {
+    "city": "Riacho das Almas",
+    "state": "PE",
+    "population": 21490,
+    "current_pros": 0
+  },
+  {
+    "city": "Boca da Mata",
+    "state": "AL",
+    "population": 21479,
+    "current_pros": 0
+  },
+  {
+    "city": "São João de Pirabas",
+    "state": "PA",
+    "population": 21477,
+    "current_pros": 0
+  },
+  {
+    "city": "Urussanga",
+    "state": "SC",
+    "population": 21464,
+    "current_pros": 0
+  },
+  {
+    "city": "Itapecerica",
+    "state": "MG",
+    "population": 21456,
+    "current_pros": 0
+  },
+  {
+    "city": "Cordeiro",
+    "state": "RJ",
+    "population": 21448,
+    "current_pros": 0
+  },
+  {
+    "city": "Divino",
+    "state": "MG",
+    "population": 21428,
+    "current_pros": 0
+  },
+  {
+    "city": "Coreaú",
+    "state": "CE",
+    "population": 21417,
+    "current_pros": 0
+  },
+  {
+    "city": "Caxambu",
+    "state": "MG",
+    "population": 21412,
+    "current_pros": 0
+  },
+  {
+    "city": "São Jerônimo",
+    "state": "RS",
+    "population": 21412,
+    "current_pros": 0
+  },
+  {
+    "city": "Jaboticatubas",
+    "state": "MG",
+    "population": 21407,
+    "current_pros": 0
+  },
+  {
+    "city": "Caravelas",
+    "state": "BA",
+    "population": 21384,
+    "current_pros": 0
+  },
+  {
+    "city": "Governador Mangabeira",
+    "state": "BA",
+    "population": 21353,
+    "current_pros": 0
+  },
+  {
+    "city": "Uruburetama",
+    "state": "CE",
+    "population": 21331,
+    "current_pros": 0
+  },
+  {
+    "city": "Oliveira dos Brejinhos",
+    "state": "BA",
+    "population": 21323,
+    "current_pros": 0
+  },
+  {
+    "city": "Nova Esperança do Piriá",
+    "state": "PA",
+    "population": 21304,
+    "current_pros": 0
+  },
+  {
+    "city": "Santa Luzia do Pará",
+    "state": "PA",
+    "population": 21295,
+    "current_pros": 0
+  },
+  {
+    "city": "Monte Santo de Minas",
+    "state": "MG",
+    "population": 21294,
+    "current_pros": 0
+  },
+  {
+    "city": "Chã Grande",
+    "state": "PE",
+    "population": 21258,
+    "current_pros": 0
+  },
+  {
+    "city": "Nhamundá",
+    "state": "AM",
+    "population": 21251,
+    "current_pros": 0
+  },
+  {
+    "city": "Itambacuri",
+    "state": "MG",
+    "population": 21210,
+    "current_pros": 0
+  },
+  {
+    "city": "São José da Laje",
+    "state": "AL",
+    "population": 21180,
+    "current_pros": 0
+  },
+  {
+    "city": "Itatira",
+    "state": "CE",
+    "population": 21160,
+    "current_pros": 0
+  },
+  {
+    "city": "Campestre",
+    "state": "MG",
+    "population": 21155,
+    "current_pros": 0
+  },
+  {
+    "city": "Olho d'Água das Flores",
+    "state": "AL",
+    "population": 21135,
+    "current_pros": 0
+  },
+  {
+    "city": "Altinho",
+    "state": "PE",
+    "population": 21134,
+    "current_pros": 0
+  },
+  {
+    "city": "Cantá",
+    "state": "RR",
+    "population": 21102,
+    "current_pros": 0
+  },
+  {
+    "city": "Ervália",
+    "state": "MG",
+    "population": 21091,
+    "current_pros": 0
+  },
+  {
+    "city": "Porto Real",
+    "state": "RJ",
+    "population": 21089,
+    "current_pros": 0
+  },
+  {
+    "city": "Capanema",
+    "state": "PR",
+    "population": 21088,
+    "current_pros": 0
+  },
+  {
+    "city": "Paraisópolis",
+    "state": "MG",
+    "population": 21076,
+    "current_pros": 0
+  },
+  {
+    "city": "Conselheiro Pena",
+    "state": "MG",
+    "population": 21052,
+    "current_pros": 0
+  },
+  {
+    "city": "Paramirim",
+    "state": "BA",
+    "population": 21025,
+    "current_pros": 0
+  },
+  {
+    "city": "Lambari",
+    "state": "MG",
+    "population": 21010,
+    "current_pros": 0
+  },
+  {
+    "city": "Guapó",
+    "state": "GO",
+    "population": 20985,
+    "current_pros": 0
+  },
+  {
+    "city": "Curionópolis",
+    "state": "PA",
+    "population": 20975,
+    "current_pros": 0
+  },
+  {
+    "city": "Manhumirim",
+    "state": "MG",
+    "population": 20939,
+    "current_pros": 0
+  },
+  {
+    "city": "Junqueirópolis",
+    "state": "SP",
+    "population": 20939,
+    "current_pros": 0
+  },
+  {
+    "city": "Piatã",
+    "state": "BA",
+    "population": 20938,
+    "current_pros": 0
+  },
+  {
+    "city": "São Felipe",
+    "state": "BA",
+    "population": 20923,
+    "current_pros": 0
+  },
+  {
+    "city": "Peritoró",
+    "state": "MA",
+    "population": 20903,
+    "current_pros": 0
+  },
+  {
+    "city": "Ibirama",
+    "state": "SC",
+    "population": 20900,
+    "current_pros": 0
+  },
+  {
+    "city": "Salgado",
+    "state": "SE",
+    "population": 20825,
+    "current_pros": 0
+  },
+  {
+    "city": "Chorozinho",
+    "state": "CE",
+    "population": 20808,
+    "current_pros": 0
+  },
+  {
+    "city": "Potim",
+    "state": "SP",
+    "population": 20801,
+    "current_pros": 0
+  },
+  {
+    "city": "Paulo Ramos",
+    "state": "MA",
+    "population": 20798,
+    "current_pros": 0
+  },
+  {
+    "city": "Flores",
+    "state": "PE",
+    "population": 20776,
+    "current_pros": 0
+  },
+  {
+    "city": "Turmalina",
+    "state": "MG",
+    "population": 20769,
+    "current_pros": 0
+  },
+  {
+    "city": "Buri",
+    "state": "SP",
+    "population": 20731,
+    "current_pros": 0
+  },
+  {
+    "city": "Tapauá",
+    "state": "AM",
+    "population": 20728,
+    "current_pros": 0
+  },
+  {
+    "city": "Monte Alegre de Minas",
+    "state": "MG",
+    "population": 20708,
+    "current_pros": 0
+  },
+  {
+    "city": "Cachoeirinha",
+    "state": "PE",
+    "population": 20673,
+    "current_pros": 0
+  },
+  {
+    "city": "Palmas de Monte Alto",
+    "state": "BA",
+    "population": 20666,
+    "current_pros": 0
+  },
+  {
+    "city": "Regente Feijó",
+    "state": "SP",
+    "population": 20620,
+    "current_pros": 0
+  },
+  {
+    "city": "Barroso",
+    "state": "MG",
+    "population": 20604,
+    "current_pros": 0
+  },
+  {
+    "city": "Mutuípe",
+    "state": "BA",
+    "population": 20590,
+    "current_pros": 0
+  },
+  {
+    "city": "Nova Hartz",
+    "state": "RS",
+    "population": 20558,
+    "current_pros": 0
+  },
+  {
+    "city": "Aquidabã",
+    "state": "SE",
+    "population": 20556,
+    "current_pros": 0
+  },
+  {
+    "city": "Quiterianópolis",
+    "state": "CE",
+    "population": 20545,
+    "current_pros": 0
+  },
+  {
+    "city": "Belmonte",
+    "state": "BA",
+    "population": 20527,
+    "current_pros": 0
+  },
+  {
+    "city": "Três Barras",
+    "state": "SC",
+    "population": 20525,
+    "current_pros": 0
+  },
+  {
+    "city": "Pompéia",
+    "state": "SP",
+    "population": 20520,
+    "current_pros": 0
+  },
+  {
+    "city": "Monte Azul",
+    "state": "MG",
+    "population": 20497,
+    "current_pros": 0
+  },
+  {
+    "city": "Castilho",
+    "state": "SP",
+    "population": 20485,
+    "current_pros": 0
+  },
+  {
+    "city": "Mâncio Lima",
+    "state": "AC",
+    "population": 20479,
+    "current_pros": 0
+  },
+  {
+    "city": "Vazante",
+    "state": "MG",
+    "population": 20459,
+    "current_pros": 0
+  },
+  {
+    "city": "Medina",
+    "state": "MG",
+    "population": 20455,
+    "current_pros": 0
+  },
+  {
+    "city": "Rio Verde de Mato Grosso",
+    "state": "MS",
+    "population": 20454,
+    "current_pros": 0
+  },
+  {
+    "city": "Presidente Médici",
+    "state": "RO",
+    "population": 20443,
+    "current_pros": 0
+  },
+  {
+    "city": "Cândido Mendes",
+    "state": "MA",
+    "population": 20440,
+    "current_pros": 0
+  },
+  {
+    "city": "São Joaquim do Monte",
+    "state": "PE",
+    "population": 20438,
+    "current_pros": 0
+  },
+  {
+    "city": "Simonésia",
+    "state": "MG",
+    "population": 20431,
+    "current_pros": 0
+  },
+  {
+    "city": "Vargem Alta",
+    "state": "ES",
+    "population": 20390,
+    "current_pros": 0
+  },
+  {
+    "city": "Rio Formoso",
+    "state": "PE",
+    "population": 20388,
+    "current_pros": 0
+  },
+  {
+    "city": "Lucélia",
+    "state": "SP",
+    "population": 20378,
+    "current_pros": 0
+  },
+  {
+    "city": "Tibagi",
+    "state": "PR",
+    "population": 20374,
+    "current_pros": 0
+  },
+  {
+    "city": "Itaparica",
+    "state": "BA",
+    "population": 20353,
+    "current_pros": 0
+  },
+  {
+    "city": "Rio Bananal",
+    "state": "ES",
+    "population": 20350,
+    "current_pros": 0
+  },
+  {
+    "city": "Crisópolis",
+    "state": "BA",
+    "population": 20346,
+    "current_pros": 0
+  },
+  {
+    "city": "Careiro da Várzea",
+    "state": "AM",
+    "population": 20324,
+    "current_pros": 0
+  },
+  {
+    "city": "Tupanciretã",
+    "state": "RS",
+    "population": 20324,
+    "current_pros": 0
+  },
+  {
+    "city": "Carira",
+    "state": "SE",
+    "population": 20314,
+    "current_pros": 0
+  },
+  {
+    "city": "Porto Real do Colégio",
+    "state": "AL",
+    "population": 20273,
+    "current_pros": 0
+  },
+  {
+    "city": "Engenheiro Coelho",
+    "state": "SP",
+    "population": 20261,
+    "current_pros": 0
+  },
+  {
+    "city": "Tonantins",
+    "state": "AM",
+    "population": 20257,
+    "current_pros": 0
+  },
+  {
+    "city": "Pauini",
+    "state": "AM",
+    "population": 20229,
+    "current_pros": 0
+  },
+  {
+    "city": "Buritirama",
+    "state": "BA",
+    "population": 20221,
+    "current_pros": 0
+  },
+  {
+    "city": "Cuité",
+    "state": "PB",
+    "population": 20208,
+    "current_pros": 0
+  },
+  {
+    "city": "Araripe",
+    "state": "CE",
+    "population": 20194,
+    "current_pros": 0
+  },
+  {
+    "city": "Rubiataba",
+    "state": "GO",
+    "population": 20186,
+    "current_pros": 0
+  },
+  {
+    "city": "Caraúbas",
+    "state": "RN",
+    "population": 20182,
+    "current_pros": 0
+  },
+  {
+    "city": "Ipanema",
+    "state": "MG",
+    "population": 20181,
+    "current_pros": 0
+  },
+  {
+    "city": "Cafelândia",
+    "state": "PR",
+    "population": 20145,
+    "current_pros": 0
+  },
+  {
+    "city": "Ourolândia",
+    "state": "BA",
+    "population": 20141,
+    "current_pros": 0
+  },
+  {
+    "city": "Buriti dos Lopes",
+    "state": "PI",
+    "population": 20130,
+    "current_pros": 0
+  },
+  {
+    "city": "Realeza",
+    "state": "PR",
+    "population": 20097,
+    "current_pros": 0
+  },
+  {
+    "city": "Mundo Novo",
+    "state": "MS",
+    "population": 20087,
+    "current_pros": 0
+  },
+  {
+    "city": "Rafael Jambeiro",
+    "state": "BA",
+    "population": 20081,
+    "current_pros": 0
+  },
+  {
+    "city": "Itaquiraí",
+    "state": "MS",
+    "population": 20060,
+    "current_pros": 0
+  },
+  {
+    "city": "Mucajaí",
+    "state": "RR",
+    "population": 20006,
+    "current_pros": 0
+  },
+  {
+    "city": "Contenda",
+    "state": "PR",
+    "population": 20006,
+    "current_pros": 0
+  }
+]
