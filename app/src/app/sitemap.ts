@@ -61,6 +61,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       FROM professionals p
       JOIN categories c ON p.category_id = c.id
       WHERE p.is_active = true AND p.city IS NOT NULL
+        AND p.city !~ '^[0-9]+$'   -- skip junk numeric cities (legacy scraper DDD codes)
       ORDER BY c.slug, p.city
     `,
     "city_combos"
