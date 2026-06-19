@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { getDb } from "@/lib/db";
 import { Professional } from "@/lib/types";
 import ProfessionalCard from "@/app/components/professional-card";
+import FaqSection from "@/app/components/faq-section";
+import { categoryCityFaq, faqNode } from "@/lib/seo-content";
 import Link from "next/link";
 
 function formatCityName(slug: string): string {
@@ -154,6 +156,7 @@ export default async function CityCategoryPage({
   }
 
   const cityDisplay = `${cityName}${state ? `, ${state}` : ""}`;
+  const faq = categoryCityFaq(cat.name, cityDisplay, pros.length);
 
   // Schema.org
   const jsonLd = {
@@ -178,6 +181,7 @@ export default async function CityCategoryPage({
           { "@type": "ListItem", position: 3, name: `${cat.name} em ${cityDisplay}`, item: `https://chamei.app/${category}/${city}` },
         ],
       },
+      faqNode(faq),
     ],
   };
 
@@ -203,6 +207,12 @@ export default async function CityCategoryPage({
             </h1>
             <p className="text-gray-500 mt-1 text-sm">
               {pros.length} profissionais encontrados
+            </p>
+            <p className="text-gray-600 mt-4 text-sm leading-relaxed max-w-2xl">
+              Precisa de {cat.name.toLowerCase()} em {cityDisplay}? No Chamei você compara
+              {pros.length > 0 ? ` ${pros.length}` : ""} profissionais de {cat.name.toLowerCase()} avaliados
+              em {cityDisplay} e região — veja a nota e as avaliações no Google de cada um e chame
+              direto pelo WhatsApp, de graça e sem cadastro.
             </p>
           </div>
         </section>
@@ -271,6 +281,8 @@ export default async function CityCategoryPage({
               </div>
             </section>
           )}
+
+          <FaqSection items={faq} title={`Perguntas frequentes — ${cat.name.toLowerCase()} em ${cityDisplay}`} />
 
           {/* CTA */}
           <section className="mb-8">
