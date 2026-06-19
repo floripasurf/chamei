@@ -117,6 +117,13 @@ export default async function AdminPage() {
     demand_per_pro: number | null;
     avg_rating: number | null;
   };
+  type DemandSupplyCityRow = {
+    category_name: string;
+    city: string;
+    searches: number;
+    active_pros: number;
+    demand_per_pro: number | null;
+  };
   type QualitySummary = {
     avg_score: number | null;
     no_phone: number;
@@ -132,6 +139,7 @@ export default async function AdminPage() {
   let funnel: Funnel | null = null;
   let byPosition: PositionRow[] = [];
   let demandSupply: DemandSupplyRow[] = [];
+  let demandSupplyCity: DemandSupplyCityRow[] = [];
   let qualitySummary: QualitySummary | null = null;
   let eventsReady = true;
 
@@ -161,6 +169,11 @@ export default async function AdminPage() {
       SELECT position, impressions, contacts, contact_rate
       FROM conversion_by_position LIMIT 10
     `) as unknown as PositionRow[];
+
+    demandSupplyCity = (await sql`
+      SELECT category_name, city, searches, active_pros, demand_per_pro
+      FROM demand_supply_city LIMIT 12
+    `) as unknown as DemandSupplyCityRow[];
 
     demandSupply = (await sql`
       SELECT category_name, searches, active_pros, demand_per_pro, avg_rating
@@ -378,6 +391,39 @@ export default async function AdminPage() {
                     </div>
                   </div>
                 )}
+              </div>
+            </div>
+          )}
+
+          {eventsReady && demandSupplyCity.length > 0 && (
+            <div className="bg-white rounded-xl border border-gray-100 p-5 mb-4">
+              <h3 className="text-sm font-semibold text-gray-900 mb-1">Demanda × oferta por cidade</h3>
+              <p className="text-xs text-gray-400 mb-3">
+                Onde há busca e pouca (ou nenhuma) oferta — fila de prioridade para scraper, conteúdo e expansão.
+              </p>
+              <div className="space-y-1">
+                <div className="flex items-center text-[11px] uppercase tracking-wider text-gray-400 pb-1 border-b border-gray-100">
+                  <span className="flex-1">Categoria · Cidade</span>
+                  <span className="w-16 text-right">Buscas</span>
+                  <span className="w-16 text-right">Prest.</span>
+                  <span className="w-16 text-right">B/Prest</span>
+                </div>
+                {demandSupplyCity.map((r, i) => (
+                  <div key={`${r.category_name}-${r.city}-${i}`} className="flex items-center text-sm py-0.5">
+                    <span className="flex-1 text-gray-700 truncate">
+                      {r.category_name} · {r.city}
+                    </span>
+                    <span className="w-16 text-right text-gray-500">{r.searches}</span>
+                    <span
+                      className={`w-16 text-right ${r.active_pros === 0 ? "text-red-600 font-semibold" : "text-gray-500"}`}
+                    >
+                      {r.active_pros}
+                    </span>
+                    <span className="w-16 text-right font-medium text-gray-900">
+                      {r.active_pros === 0 ? "∞" : (r.demand_per_pro ?? "—")}
+                    </span>
+                  </div>
+                ))}
               </div>
             </div>
           )}
