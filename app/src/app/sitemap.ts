@@ -37,8 +37,17 @@ function citySlugify(city: string, state: string | null) {
   return state ? `${slug}-${state.toLowerCase()}` : slug;
 }
 
+const STATIC_PAGES: MetadataRoute.Sitemap = [
+  { url: BASE, lastModified: new Date(), changeFrequency: "daily", priority: 1 },
+  { url: `${BASE}/para-profissionais`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.8 },
+  { url: `${BASE}/buscar`, lastModified: new Date(), changeFrequency: "daily", priority: 0.7 },
+  { url: `${BASE}/blog`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.7 },
+];
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const sql = neon(process.env.DATABASE_URL!);
+  // Build/CI without a DB: emit a minimal static sitemap instead of crashing.
+  if (!process.env.DATABASE_URL) return STATIC_PAGES;
+  const sql = neon(process.env.DATABASE_URL);
 
   const categories = await safeQuery<{ slug: string }>(
     () => sql`SELECT slug FROM categories ORDER BY name`,
@@ -67,12 +76,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "city_combos"
   );
 
-  const staticPages: MetadataRoute.Sitemap = [
-    { url: BASE, lastModified: new Date(), changeFrequency: "daily", priority: 1 },
-    { url: `${BASE}/para-profissionais`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.8 },
-    { url: `${BASE}/buscar`, lastModified: new Date(), changeFrequency: "daily", priority: 0.7 },
-    { url: `${BASE}/blog`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.7 },
-  ];
+  const staticPages = STATIC_PAGES;
 
   const categoryPages: MetadataRoute.Sitemap = categories.map((cat) => ({
     url: `${BASE}/categoria/${cat.slug}`,

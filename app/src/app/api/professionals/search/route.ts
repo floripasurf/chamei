@@ -51,7 +51,7 @@ async function logSearch(request: NextRequest, q: string, results: SearchRow[]) 
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
-  const q = searchParams.get("q") || "";
+  const q = (searchParams.get("q") || "").slice(0, 80); // cap query length
   const city = searchParams.get("city") || "";
   const lat = parseFloat(searchParams.get("lat") || "");
   const lng = parseFloat(searchParams.get("lng") || "");

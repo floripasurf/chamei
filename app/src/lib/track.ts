@@ -19,8 +19,9 @@ type SearchEvent = {
   city?: string; // local demand signal (e.g. category×city pages)
 };
 
-/** Stable first-party visitor id (for honest dedup of contacts/searches). */
-function visitorId(): string {
+/** Stable first-party visitor id, or null on failure (so the server falls back
+ * to ip_hash/ua_hash instead of grouping everyone under a shared "anon"). */
+function visitorId(): string | null {
   try {
     let v = localStorage.getItem("chamei_vid");
     if (!v) {
@@ -29,16 +30,17 @@ function visitorId(): string {
     }
     return v;
   } catch {
-    return "anon";
+    return null;
   }
 }
 
 function send(payload: Record<string, unknown>): void {
   if (typeof window === "undefined") return;
   try {
+    const vid = visitorId();
     const body = JSON.stringify({
       ...payload,
-      visitor_id: visitorId(),
+      ...(vid ? { visitor_id: vid } : {}),
       pathname: window.location.pathname,
     });
     if (navigator.sendBeacon) {
@@ -111,5 +113,5 @@ export function trackProfileView(professionalId: string): void {
 
 /** Read the visitor id for callers that pass it through other channels (e.g. the search API). */
 export function getVisitorId(): string {
-  return visitorId();
+  return visitorId() ?? "";
 }
