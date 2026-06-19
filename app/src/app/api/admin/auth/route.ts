@@ -1,12 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
+import { ADMIN_COOKIE, adminSessionValue } from "@/lib/admin-auth";
 
 export async function POST(request: NextRequest) {
   const adminPassword = process.env.ADMIN_PASSWORD;
-  if (!adminPassword) {
-    return NextResponse.json(
-      { error: "Servidor mal configurado" },
-      { status: 500 },
-    );
+  if (!adminPassword || !process.env.ADMIN_SECRET) {
+    return NextResponse.json({ error: "Servidor mal configurado" }, { status: 500 });
   }
 
   const body = await request.json();
@@ -14,7 +12,8 @@ export async function POST(request: NextRequest) {
 
   if (password === adminPassword) {
     const response = NextResponse.json({ success: true });
-    response.cookies.set("admin_session", "authenticated", {
+    // Signed HMAC token (not a forgeable static string).
+    response.cookies.set(ADMIN_COOKIE, await adminSessionValue(), {
       httpOnly: true,
       secure: true,
       sameSite: "lax",
