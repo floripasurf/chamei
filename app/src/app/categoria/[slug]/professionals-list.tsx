@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import ProfessionalCard from "@/app/components/professional-card";
 import { trackEvent } from "@/lib/track";
-import ImpressionTracker from "@/app/components/impression-tracker";
 
 interface Pro {
   id: string;
@@ -191,13 +190,9 @@ export default function ProfessionalsList({
       )}
 
       {/* List */}
-      <ImpressionTracker
-        items={sorted.map((pro, i) => ({ professional_id: pro.id, position: i + 1 }))}
-        source="category"
-      />
       <div className="grid gap-3 sm:grid-cols-2">
         {sorted.map((pro, i) => (
-          <ProfessionalCard key={pro.id} pro={pro} topReview={pro.top_review} position={i + 1} />
+          <ProfessionalCard key={pro.id} pro={pro} topReview={pro.top_review} position={i + 1} pageType="category" />
         ))}
       </div>
 

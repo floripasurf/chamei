@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import { useCity } from "./city-detector";
 import ProfessionalCard from "./professional-card";
-import ImpressionTracker from "./impression-tracker";
 
 interface Pro {
   id: string;
@@ -162,17 +161,11 @@ export default function CityProfessionals() {
           Nenhum profissional encontrado nesta cidade.
         </p>
       ) : (
-        <>
-          <ImpressionTracker
-            items={pros.map((pro, i) => ({ professional_id: pro.id, position: i + 1 }))}
-            source="city"
-          />
-          <div className="grid gap-3 sm:grid-cols-2">
-            {pros.map((pro, i) => (
-              <ProfessionalCard key={pro.id} pro={pro} position={i + 1} />
-            ))}
-          </div>
-        </>
+        <div className="grid gap-3 sm:grid-cols-2">
+          {pros.map((pro, i) => (
+            <ProfessionalCard key={pro.id} pro={pro} position={i + 1} pageType="city" />
+          ))}
+        </div>
       )}
     </section>
   );

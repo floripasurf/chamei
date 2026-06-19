@@ -59,13 +59,48 @@ export function trackEvent(event: ContactEvent | SearchEvent): void {
   send(event);
 }
 
-/** Batched impression: all professionals shown in a list, in one request. */
-export function trackImpressions(
-  items: { professional_id: string; position: number }[],
-  source: "search" | "category" | "city" | "nearby" | "home"
-): void {
-  if (!items.length) return;
-  send({ type: "impression", source, items: items.slice(0, 50) });
+// Viewport-accurate impressions: cards enqueue themselves when they actually
+// scroll into view (via IntersectionObserver). We buffer and flush in batches
+// (debounced + on page hide) so we don't send one request per card.
+type ImpressionItem = { professional_id: string; position: number; page_type: string };
+let buffer: ImpressionItem[] = [];
+let flushTimer: ReturnType<typeof setTimeout> | null = null;
+const seenImpressions = new Set<string>();
+let unloadHooked = false;
+
+function flushImpressions(): void {
+  if (flushTimer) {
+    clearTimeout(flushTimer);
+    flushTimer = null;
+  }
+  if (!buffer.length) return;
+  const items = buffer.slice(0, 50);
+  buffer = buffer.slice(50);
+  send({ type: "impression", items });
+  if (buffer.length) scheduleFlush();
+}
+
+function scheduleFlush(): void {
+  if (flushTimer) return;
+  flushTimer = setTimeout(flushImpressions, 1500);
+}
+
+export function enqueueImpression(item: ImpressionItem): void {
+  if (typeof window === "undefined") return;
+  // Once per professional+page_type per page session.
+  const key = `${item.professional_id}:${item.page_type}`;
+  if (seenImpressions.has(key)) return;
+  seenImpressions.add(key);
+  buffer.push(item);
+  scheduleFlush();
+  if (!unloadHooked) {
+    unloadHooked = true;
+    // Flush whatever's buffered before the page goes away.
+    window.addEventListener("pagehide", flushImpressions);
+    document.addEventListener("visibilitychange", () => {
+      if (document.visibilityState === "hidden") flushImpressions();
+    });
+  }
 }
 
 /** A visit to a professional's profile page. */

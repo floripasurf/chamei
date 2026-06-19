@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import ProfessionalCard from "./professional-card";
-import ImpressionTracker from "./impression-tracker";
 
 interface ProfessionalWithDistance {
   id: string;
@@ -91,13 +90,9 @@ export default function NearbyProfessionals() {
         </div>
       </div>
 
-      <ImpressionTracker
-        items={pros.map((pro, i) => ({ professional_id: pro.id, position: i + 1 }))}
-        source="nearby"
-      />
       <div className="grid gap-3 sm:grid-cols-2">
         {pros.map((pro, i) => (
-          <ProfessionalCard key={pro.id} pro={pro} position={i + 1} />
+          <ProfessionalCard key={pro.id} pro={pro} position={i + 1} pageType="nearby" />
         ))}
       </div>
     </div>

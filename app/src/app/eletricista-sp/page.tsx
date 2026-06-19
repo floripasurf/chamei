@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { getDb } from "@/lib/db";
 import { Professional } from "@/lib/types";
 import ProfessionalCard from "../components/professional-card";
-import ImpressionTracker from "../components/impression-tracker";
 import NearbyProfessionals from "../components/nearby-professionals";
 
 export const metadata: Metadata = {
@@ -127,13 +126,9 @@ export default async function EletricistaSP() {
           </h2>
           <p className="text-xs text-gray-500 mb-5">Ordenados por avaliação no Google</p>
 
-          <ImpressionTracker
-            items={pros.map((pro, i) => ({ professional_id: pro.id, position: i + 1 }))}
-            source="category"
-          />
           <div className="grid gap-3 sm:grid-cols-2">
             {pros.map((pro, i) => (
-              <ProfessionalCard key={pro.id} pro={pro} position={i + 1} />
+              <ProfessionalCard key={pro.id} pro={pro} position={i + 1} pageType="category" />
             ))}
           </div>
 

@@ -1,7 +1,8 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import Link from "next/link";
-import { trackEvent } from "@/lib/track";
+import { trackEvent, enqueueImpression } from "@/lib/track";
 
 const PLATFORM_NAME = "Chamei";
 
@@ -101,18 +102,41 @@ export default function ProfessionalCard({
   pro,
   topReview,
   position,
+  pageType,
 }: {
   pro: CardProfessional;
   topReview?: { author_name: string | null; text: string | null; rating: number | null } | null;
   position?: number; // 1-based rank in the list it's rendered in
+  pageType?: "search" | "category" | "city" | "nearby" | "home"; // where the card is shown
 }) {
   const whatsappMessage = `Olá ${pro.name}, encontrei seu perfil no ${PLATFORM_NAME} e gostaria de um orçamento.`;
   const whatsappUrl = pro.phone
     ? `https://wa.me/55${pro.phone.replace(/\D/g, "")}?text=${encodeURIComponent(whatsappMessage)}`
     : null;
 
+  // Record an impression only when the card actually scrolls into view.
+  const rootRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (!pageType || !rootRef.current) return;
+    const el = rootRef.current;
+    const obs = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            enqueueImpression({ professional_id: pro.id, position: position ?? 0, page_type: pageType });
+            obs.disconnect();
+            break;
+          }
+        }
+      },
+      { threshold: 0.5 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [pro.id, position, pageType]);
+
   return (
-    <div className="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all overflow-hidden">
+    <div ref={rootRef} className="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all overflow-hidden">
       <div className="flex">
         {/* Photo */}
         <Link href={`/profissional/${pro.slug}`} className="shrink-0">
