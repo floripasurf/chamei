@@ -35,9 +35,11 @@ export async function POST(request: NextRequest) {
              WHERE created_at > now() - interval '1 minute'
                AND (visitor_id = ${visitorId} OR ip_hash = ${ctx.ipHash}))
         + (SELECT count(*) FROM impression_events
-             WHERE created_at > now() - interval '1 minute' AND visitor_id = ${visitorId})
+             WHERE created_at > now() - interval '1 minute'
+               AND (visitor_id = ${visitorId} OR ip_hash = ${ctx.ipHash}))
         + (SELECT count(*) FROM profile_view_events
-             WHERE created_at > now() - interval '1 minute' AND visitor_id = ${visitorId}) AS n
+             WHERE created_at > now() - interval '1 minute'
+               AND (visitor_id = ${visitorId} OR ip_hash = ${ctx.ipHash})) AS n
       `;
       if (Number(r[0]?.n ?? 0) >= 250) {
         return NextResponse.json({ ok: true, throttled: true });
@@ -119,18 +121,19 @@ export async function POST(request: NextRequest) {
         pageTypes.push(typeof it.page_type === "string" ? it.page_type.slice(0, 20) : "");
       }
       if (ids.length) {
-        // Dedup: don't re-record the same professional+page_type for this visitor
-        // within 30min (a refresh/scroll-back shouldn't inflate impressions).
+        // Dedup by visitor_id OR ip_hash (so dedup still works when visitor_id is
+        // absent): don't re-record the same professional+page_type within 30min.
+        const dedupKey = visitorId ?? ctx.ipHash;
         await sql`
           INSERT INTO impression_events
-            (professional_id, category_id, position, source, page_type, visitor_id, pathname)
-          SELECT t.pid, p.category_id, t.pos, t.pt, t.pt, ${visitorId}, ${pathname}
+            (professional_id, category_id, position, source, page_type, visitor_id, pathname, ua_hash, ip_hash)
+          SELECT t.pid, p.category_id, t.pos, t.pt, t.pt, ${visitorId}, ${pathname}, ${ctx.uaHash}, ${ctx.ipHash}
           FROM unnest(${ids}::uuid[], ${positions}::int[], ${pageTypes}::text[]) AS t(pid, pos, pt)
           JOIN professionals p ON p.id = t.pid
-          WHERE ${visitorId}::text IS NULL OR NOT EXISTS (
+          WHERE ${dedupKey}::text IS NULL OR NOT EXISTS (
             SELECT 1 FROM impression_events ie
             WHERE ie.professional_id = t.pid AND ie.page_type = t.pt
-              AND ie.visitor_id = ${visitorId}
+              AND (ie.visitor_id = ${visitorId} OR ie.ip_hash = ${ctx.ipHash})
               AND ie.created_at > now() - interval '30 minutes'
           )
         `;
@@ -143,9 +146,17 @@ export async function POST(request: NextRequest) {
       if (!professionalId) {
         return NextResponse.json({ error: "professional_id required" }, { status: 400 });
       }
+      // Dedup repeat views of the same profile by the same visitor/ip within 30min.
+      const dedupKey = visitorId ?? ctx.ipHash;
       await sql`
-        INSERT INTO profile_view_events (professional_id, visitor_id, pathname, referrer)
-        VALUES (${professionalId}, ${visitorId}, ${pathname}, ${ctx.referrer})
+        INSERT INTO profile_view_events (professional_id, visitor_id, pathname, referrer, ua_hash, ip_hash)
+        SELECT ${professionalId}, ${visitorId}, ${pathname}, ${ctx.referrer}, ${ctx.uaHash}, ${ctx.ipHash}
+        WHERE ${dedupKey}::text IS NULL OR NOT EXISTS (
+          SELECT 1 FROM profile_view_events v
+          WHERE v.professional_id = ${professionalId}
+            AND (v.visitor_id = ${visitorId} OR v.ip_hash = ${ctx.ipHash})
+            AND v.created_at > now() - interval '30 minutes'
+        )
       `;
       return NextResponse.json({ ok: true });
     }
