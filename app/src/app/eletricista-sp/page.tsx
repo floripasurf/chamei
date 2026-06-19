@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { getDb } from "@/lib/db";
 import { Professional } from "@/lib/types";
 import ProfessionalCard from "../components/professional-card";
@@ -182,12 +183,12 @@ export default async function EletricistaSP() {
                 Cadastre-se grátis e receba clientes pelo WhatsApp. Sem mensalidade.
               </p>
             </div>
-            <a
+            <Link
               href="/para-profissionais"
               className="shrink-0 bg-white text-blue-600 px-6 py-3 rounded-xl font-semibold hover:bg-blue-50 transition-colors text-sm"
             >
               Quero receber clientes
-            </a>
+            </Link>
           </div>
         </section>
       </div>

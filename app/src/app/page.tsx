@@ -187,12 +187,12 @@ export default async function Home() {
                   Sem concorrência por lead — o cliente escolhe você
                 </li>
               </ul>
-              <a
+              <Link
                 href="/para-profissionais"
                 className="inline-block mt-4 text-sm font-medium text-blue-600 hover:text-blue-700"
               >
                 Cadastre-se grátis →
-              </a>
+              </Link>
             </div>
           </div>
         </section>
@@ -209,12 +209,12 @@ export default async function Home() {
                 Cadastre-se grátis e receba clientes pelo WhatsApp.
               </p>
             </div>
-            <a
+            <Link
               href="/para-profissionais"
               className="shrink-0 bg-white text-blue-600 px-6 py-3 rounded-xl font-semibold hover:bg-blue-50 transition-colors text-sm"
             >
               Quero receber clientes
-            </a>
+            </Link>
           </div>
         </section>
       </div>

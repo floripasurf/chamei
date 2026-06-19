@@ -297,12 +297,12 @@ export default async function CityCategoryPage({
                   Cadastre-se grátis e receba clientes pelo WhatsApp.
                 </p>
               </div>
-              <a
+              <Link
                 href="/para-profissionais"
                 className="shrink-0 bg-white text-blue-600 px-6 py-3 rounded-xl font-semibold hover:bg-blue-50 transition-colors text-sm"
               >
                 Quero receber clientes
-              </a>
+              </Link>
             </div>
           </section>
         </div>
