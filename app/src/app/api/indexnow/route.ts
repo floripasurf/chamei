@@ -16,12 +16,18 @@ export async function POST() {
 
   const categories = await sql`SELECT slug FROM categories`;
 
+  const blogPosts = await sql`
+    SELECT slug FROM blog_posts WHERE published = true ORDER BY published_at DESC
+  `;
+
   const urls = [
     "https://chamei.app",
     "https://chamei.app/para-profissionais",
     "https://chamei.app/eletricista-sp",
     "https://chamei.app/buscar",
+    "https://chamei.app/blog",
     ...categories.map((c) => `https://chamei.app/categoria/${c.slug}`),
+    ...blogPosts.map((b) => `https://chamei.app/blog/${b.slug}`),
     ...pros.map((p) => `https://chamei.app/profissional/${p.slug}`),
   ];
 
