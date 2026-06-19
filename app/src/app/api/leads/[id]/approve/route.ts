@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { neon } from "@neondatabase/serverless";
+import { ADMIN_COOKIE, isValidAdminValue } from "@/lib/admin-auth";
 
 function slugify(text: string): string {
   return text
@@ -21,6 +22,9 @@ export async function POST(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  if (!(await isValidAdminValue(request.cookies.get(ADMIN_COOKIE)?.value))) {
+    return NextResponse.json({ error: "Não autorizado" }, { status: 401 });
+  }
   const { id } = await params;
   const sql = neon(process.env.DATABASE_URL!);
 

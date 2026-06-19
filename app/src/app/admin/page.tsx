@@ -2,7 +2,9 @@ import { getDb } from "@/lib/db";
 import Link from "next/link";
 import LeadsTable from "./leads-table";
 import ClaimsTable from "./claims-table";
-import AdminGuard from "./admin-guard";
+import AdminLogin from "./admin-login";
+import { cookies } from "next/headers";
+import { ADMIN_COOKIE, isValidAdminValue } from "@/lib/admin-auth";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -13,6 +15,10 @@ export const metadata: Metadata = {
 export const dynamic = "force-dynamic";
 
 export default async function AdminPage() {
+  // Server-side gate: never run queries or emit data unless authenticated.
+  const authed = await isValidAdminValue((await cookies()).get(ADMIN_COOKIE)?.value);
+  if (!authed) return <AdminLogin />;
+
   const sql = getDb();
 
   const stats = await sql`
@@ -123,7 +129,6 @@ export default async function AdminPage() {
   }
 
   return (
-    <AdminGuard>
     <div>
       <section className="bg-white border-b border-gray-100">
         <div className="max-w-6xl mx-auto px-4 py-6">
@@ -332,6 +337,5 @@ export default async function AdminPage() {
         </div>
       </div>
     </div>
-    </AdminGuard>
   );
 }
