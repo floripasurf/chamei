@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { trackEvent, enqueueImpression } from "@/lib/track";
 
 const PLATFORM_NAME = "Chamei";
@@ -139,17 +140,20 @@ export default function ProfessionalCard({
     <div ref={rootRef} className="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all overflow-hidden">
       <div className="flex">
         {/* Photo */}
-        <Link href={`/profissional/${pro.slug}`} className="shrink-0">
+        <Link href={`/profissional/${pro.slug}`} className="shrink-0 relative w-28 sm:w-36 min-h-[120px]">
           {pro.photo_url ? (
-            <img
+            // unoptimized: these are external Google photos that rotate/expire —
+            // Vercel optimization would cost per-image and risk stale cache.
+            <Image
               src={pro.photo_url}
               alt={`Foto de ${pro.name}`}
-              className="w-28 h-full sm:w-36 object-cover bg-gray-100"
-              loading="lazy"
-              decoding="async"
+              fill
+              unoptimized
+              sizes="144px"
+              className="object-cover bg-gray-100"
             />
           ) : (
-            <div className="w-28 h-full sm:w-36 bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center min-h-[120px]">
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
               <span className="text-2xl font-bold text-white/90">
                 {getInitials(pro.name)}
               </span>

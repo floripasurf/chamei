@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 import { getSessionProfessional } from "@/lib/auth";
+import { getDb } from "@/lib/db";
 import { Professional } from "@/lib/types";
 import ProfileEdit from "./profile-edit";
 import PhotoUpload from "./photo-upload";
@@ -14,6 +15,24 @@ export default async function MeuPerfilPage() {
 
   if (!pro) {
     redirect("/");
+  }
+
+  // The professional's own funnel numbers (last 30 days + total).
+  let stats = { profile_views: 0, whatsapp: 0, phone: 0, impressions: 0, views_30d: 0, contacts_30d: 0 };
+  try {
+    const sql = getDb();
+    const rows = await sql`
+      SELECT
+        (SELECT count(*) FROM profile_view_events WHERE professional_id = ${pro.id})::int AS profile_views,
+        (SELECT count(*) FROM profile_view_events WHERE professional_id = ${pro.id} AND created_at > now() - interval '30 days')::int AS views_30d,
+        (SELECT count(*) FROM impression_events WHERE professional_id = ${pro.id})::int AS impressions,
+        (SELECT count(*) FROM contact_events WHERE professional_id = ${pro.id} AND channel = 'whatsapp')::int AS whatsapp,
+        (SELECT count(*) FROM contact_events WHERE professional_id = ${pro.id} AND channel = 'phone')::int AS phone,
+        (SELECT count(*) FROM contact_events WHERE professional_id = ${pro.id} AND created_at > now() - interval '30 days')::int AS contacts_30d
+    `;
+    if (rows[0]) stats = rows[0] as typeof stats;
+  } catch (err) {
+    console.error("[meu-perfil] stats failed", err);
   }
 
   const profileUrl = `https://chamei.app/profissional/${pro.slug}`;
@@ -35,19 +54,19 @@ export default async function MeuPerfilPage() {
         </h2>
         <div className="grid grid-cols-3 gap-4">
           <div className="bg-gray-50 rounded-xl p-4 text-center">
-            <p className="text-2xl font-bold text-gray-300">—</p>
-            <p className="text-xs text-gray-400 mt-1">Visitas ao perfil</p>
-            <p className="text-[10px] text-gray-300 mt-0.5">Em breve</p>
+            <p className="text-2xl font-bold text-gray-900">{stats.profile_views}</p>
+            <p className="text-xs text-gray-500 mt-1">Visitas ao perfil</p>
+            <p className="text-[10px] text-gray-400 mt-0.5">{stats.views_30d} nos últimos 30 dias</p>
           </div>
           <div className="bg-gray-50 rounded-xl p-4 text-center">
-            <p className="text-2xl font-bold text-gray-300">—</p>
-            <p className="text-xs text-gray-400 mt-1">Cliques no WhatsApp</p>
-            <p className="text-[10px] text-gray-300 mt-0.5">Em breve</p>
+            <p className="text-2xl font-bold text-gray-900">{stats.whatsapp}</p>
+            <p className="text-xs text-gray-500 mt-1">Cliques no WhatsApp</p>
+            <p className="text-[10px] text-gray-400 mt-0.5">{stats.contacts_30d} contatos em 30 dias</p>
           </div>
           <div className="bg-gray-50 rounded-xl p-4 text-center">
-            <p className="text-2xl font-bold text-gray-300">—</p>
-            <p className="text-xs text-gray-400 mt-1">Ligações recebidas</p>
-            <p className="text-[10px] text-gray-300 mt-0.5">Em breve</p>
+            <p className="text-2xl font-bold text-gray-900">{stats.phone}</p>
+            <p className="text-xs text-gray-500 mt-1">Cliques em Ligar</p>
+            <p className="text-[10px] text-gray-400 mt-0.5">{stats.impressions} vezes nas listas</p>
           </div>
         </div>
       </div>
