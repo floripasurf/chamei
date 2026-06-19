@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { useSearchParams } from "next/navigation";
 import ProfessionalCard from "@/app/components/professional-card";
-import { trackEvent } from "@/lib/track";
+import { getVisitorId } from "@/lib/track";
 
 interface Pro {
   id: string;
@@ -35,16 +35,13 @@ export default function SearchClient() {
     setLoading(true);
     setSearched(true);
     try {
-      const res = await fetch(`/api/professionals/search?q=${encodeURIComponent(q)}&limit=30`);
+      // The search itself logs the event server-side (reliable category from the
+      // actual results); we just pass the visitor id for honest dedup.
+      const res = await fetch(
+        `/api/professionals/search?q=${encodeURIComponent(q)}&limit=30&vid=${encodeURIComponent(getVisitorId())}`
+      );
       const data = await res.json();
-      const professionals = data.professionals || [];
-      setResults(professionals);
-      trackEvent({
-        type: "search",
-        source: "search",
-        query: q,
-        result_count: professionals.length,
-      });
+      setResults(data.professionals || []);
     } catch {
       setResults([]);
     }
@@ -104,8 +101,8 @@ export default function SearchClient() {
             </p>
 
             <div className="grid gap-3 sm:grid-cols-2">
-              {results.map((pro) => (
-                <ProfessionalCard key={pro.id} pro={pro} />
+              {results.map((pro, i) => (
+                <ProfessionalCard key={pro.id} pro={pro} position={i + 1} />
               ))}
             </div>
 

@@ -1,9 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { neon } from "@neondatabase/serverless";
+import { requestContext } from "@/lib/event-context";
 
-// Records monetization events: visitor->professional contacts and searches.
-// Called via navigator.sendBeacon / keepalive fetch from the client, so it must
-// stay fast and never throw back at the user.
+// Records monetization events: visitor->professional contacts and category
+// browses. Free-text searches are logged inside /api/professionals/search
+// instead (the category is taken from the actual results, not guessed).
+// Called via navigator.sendBeacon / keepalive fetch, so it must stay fast and
+// never throw back at the user.
 export async function POST(request: NextRequest) {
   let body: Record<string, unknown>;
   try {
@@ -13,23 +16,29 @@ export async function POST(request: NextRequest) {
   }
 
   const sql = neon(process.env.DATABASE_URL!);
+  const ctx = await requestContext(request);
+  const visitorId = typeof body.visitor_id === "string" ? body.visitor_id.slice(0, 64) : null;
+  const pathname = typeof body.pathname === "string" ? body.pathname.slice(0, 200) : null;
 
   try {
     if (body.type === "contact") {
       const professionalId = String(body.professional_id || "");
       const channel = body.channel === "phone" ? "phone" : "whatsapp";
       const source = typeof body.source === "string" ? body.source : null;
+      const position =
+        typeof body.result_position === "number" ? body.result_position : null;
 
       if (!professionalId) {
         return NextResponse.json({ error: "professional_id required" }, { status: 400 });
       }
 
-      // Resolve category/location from the professional so the row is
-      // self-contained for fast grouping later.
+      // Category/location come from the professional so the row is self-contained.
       await sql`
         INSERT INTO contact_events
-          (professional_id, category_id, channel, source, neighborhood, city)
-        SELECT ${professionalId}, p.category_id, ${channel}, ${source}, p.neighborhood, p.city
+          (professional_id, category_id, channel, source, neighborhood, city,
+           visitor_id, result_position, pathname, referrer, ua_hash, ip_hash)
+        SELECT ${professionalId}, p.category_id, ${channel}, ${source}, p.neighborhood, p.city,
+               ${visitorId}, ${position}, ${pathname}, ${ctx.referrer}, ${ctx.uaHash}, ${ctx.ipHash}
         FROM professionals p
         WHERE p.id = ${professionalId}
       `;
@@ -38,34 +47,25 @@ export async function POST(request: NextRequest) {
     }
 
     if (body.type === "search") {
-      const source = body.source === "category_browse" ? "category_browse" : "search";
-      const rawQuery = typeof body.query === "string" ? body.query.slice(0, 200) : null;
-      const normalized = rawQuery ? rawQuery.trim().toLowerCase() : null;
+      // Only category browses reach here now (explicit slug — no guessing).
       const categorySlug =
         typeof body.category_slug === "string" ? body.category_slug : null;
       const resultCount =
         typeof body.result_count === "number" ? body.result_count : null;
 
-      // Resolve a category id either from an explicit slug (category browse)
-      // or by best-effort matching the free-text query against category names.
-      const matched = await sql`
-        SELECT id, slug FROM categories
-        WHERE
-          (${categorySlug}::text IS NOT NULL AND slug = ${categorySlug})
-          OR (${normalized}::text IS NOT NULL AND ${normalized} <> ''
-              AND (lower(name) = ${normalized} OR ${normalized} LIKE '%' || lower(name) || '%'
-                   OR lower(name) LIKE '%' || ${normalized} || '%'))
-        ORDER BY (slug = ${categorySlug}) DESC
-        LIMIT 1
-      `;
+      const matched = categorySlug
+        ? await sql`SELECT id, slug FROM categories WHERE slug = ${categorySlug} LIMIT 1`
+        : [];
       const categoryId = matched[0]?.id ?? null;
       const resolvedSlug = matched[0]?.slug ?? categorySlug;
 
       await sql`
         INSERT INTO search_events
-          (query, normalized_query, category_id, category_slug, source, result_count)
+          (query, normalized_query, category_id, category_slug, source, result_count,
+           visitor_id, pathname, ua_hash, ip_hash)
         VALUES
-          (${rawQuery}, ${normalized}, ${categoryId}, ${resolvedSlug}, ${source}, ${resultCount})
+          (NULL, NULL, ${categoryId}, ${resolvedSlug}, 'category_browse', ${resultCount},
+           ${visitorId}, ${pathname}, ${ctx.uaHash}, ${ctx.ipHash})
       `;
 
       return NextResponse.json({ ok: true });
@@ -74,7 +74,6 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "unknown event type" }, { status: 400 });
   } catch (e) {
     console.error("Event tracking error:", e);
-    // Swallow errors — analytics must never break UX.
     return NextResponse.json({ ok: false }, { status: 200 });
   }
 }

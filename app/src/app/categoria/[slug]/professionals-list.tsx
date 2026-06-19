@@ -191,8 +191,8 @@ export default function ProfessionalsList({
 
       {/* List */}
       <div className="grid gap-3 sm:grid-cols-2">
-        {sorted.map((pro) => (
-          <ProfessionalCard key={pro.id} pro={pro} topReview={pro.top_review} />
+        {sorted.map((pro, i) => (
+          <ProfessionalCard key={pro.id} pro={pro} topReview={pro.top_review} position={i + 1} />
         ))}
       </div>
 

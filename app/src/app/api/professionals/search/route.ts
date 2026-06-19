@@ -1,5 +1,41 @@
 import { NextRequest, NextResponse } from "next/server";
 import { neon } from "@neondatabase/serverless";
+import { requestContext } from "@/lib/event-context";
+
+type SearchRow = { category_id: string | null; category_slug: string | null; city?: string | null };
+
+// Log a free-text search with the category derived from the ACTUAL results
+// (the dominant category among hits) — not a fragile guess on the query string.
+async function logSearch(request: NextRequest, q: string, results: SearchRow[]) {
+  try {
+    const sql = neon(process.env.DATABASE_URL!);
+    const counts = new Map<string, { id: string; slug: string | null; n: number }>();
+    for (const r of results) {
+      if (!r.category_id) continue;
+      const c = counts.get(r.category_id) || { id: r.category_id, slug: r.category_slug, n: 0 };
+      c.n++;
+      counts.set(r.category_id, c);
+    }
+    const dominant = [...counts.values()].sort((a, b) => b.n - a.n)[0] || null;
+    const vid = new URL(request.url).searchParams.get("vid");
+    const ctx = await requestContext(request);
+    let pathname: string | null = null;
+    try {
+      pathname = ctx.referrer ? new URL(ctx.referrer).pathname : null;
+    } catch {}
+    await sql`
+      INSERT INTO search_events
+        (query, normalized_query, category_id, category_slug, source, result_count,
+         visitor_id, pathname, ua_hash, ip_hash)
+      VALUES
+        (${q.slice(0, 200)}, ${q.trim().toLowerCase().slice(0, 200)},
+         ${dominant?.id ?? null}, ${dominant?.slug ?? null}, 'search', ${results.length},
+         ${vid}, ${pathname}, ${ctx.uaHash}, ${ctx.ipHash})
+    `;
+  } catch {
+    // analytics must never break search
+  }
+}
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
@@ -29,6 +65,7 @@ export async function GET(request: NextRequest) {
       ORDER BY p.google_rating DESC NULLS LAST
       LIMIT ${limit}
     `;
+    await logSearch(request, q, results as SearchRow[]);
     return NextResponse.json({ professionals: results, total: results.length });
   }
 

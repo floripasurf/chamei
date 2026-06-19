@@ -91,8 +91,8 @@ export default function NearbyProfessionals() {
       </div>
 
       <div className="grid gap-3 sm:grid-cols-2">
-        {pros.map((pro) => (
-          <ProfessionalCard key={pro.id} pro={pro} />
+        {pros.map((pro, i) => (
+          <ProfessionalCard key={pro.id} pro={pro} position={i + 1} />
         ))}
       </div>
     </div>
