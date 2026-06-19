@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getDb } from "@/lib/db";
 import { Professional } from "@/lib/types";
 import ProfessionalCard from "@/app/components/professional-card";
+import ImpressionTracker from "@/app/components/impression-tracker";
 import Link from "next/link";
 
 function formatCityName(slug: string): string {
@@ -209,9 +210,13 @@ export default async function CityCategoryPage({
 
         <div className="max-w-5xl mx-auto px-4 py-8">
           {/* Listing */}
+          <ImpressionTracker
+            items={pros.map((pro, i) => ({ professional_id: pro.id, position: i + 1 }))}
+            source="city"
+          />
           <div className="grid gap-3 sm:grid-cols-2 mb-12">
-            {pros.map((pro) => (
-              <ProfessionalCard key={pro.id} pro={pro} topReview={pro.top_review} />
+            {pros.map((pro, i) => (
+              <ProfessionalCard key={pro.id} pro={pro} topReview={pro.top_review} position={i + 1} />
             ))}
           </div>
 
