@@ -6,6 +6,7 @@ import ContactSidebar from "./contact-sidebar";
 import ShareProfileButton from "./share-profile-button";
 import TrackedPhoneLink from "./tracked-phone-link";
 import ProfileViewTracker from "./profile-view-tracker";
+import MobileContactBar from "./mobile-contact-bar";
 
 export async function generateMetadata({
   params,
@@ -186,7 +187,8 @@ export default async function ProfessionalPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <ProfileViewTracker professionalId={pro.id} />
-    <div className="max-w-6xl mx-auto px-4 py-8">
+      <MobileContactBar phone={pro.phone} professionalId={pro.id} professionalName={pro.name} />
+    <div className="max-w-6xl mx-auto px-4 pt-8 pb-24 md:pb-8">
       {/* Breadcrumb */}
       <nav className="text-sm text-gray-500 mb-6">
         <Link href="/" className="hover:text-gray-700">Início</Link>
