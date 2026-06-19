@@ -34,13 +34,36 @@ function visitorId(): string | null {
   }
 }
 
+/** First-touch UTM: capture from the landing URL once, persist, reuse. */
+function firstTouchUtm(): { utm_source?: string; utm_medium?: string; utm_campaign?: string } | null {
+  try {
+    const KEY = "chamei_utm";
+    const stored = localStorage.getItem(KEY);
+    if (stored) return JSON.parse(stored);
+    const p = new URLSearchParams(window.location.search);
+    const source = p.get("utm_source");
+    if (!source) return null;
+    const utm = {
+      utm_source: source.slice(0, 80),
+      utm_medium: p.get("utm_medium")?.slice(0, 80) || undefined,
+      utm_campaign: p.get("utm_campaign")?.slice(0, 120) || undefined,
+    };
+    localStorage.setItem(KEY, JSON.stringify(utm));
+    return utm;
+  } catch {
+    return null;
+  }
+}
+
 function send(payload: Record<string, unknown>): void {
   if (typeof window === "undefined") return;
   try {
     const vid = visitorId();
+    const utm = firstTouchUtm();
     const body = JSON.stringify({
       ...payload,
       ...(vid ? { visitor_id: vid } : {}),
+      ...(utm || {}),
       pathname: window.location.pathname,
     });
     if (navigator.sendBeacon) {
