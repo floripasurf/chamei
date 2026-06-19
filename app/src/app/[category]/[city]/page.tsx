@@ -158,15 +158,27 @@ export default async function CityCategoryPage({
   // Schema.org
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "ItemList",
-    name: `${cat.name} em ${cityDisplay}`,
-    numberOfItems: pros.length,
-    itemListElement: pros.slice(0, 20).map((p, i) => ({
-      "@type": "ListItem",
-      position: i + 1,
-      url: `https://chamei.app/profissional/${p.slug}`,
-      name: p.name,
-    })),
+    "@graph": [
+      {
+        "@type": "ItemList",
+        name: `${cat.name} em ${cityDisplay}`,
+        numberOfItems: pros.length,
+        itemListElement: pros.slice(0, 20).map((p, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          url: `https://chamei.app/profissional/${p.slug}`,
+          name: p.name,
+        })),
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Início", item: "https://chamei.app" },
+          { "@type": "ListItem", position: 2, name: cat.name, item: `https://chamei.app/categoria/${category}` },
+          { "@type": "ListItem", position: 3, name: `${cat.name} em ${cityDisplay}`, item: `https://chamei.app/${category}/${city}` },
+        ],
+      },
+    ],
   };
 
   return (

@@ -92,15 +92,26 @@ export default async function CategoryPage({
 
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "ItemList",
-    name: category.name,
-    numberOfItems: pros.length,
-    itemListElement: pros.map((pro, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      url: `https://chamei.com.br/profissional/${pro.slug}`,
-      name: pro.name,
-    })),
+    "@graph": [
+      {
+        "@type": "ItemList",
+        name: category.name,
+        numberOfItems: pros.length,
+        itemListElement: pros.map((pro, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          url: `https://chamei.app/profissional/${pro.slug}`,
+          name: pro.name,
+        })),
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Início", item: "https://chamei.app" },
+          { "@type": "ListItem", position: 2, name: category.name, item: `https://chamei.app/categoria/${category.slug}` },
+        ],
+      },
+    ],
   };
 
   return (
