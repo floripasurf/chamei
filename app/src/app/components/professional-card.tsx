@@ -143,9 +143,10 @@ export default function ProfessionalCard({
           {pro.photo_url ? (
             <img
               src={pro.photo_url}
-              alt={pro.name}
+              alt={`Foto de ${pro.name}`}
               className="w-28 h-full sm:w-36 object-cover bg-gray-100"
               loading="lazy"
+              decoding="async"
             />
           ) : (
             <div className="w-28 h-full sm:w-36 bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center min-h-[120px]">
