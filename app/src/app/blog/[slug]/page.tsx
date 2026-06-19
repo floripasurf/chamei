@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Metadata } from "next";
 import { getDb } from "@/lib/db";
 import { notFound } from "next/navigation";
@@ -122,13 +123,13 @@ export default async function BlogPostPage({ params }: Props) {
       <article className="max-w-3xl mx-auto px-4 pt-6 pb-16">
         {/* Breadcrumb */}
         <nav className="text-xs text-gray-400 mb-8">
-          <a href="/" className="hover:text-gray-600">
+          <Link href="/" className="hover:text-gray-600">
             Início
-          </a>
+          </Link>
           <span className="mx-1.5">/</span>
-          <a href="/blog" className="hover:text-gray-600">
+          <Link href="/blog" className="hover:text-gray-600">
             Blog
-          </a>
+          </Link>
           <span className="mx-1.5">/</span>
           <span className="text-gray-600">{post.title}</span>
         </nav>
@@ -178,12 +179,12 @@ export default async function BlogPostPage({ params }: Props) {
             Encontre profissionais avaliados e entre em contato pelo WhatsApp.
             Grátis.
           </p>
-          <a
+          <Link
             href="/"
             className="inline-block mt-4 bg-blue-600 text-white px-6 py-2.5 rounded-xl text-sm font-semibold hover:bg-blue-700 transition-colors"
           >
             Encontrar profissional
-          </a>
+          </Link>
         </div>
 
         {/* Related posts */}

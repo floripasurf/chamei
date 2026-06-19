@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans, Space_Grotesk } from "next/font/google";
 import { LogoFull, LogoIcon } from "./components/logo";
@@ -90,28 +91,28 @@ export default function RootLayout({
         {/* Header */}
         <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-gray-100">
           <div className="max-w-5xl mx-auto px-4 h-14 flex items-center justify-between">
-            <a href="/">
+            <Link href="/">
               <LogoFull />
-            </a>
+            </Link>
             <nav className="flex items-center gap-3">
-              <a
+              <Link
                 href="/para-profissionais"
                 className="text-sm text-gray-500 hover:text-gray-900 transition-colors hidden sm:block"
               >
                 Para Profissionais
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/blog"
                 className="text-sm text-gray-500 hover:text-gray-900 transition-colors hidden sm:block"
               >
                 Blog
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/para-profissionais"
                 className="bg-gray-900 text-white px-4 py-1.5 rounded-lg text-sm font-medium hover:bg-gray-800 transition-colors"
               >
                 Cadastre-se grátis
-              </a>
+              </Link>
             </nav>
           </div>
         </header>
@@ -136,16 +137,16 @@ export default function RootLayout({
               <div className="flex gap-8 text-xs text-gray-500">
                 <div className="space-y-2">
                   <p className="font-medium text-gray-700 uppercase tracking-wider text-[10px]">Para você</p>
-                  <a href="/categoria/eletricista" className="block hover:text-gray-700">Eletricistas</a>
-                  <a href="/categoria/encanador" className="block hover:text-gray-700">Encanadores</a>
-                  <a href="/categoria/pedreiro" className="block hover:text-gray-700">Pedreiros</a>
-                  <a href="/categoria/diarista" className="block hover:text-gray-700">Diaristas</a>
+                  <Link href="/categoria/eletricista" className="block hover:text-gray-700">Eletricistas</Link>
+                  <Link href="/categoria/encanador" className="block hover:text-gray-700">Encanadores</Link>
+                  <Link href="/categoria/pedreiro" className="block hover:text-gray-700">Pedreiros</Link>
+                  <Link href="/categoria/diarista" className="block hover:text-gray-700">Diaristas</Link>
                 </div>
                 <div className="space-y-2">
                   <p className="font-medium text-gray-700 uppercase tracking-wider text-[10px]">Chamei</p>
-                  <a href="/para-profissionais" className="block hover:text-gray-700">Para Profissionais</a>
-                  <a href="/para-profissionais#cadastro" className="block hover:text-gray-700">Cadastre-se</a>
-                  <a href="/blog" className="block hover:text-gray-700">Blog</a>
+                  <Link href="/para-profissionais" className="block hover:text-gray-700">Para Profissionais</Link>
+                  <Link href="/para-profissionais#cadastro" className="block hover:text-gray-700">Cadastre-se</Link>
+                  <Link href="/blog" className="block hover:text-gray-700">Blog</Link>
                 </div>
               </div>
             </div>

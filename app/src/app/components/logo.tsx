@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export function LogoIcon({ size = 28, className = "" }: { size?: number; className?: string }) {
   return (
     <svg
@@ -26,7 +28,7 @@ export function LogoIcon({ size = 28, className = "" }: { size?: number; classNa
 
 export function LogoFull({ className = "" }: { className?: string }) {
   return (
-    <a href="/" className={`flex items-center gap-2 ${className}`}>
+    <Link href="/" className={`flex items-center gap-2 ${className}`}>
       <LogoIcon size={30} />
       {/* Custom wordmark using Space Grotesk + accent on the "i" dot */}
       <span
@@ -46,7 +48,7 @@ export function LogoFull({ className = "" }: { className?: string }) {
           </svg>
         </span>
       </span>
-    </a>
+    </Link>
   );
 }
 

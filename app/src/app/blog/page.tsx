@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Metadata } from "next";
 import { getDb } from "@/lib/db";
 
@@ -54,9 +55,9 @@ export default async function BlogPage() {
       {/* Breadcrumb */}
       <div className="max-w-5xl mx-auto px-4 pt-6">
         <nav className="text-xs text-gray-400">
-          <a href="/" className="hover:text-gray-600">
+          <Link href="/" className="hover:text-gray-600">
             Início
-          </a>
+          </Link>
           <span className="mx-1.5">/</span>
           <span className="text-gray-600">Blog</span>
         </nav>
