@@ -233,8 +233,8 @@ export default function ProfessionalCard({
                     source: "card",
                     result_position: position,
                   });
-                  if (typeof window !== 'undefined' && (window as any).gtag) {
-                    (window as any).gtag('event', 'whatsapp_click', {
+                  if (typeof window !== 'undefined' && window.gtag) {
+                    window.gtag('event', 'whatsapp_click', {
                       professional_name: pro.name,
                       professional_id: pro.id,
                     });
