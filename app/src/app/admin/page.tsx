@@ -141,6 +141,8 @@ export default async function AdminPage() {
   let demandSupply: DemandSupplyRow[] = [];
   let demandSupplyCity: DemandSupplyCityRow[] = [];
   let qualitySummary: QualitySummary | null = null;
+  type UtmRow = { source: string; medium: string | null; contacts: number; unique_visitors: number };
+  let utmStats: UtmRow[] = [];
   let eventsReady = true;
 
   try {
@@ -174,6 +176,10 @@ export default async function AdminPage() {
       SELECT category_name, city, searches, active_pros, demand_per_pro
       FROM demand_supply_city LIMIT 12
     `) as unknown as DemandSupplyCityRow[];
+
+    utmStats = (await sql`
+      SELECT source, medium, contacts, unique_visitors FROM utm_stats LIMIT 10
+    `) as unknown as UtmRow[];
 
     demandSupply = (await sql`
       SELECT category_name, searches, active_pros, demand_per_pro, avg_rating
@@ -422,6 +428,32 @@ export default async function AdminPage() {
                     <span className="w-16 text-right font-medium text-gray-900">
                       {r.active_pros === 0 ? "∞" : (r.demand_per_pro ?? "—")}
                     </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {eventsReady && utmStats.length > 0 && (
+            <div className="bg-white rounded-xl border border-gray-100 p-5 mb-4">
+              <h3 className="text-sm font-semibold text-gray-900 mb-1">Origem dos contatos (UTM)</h3>
+              <p className="text-xs text-gray-400 mb-3">
+                Quais canais trazem contato. Use links com <code className="font-mono">?utm_source=...</code> nas campanhas.
+              </p>
+              <div className="space-y-1">
+                <div className="flex items-center text-[11px] uppercase tracking-wider text-gray-400 pb-1 border-b border-gray-100">
+                  <span className="flex-1">Origem / Mídia</span>
+                  <span className="w-20 text-right">Visitantes</span>
+                  <span className="w-20 text-right">Contatos</span>
+                </div>
+                {utmStats.map((r, i) => (
+                  <div key={`${r.source}-${r.medium}-${i}`} className="flex items-center text-sm py-0.5">
+                    <span className="flex-1 text-gray-700 truncate">
+                      {r.source}
+                      {r.medium ? <span className="text-gray-400"> · {r.medium}</span> : null}
+                    </span>
+                    <span className="w-20 text-right text-gray-500">{r.unique_visitors}</span>
+                    <span className="w-20 text-right font-medium text-gray-900">{r.contacts}</span>
                   </div>
                 ))}
               </div>

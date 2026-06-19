@@ -54,6 +54,9 @@ export async function POST(request: NextRequest) {
       const source = typeof body.source === "string" ? body.source : null;
       const position =
         typeof body.result_position === "number" ? body.result_position : null;
+      const utmSource = typeof body.utm_source === "string" ? body.utm_source.slice(0, 80) : null;
+      const utmMedium = typeof body.utm_medium === "string" ? body.utm_medium.slice(0, 80) : null;
+      const utmCampaign = typeof body.utm_campaign === "string" ? body.utm_campaign.slice(0, 120) : null;
 
       if (!professionalId) {
         return NextResponse.json({ error: "professional_id required" }, { status: 400 });
@@ -63,9 +66,11 @@ export async function POST(request: NextRequest) {
       await sql`
         INSERT INTO contact_events
           (professional_id, category_id, channel, source, neighborhood, city,
-           visitor_id, result_position, pathname, referrer, ua_hash, ip_hash)
+           visitor_id, result_position, pathname, referrer, ua_hash, ip_hash,
+           utm_source, utm_medium, utm_campaign)
         SELECT ${professionalId}, p.category_id, ${channel}, ${source}, p.neighborhood, p.city,
-               ${visitorId}, ${position}, ${pathname}, ${ctx.referrer}, ${ctx.uaHash}, ${ctx.ipHash}
+               ${visitorId}, ${position}, ${pathname}, ${ctx.referrer}, ${ctx.uaHash}, ${ctx.ipHash},
+               ${utmSource}, ${utmMedium}, ${utmCampaign}
         FROM professionals p
         WHERE p.id = ${professionalId}
       `;
