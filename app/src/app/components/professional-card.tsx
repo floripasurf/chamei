@@ -100,9 +100,11 @@ function getInitials(name: string): string {
 export default function ProfessionalCard({
   pro,
   topReview,
+  position,
 }: {
   pro: CardProfessional;
   topReview?: { author_name: string | null; text: string | null; rating: number | null } | null;
+  position?: number; // 1-based rank in the list it's rendered in
 }) {
   const whatsappMessage = `Olá ${pro.name}, encontrei seu perfil no ${PLATFORM_NAME} e gostaria de um orçamento.`;
   const whatsappUrl = pro.phone
@@ -204,6 +206,7 @@ export default function ProfessionalCard({
                     professional_id: pro.id,
                     channel: "whatsapp",
                     source: "card",
+                    result_position: position,
                   });
                   if (typeof window !== 'undefined' && (window as any).gtag) {
                     (window as any).gtag('event', 'whatsapp_click', {

@@ -4,6 +4,7 @@ import { getDb } from "@/lib/db";
 import { Professional, ReviewImported } from "@/lib/types";
 import ContactSidebar from "./contact-sidebar";
 import ShareProfileButton from "./share-profile-button";
+import TrackedPhoneLink from "./tracked-phone-link";
 
 export async function generateMetadata({
   params,
@@ -213,7 +214,11 @@ export default async function ProfessionalPage({
               {pro.phone && (
                 <div className="flex items-center gap-2">
                   <span className="text-gray-400 w-5">📞</span>
-                  <a href={`tel:${pro.phone}`} className="text-blue-600 hover:underline">{pro.phone}</a>
+                  <TrackedPhoneLink
+                    phone={pro.phone}
+                    professionalId={pro.id}
+                    className="text-blue-600 hover:underline"
+                  />
                 </div>
               )}
               {pro.website && (
