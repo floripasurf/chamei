@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import ProfessionalCard from "./professional-card";
 
 interface ProfessionalWithDistance {
@@ -23,19 +23,17 @@ export default function NearbyProfessionals() {
   const [pros, setPros] = useState<ProfessionalWithDistance[]>([]);
   const [status, setStatus] = useState<"idle" | "asking" | "loading" | "done" | "denied">("idle");
 
-  useEffect(() => {
+  // Geolocation is requested ONLY on explicit user action (privacy: no prompt on load).
+  function requestLocation() {
     if (!navigator.geolocation) {
       setStatus("denied");
       return;
     }
-
     setStatus("asking");
-
     navigator.geolocation.getCurrentPosition(
       (position) => {
         const { latitude, longitude } = position.coords;
         setStatus("loading");
-
         fetch(`/api/professionals/nearby?lat=${latitude}&lng=${longitude}&radius=15&limit=20`)
           .then((res) => res.json())
           .then((data) => {
@@ -44,23 +42,25 @@ export default function NearbyProfessionals() {
           })
           .catch(() => setStatus("denied"));
       },
-      () => {
-        setStatus("denied");
-      },
+      () => setStatus("denied"),
       { enableHighAccuracy: false, timeout: 10000 }
     );
-  }, []);
+  }
 
   if (status === "idle" || status === "asking") {
     return (
       <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-100 rounded-2xl p-6 text-center">
         <div className="text-2xl mb-2">📍</div>
         <p className="text-blue-900 font-medium">
-          Quer ver os eletricistas mais perto de você?
+          Quer ver os profissionais mais perto de você?
         </p>
-        <p className="text-sm text-blue-600 mt-1">
-          Permita o acesso à localização para ordenar por proximidade
-        </p>
+        <button
+          onClick={requestLocation}
+          disabled={status === "asking"}
+          className="mt-3 inline-flex items-center gap-2 bg-blue-600 text-white px-5 py-2.5 rounded-xl font-medium text-sm hover:bg-blue-700 transition-colors disabled:opacity-60"
+        >
+          {status === "asking" ? "Buscando localização..." : "Usar minha localização"}
+        </button>
       </div>
     );
   }

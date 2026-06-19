@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import ClaimProfile from "./claim-profile";
 import { trackEvent } from "@/lib/track";
 
@@ -46,23 +46,19 @@ export default function ContactSidebar({
   const [message, setMessage] = useState(defaultMessage);
   const [distance, setDistance] = useState<number | null>(null);
 
-  useEffect(() => {
+  // Distance is computed only when the user explicitly asks (no location prompt on load).
+  function requestDistance() {
     if (!professionalLat || !professionalLng || !navigator.geolocation) return;
-
     navigator.geolocation.getCurrentPosition(
       (position) => {
-        const d = haversineDistance(
-          position.coords.latitude,
-          position.coords.longitude,
-          professionalLat,
-          professionalLng
+        setDistance(
+          haversineDistance(position.coords.latitude, position.coords.longitude, professionalLat, professionalLng)
         );
-        setDistance(d);
       },
       () => {},
       { enableHighAccuracy: false, timeout: 10000 }
     );
-  }, [professionalLat, professionalLng]);
+  }
 
   const whatsappUrl = phone
     ? `https://wa.me/55${phone.replace(/\D/g, "")}?text=${encodeURIComponent(message)}`
@@ -72,13 +68,22 @@ export default function ContactSidebar({
     <div className="bg-white rounded-xl border border-gray-200 p-6 sticky top-4">
       <h3 className="font-semibold text-gray-900 mb-4">Entrar em contato</h3>
 
-      {distance !== null && (
+      {distance !== null ? (
         <div className="flex items-center gap-2 mb-4 p-2 bg-blue-50 rounded-lg">
           <span>📍</span>
           <span className="text-sm font-medium text-blue-700">
             {formatDistance(distance)}
           </span>
         </div>
+      ) : (
+        professionalLat && professionalLng && (
+          <button
+            onClick={requestDistance}
+            className="text-xs text-blue-600 hover:underline mb-4 inline-block"
+          >
+            📍 Ver distância até você
+          </button>
+        )
       )}
 
       {phone && (

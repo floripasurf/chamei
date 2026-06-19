@@ -95,31 +95,12 @@ export default function ProfessionalsList({
   const [geoStatus, setGeoStatus] = useState<"idle" | "loading" | "done" | "denied">("idle");
   const [userLoc, setUserLoc] = useState<{ lat: number; lng: number } | null>(null);
 
-  // Default: try geolocation on load for proximity sort
+  // Default sort = rating. Geolocation (proximity) only when the user explicitly
+  // picks "Perto de mim" — no location prompt on load.
   useEffect(() => {
-    if (!navigator.geolocation) {
-      setGeoStatus("denied");
-      setSortMode("rating");
-      setSorted(sortByRating(professionals));
-      return;
-    }
-
-    setGeoStatus("loading");
-    navigator.geolocation.getCurrentPosition(
-      (pos) => {
-        const loc = { lat: pos.coords.latitude, lng: pos.coords.longitude };
-        setUserLoc(loc);
-        setGeoStatus("done");
-        setSorted(sortByProximity(professionals, loc.lat, loc.lng));
-      },
-      () => {
-        // Fallback to rating if geo denied
-        setGeoStatus("denied");
-        setSortMode("rating");
-        setSorted(sortByRating(professionals));
-      },
-      { enableHighAccuracy: false, timeout: 10000 }
-    );
+    setSortMode("rating");
+    setSorted(sortByRating(professionals));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [professionals]);
 
   function sortByRating(list: Pro[]) {
