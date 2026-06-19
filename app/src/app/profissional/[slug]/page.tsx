@@ -134,30 +134,49 @@ export default async function ProfessionalPage({
     );
   }
 
-  const jsonLd = {
-    "@context": "https://schema.org",
+  const proUrl = `https://chamei.app/profissional/${pro.slug}`;
+  const hasReviews = !!pro.google_rating && (pro.google_review_count ?? 0) > 0;
+  const business = {
     "@type": "LocalBusiness",
+    "@id": proUrl,
     name: pro.name,
-    ...(pro.address && { address: pro.address }),
+    url: proUrl,
+    ...(pro.profile_photo_url && { image: pro.profile_photo_url }),
     ...(pro.phone && { telephone: pro.phone }),
-    url: `https://chamei.com.br/profissional/${pro.slug}`,
     ...(pro.category_name && { serviceType: pro.category_name }),
-    ...(pro.google_rating && {
+    ...((pro.address || pro.city) && {
+      address: {
+        "@type": "PostalAddress",
+        ...(pro.address && { streetAddress: pro.address }),
+        ...(pro.city && { addressLocality: pro.city }),
+        ...(pro.state && { addressRegion: pro.state }),
+        addressCountry: "BR",
+      },
+    }),
+    // Only emit aggregateRating with a real reviewCount (Google flags reviewCount: 0).
+    ...(hasReviews && {
       aggregateRating: {
         "@type": "AggregateRating",
         ratingValue: pro.google_rating,
-        reviewCount: pro.google_review_count || 0,
+        reviewCount: pro.google_review_count,
         bestRating: 5,
       },
     }),
     ...(pro.latitude && pro.longitude && {
-      geo: {
-        "@type": "GeoCoordinates",
-        latitude: pro.latitude,
-        longitude: pro.longitude,
-      },
+      geo: { "@type": "GeoCoordinates", latitude: pro.latitude, longitude: pro.longitude },
     }),
   };
+  const breadcrumb = {
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Início", item: "https://chamei.app" },
+      ...(pro.category_name
+        ? [{ "@type": "ListItem", position: 2, name: pro.category_name, item: `https://chamei.app/categoria/${pro.category_slug}` }]
+        : []),
+      { "@type": "ListItem", position: pro.category_name ? 3 : 2, name: pro.name, item: proUrl },
+    ],
+  };
+  const jsonLd = { "@context": "https://schema.org", "@graph": [business, breadcrumb] };
 
   return (
     <>
