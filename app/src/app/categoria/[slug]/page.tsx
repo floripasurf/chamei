@@ -128,7 +128,7 @@ export default async function CategoryPage({
       </section>
 
       <div className="max-w-5xl mx-auto px-4 py-8">
-        <ProfessionalsList professionals={pros} />
+        <ProfessionalsList professionals={pros} categorySlug={category.slug} />
 
         {/* CTA */}
         <section className="mt-12">

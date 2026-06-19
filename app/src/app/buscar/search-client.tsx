@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { useSearchParams } from "next/navigation";
 import ProfessionalCard from "@/app/components/professional-card";
+import { trackEvent } from "@/lib/track";
 
 interface Pro {
   id: string;
@@ -36,7 +37,14 @@ export default function SearchClient() {
     try {
       const res = await fetch(`/api/professionals/search?q=${encodeURIComponent(q)}&limit=30`);
       const data = await res.json();
-      setResults(data.professionals || []);
+      const professionals = data.professionals || [];
+      setResults(professionals);
+      trackEvent({
+        type: "search",
+        source: "search",
+        query: q,
+        result_count: professionals.length,
+      });
     } catch {
       setResults([]);
     }

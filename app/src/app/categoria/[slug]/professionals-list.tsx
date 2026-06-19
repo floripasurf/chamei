@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import ProfessionalCard from "@/app/components/professional-card";
+import { trackEvent } from "@/lib/track";
 
 interface Pro {
   id: string;
@@ -69,7 +70,26 @@ function sortByProximity(list: Pro[], lat: number, lng: number) {
   });
 }
 
-export default function ProfessionalsList({ professionals }: { professionals: Pro[] }) {
+export default function ProfessionalsList({
+  professionals,
+  categorySlug,
+}: {
+  professionals: Pro[];
+  categorySlug?: string;
+}) {
+  // Record category demand (runs only on real client mount, avoiding most bot/prefetch noise).
+  useEffect(() => {
+    if (!categorySlug) return;
+    trackEvent({
+      type: "search",
+      source: "category_browse",
+      category_slug: categorySlug,
+      result_count: professionals.length,
+    });
+    // Fire once per category page visit.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [categorySlug]);
+
   const [sortMode, setSortMode] = useState<SortMode>("nearby");
   const [sorted, setSorted] = useState<Pro[]>(professionals);
   const [geoStatus, setGeoStatus] = useState<"idle" | "loading" | "done" | "denied">("idle");
