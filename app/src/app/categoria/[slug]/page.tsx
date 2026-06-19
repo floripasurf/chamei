@@ -3,6 +3,19 @@ import Link from "next/link";
 import { getDb } from "@/lib/db";
 import { Professional } from "@/lib/types";
 import ProfessionalsList from "./professionals-list";
+import FaqSection from "@/app/components/faq-section";
+import { categoryFaq, faqNode } from "@/lib/seo-content";
+
+function citySlugify(city: string, state: string | null) {
+  const slug = city
+    .toLowerCase()
+    .replace(/\s+/g, "-")
+    .replace(/[àáâãä]/g, "a").replace(/[èéêë]/g, "e")
+    .replace(/[ìíîï]/g, "i").replace(/[òóôõö]/g, "o")
+    .replace(/[ùúûü]/g, "u").replace(/[ç]/g, "c")
+    .replace(/[^a-z0-9-]/g, "");
+  return state ? `${slug}-${state.toLowerCase()}` : slug;
+}
 
 export async function generateMetadata({
   params,
@@ -47,8 +60,11 @@ export default async function CategoryPage({
   };
 
   type Cat = { id: string; name: string; slug: string };
+  type CityRow = { city: string; state: string | null; total: number };
   let category: Cat | null = null;
   let pros: ProWithReview[] = [];
+  let topCities: CityRow[] = [];
+  let otherCategories: { name: string; slug: string }[] = [];
   let dbDown = false;
   try {
     const sql = getDb();
@@ -68,6 +84,18 @@ export default async function CategoryPage({
         ORDER BY p.google_rating DESC NULLS LAST
         LIMIT 100
       `) as ProWithReview[];
+
+      topCities = (await sql`
+        SELECT city, state, count(*)::int total
+        FROM professionals
+        WHERE category_id = ${first.id} AND is_active = true
+          AND city IS NOT NULL AND city !~ '^[0-9]+$'
+        GROUP BY city, state ORDER BY total DESC LIMIT 12
+      `) as CityRow[];
+
+      otherCategories = (await sql`
+        SELECT name, slug FROM categories WHERE slug <> ${slug} ORDER BY name LIMIT 12
+      `) as { name: string; slug: string }[];
     }
   } catch (err) {
     console.error("[categoria] db failed", err);
@@ -90,9 +118,11 @@ export default async function CategoryPage({
     );
   }
 
+  const faq = categoryFaq(category.name);
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
+      faqNode(faq),
       {
         "@type": "ItemList",
         name: category.name,
@@ -135,11 +165,58 @@ export default async function CategoryPage({
           <p className="text-gray-500 mt-1 text-sm">
             {pros.length} profissionais encontrados
           </p>
+          <p className="text-gray-600 mt-4 text-sm leading-relaxed max-w-2xl">
+            Encontre {category.name.toLowerCase()} avaliado perto de você. Compare a nota e as
+            avaliações no Google de cada profissional e chame direto pelo WhatsApp — de graça e
+            sem cadastro.
+          </p>
         </div>
       </section>
 
       <div className="max-w-5xl mx-auto px-4 py-8">
         <ProfessionalsList professionals={pros} categorySlug={category.slug} />
+
+        {/* Cities for this category */}
+        {topCities.length > 0 && (
+          <section className="mt-10">
+            <h2 className="text-lg font-semibold text-gray-900 mb-4">
+              {category.name} por cidade
+            </h2>
+            <div className="flex flex-wrap gap-2">
+              {topCities.map((c) => (
+                <Link
+                  key={`${c.city}-${c.state}`}
+                  href={`/${category!.slug}/${citySlugify(c.city, c.state)}`}
+                  className="px-3 py-1.5 bg-white border border-gray-100 rounded-full text-xs text-gray-600 hover:border-blue-200 hover:text-blue-600 transition-colors"
+                >
+                  {category!.name} em {c.city}{c.state ? `, ${c.state}` : ""} ({c.total})
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Other categories */}
+        {otherCategories.length > 0 && (
+          <section className="mt-10">
+            <h2 className="text-lg font-semibold text-gray-900 mb-4">Outros serviços</h2>
+            <div className="flex flex-wrap gap-2">
+              {otherCategories.map((c) => (
+                <Link
+                  key={c.slug}
+                  href={`/categoria/${c.slug}`}
+                  className="px-3 py-1.5 bg-white border border-gray-100 rounded-full text-xs text-gray-600 hover:border-blue-200 hover:text-blue-600 transition-colors"
+                >
+                  {c.name}
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
+
+        <div className="mt-10">
+          <FaqSection items={faq} title={`Perguntas frequentes — ${category.name.toLowerCase()}`} />
+        </div>
 
         {/* CTA */}
         <section className="mt-12">
