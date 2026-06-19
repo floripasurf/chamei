@@ -262,7 +262,7 @@ export default async function ProfessionalPage({
           {/* Reviews */}
           <div className="bg-white rounded-xl border border-gray-200 p-6">
             <h2 className="text-lg font-semibold text-gray-900 mb-4">
-              Avaliações ({importedReviews.length})
+              Avaliações
             </h2>
 
             {importedReviews.length > 0 ? (
@@ -285,8 +285,18 @@ export default async function ProfessionalPage({
                   </div>
                 ))}
               </div>
+            ) : pro.google_rating && (pro.google_review_count ?? 0) > 0 ? (
+              <div className="flex items-center gap-3">
+                <span className="text-3xl font-bold text-gray-900">{pro.google_rating}</span>
+                <div>
+                  <StarRating rating={pro.google_rating} />
+                  <p className="text-sm text-gray-500 mt-0.5">
+                    {pro.google_review_count} avaliações no Google
+                  </p>
+                </div>
+              </div>
             ) : (
-              <p className="text-sm text-gray-500">Nenhuma avaliação importada ainda.</p>
+              <p className="text-sm text-gray-500">Sem avaliações ainda.</p>
             )}
           </div>
         </div>
