@@ -1,9 +1,13 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { neon } from "@neondatabase/serverless";
+import { isAuthorizedAdminRequest } from "@/lib/admin-auth";
 
 // IndexNow API — instant indexing for Bing, Yandex, etc.
-// Call this endpoint after importing new professionals
-export async function POST() {
+// Call this endpoint after importing new professionals (admin cookie or x-admin-secret).
+export async function POST(request: NextRequest) {
+  if (!(await isAuthorizedAdminRequest(request))) {
+    return NextResponse.json({ error: "Não autorizado" }, { status: 401 });
+  }
   const sql = neon(process.env.DATABASE_URL!);
 
   // Get recently updated professional URLs

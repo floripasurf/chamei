@@ -49,4 +49,18 @@ export async function isValidAdminValue(value: string | undefined | null): Promi
   }
 }
 
+/**
+ * Authorize a request as admin: valid admin session cookie OR an x-admin-secret
+ * header matching ADMIN_SECRET (for automation/cron that has no cookie).
+ */
+export async function isAuthorizedAdminRequest(request: {
+  cookies: { get: (n: string) => { value: string } | undefined };
+  headers: { get: (n: string) => string | null };
+}): Promise<boolean> {
+  if (await isValidAdminValue(request.cookies.get(ADMIN_COOKIE)?.value)) return true;
+  const secret = request.headers.get("x-admin-secret");
+  const expected = process.env.ADMIN_SECRET;
+  return !!secret && !!expected && safeEqual(secret, expected);
+}
+
 export { ADMIN_COOKIE };

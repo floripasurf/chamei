@@ -16,6 +16,7 @@ type SearchEvent = {
   category_slug?: string;
   source: "category_browse";
   result_count?: number;
+  city?: string; // local demand signal (e.g. category×city pages)
 };
 
 /** Stable first-party visitor id (for honest dedup of contacts/searches). */
