@@ -109,11 +109,30 @@ export default async function AdminPage() {
     view_to_contact: number | null;
   };
 
+  type PositionRow = { position: number; impressions: number; contacts: number; contact_rate: number | null };
+  type DemandSupplyRow = {
+    category_name: string;
+    searches: number;
+    active_pros: number;
+    demand_per_pro: number | null;
+    avg_rating: number | null;
+  };
+  type QualitySummary = {
+    avg_score: number | null;
+    no_phone: number;
+    no_photo: number;
+    no_reviews: number;
+    total: number;
+  };
+
   let contactedPros: ContactedPro[] = [];
   let searchedCategories: SearchedCategory[] = [];
   let unmatchedTerms: UnmatchedTerm[] = [];
   let metrics: Metrics | null = null;
   let funnel: Funnel | null = null;
+  let byPosition: PositionRow[] = [];
+  let demandSupply: DemandSupplyRow[] = [];
+  let qualitySummary: QualitySummary | null = null;
   let eventsReady = true;
 
   try {
@@ -137,8 +156,28 @@ export default async function AdminPage() {
 
     metrics = (await sql`SELECT * FROM event_metrics`)[0] as unknown as Metrics;
     funnel = (await sql`SELECT * FROM funnel_metrics`)[0] as unknown as Funnel;
+
+    byPosition = (await sql`
+      SELECT position, impressions, contacts, contact_rate
+      FROM conversion_by_position LIMIT 10
+    `) as unknown as PositionRow[];
+
+    demandSupply = (await sql`
+      SELECT category_name, searches, active_pros, demand_per_pro, avg_rating
+      FROM demand_supply_map WHERE searches > 0 LIMIT 10
+    `) as unknown as DemandSupplyRow[];
+
+    qualitySummary = (await sql`
+      SELECT
+        ROUND(AVG(quality_score), 1) avg_score,
+        count(*) FILTER (WHERE NOT has_phone) no_phone,
+        count(*) FILTER (WHERE NOT has_photo) no_photo,
+        count(*) FILTER (WHERE NOT has_reviews) no_reviews,
+        count(*) total
+      FROM professional_quality
+    `)[0] as unknown as QualitySummary;
   } catch {
-    // Views from migrations 002–005 not present yet.
+    // Views from migrations 002–006 not present yet.
     eventsReady = false;
   }
 
@@ -251,6 +290,94 @@ export default async function AdminPage() {
                     </div>
                   </div>
                 ))}
+              </div>
+            </div>
+          )}
+
+          {eventsReady && (byPosition.length > 0 || demandSupply.length > 0 || qualitySummary) && (
+            <div className="grid lg:grid-cols-3 gap-6 mb-4">
+              {/* Conversion by position */}
+              <div className="bg-white rounded-xl border border-gray-100 p-5">
+                <h3 className="text-sm font-semibold text-gray-900 mb-1">Conversão por posição</h3>
+                <p className="text-xs text-gray-400 mb-3">Prova do valor do ranking.</p>
+                {byPosition.length === 0 ? (
+                  <p className="text-sm text-gray-400 py-2">Sem dados ainda.</p>
+                ) : (
+                  <div className="space-y-1">
+                    <div className="flex items-center text-[11px] uppercase tracking-wider text-gray-400 pb-1 border-b border-gray-100">
+                      <span className="w-10">Pos</span>
+                      <span className="flex-1 text-right">Impr</span>
+                      <span className="flex-1 text-right">Contatos</span>
+                      <span className="flex-1 text-right">Taxa</span>
+                    </div>
+                    {byPosition.map((r) => (
+                      <div key={r.position} className="flex items-center text-sm py-0.5">
+                        <span className="w-10 text-gray-700">{r.position}º</span>
+                        <span className="flex-1 text-right text-gray-500">{r.impressions}</span>
+                        <span className="flex-1 text-right text-gray-500">{r.contacts}</span>
+                        <span className="flex-1 text-right font-medium text-gray-900">
+                          {r.contact_rate != null ? `${(r.contact_rate * 100).toFixed(1)}%` : "—"}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* Demand × supply */}
+              <div className="bg-white rounded-xl border border-gray-100 p-5">
+                <h3 className="text-sm font-semibold text-gray-900 mb-1">Demanda × oferta</h3>
+                <p className="text-xs text-gray-400 mb-3">Mais buscas por prestador = prioridade.</p>
+                {demandSupply.length === 0 ? (
+                  <p className="text-sm text-gray-400 py-2">Sem buscas categorizadas ainda.</p>
+                ) : (
+                  <div className="space-y-1">
+                    <div className="flex items-center text-[11px] uppercase tracking-wider text-gray-400 pb-1 border-b border-gray-100">
+                      <span className="flex-1">Categoria</span>
+                      <span className="w-14 text-right">Buscas</span>
+                      <span className="w-12 text-right">Prest</span>
+                      <span className="w-14 text-right">B/Prest</span>
+                    </div>
+                    {demandSupply.map((r) => (
+                      <div key={r.category_name} className="flex items-center text-sm py-0.5">
+                        <span className="flex-1 text-gray-700 truncate">{r.category_name}</span>
+                        <span className="w-14 text-right text-gray-500">{r.searches}</span>
+                        <span className="w-12 text-right text-gray-500">{r.active_pros}</span>
+                        <span className="w-14 text-right font-medium text-gray-900">
+                          {r.demand_per_pro ?? "—"}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* Quality */}
+              <div className="bg-white rounded-xl border border-gray-100 p-5">
+                <h3 className="text-sm font-semibold text-gray-900 mb-1">Qualidade dos prestadores</h3>
+                <p className="text-xs text-gray-400 mb-3">Score 0–100 (alimenta confiança/ranking).</p>
+                {qualitySummary && (
+                  <div className="space-y-3">
+                    <div>
+                      <p className="text-3xl font-bold text-gray-900">{qualitySummary.avg_score ?? "—"}</p>
+                      <p className="text-xs text-gray-400">score médio ({qualitySummary.total} prestadores)</p>
+                    </div>
+                    <div className="space-y-1 text-sm">
+                      <div className="flex justify-between">
+                        <span className="text-gray-500">Sem telefone</span>
+                        <span className="font-medium text-gray-900">{qualitySummary.no_phone}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-500">Sem foto</span>
+                        <span className="font-medium text-gray-900">{qualitySummary.no_photo}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-500">Sem avaliações</span>
+                        <span className="font-medium text-gray-900">{qualitySummary.no_reviews}</span>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           )}

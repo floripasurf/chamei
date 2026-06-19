@@ -4,7 +4,6 @@ import { useState, useEffect, useCallback } from "react";
 import { useSearchParams } from "next/navigation";
 import ProfessionalCard from "@/app/components/professional-card";
 import { getVisitorId } from "@/lib/track";
-import ImpressionTracker from "@/app/components/impression-tracker";
 
 interface Pro {
   id: string;
@@ -101,13 +100,9 @@ export default function SearchClient() {
               {results.length} resultado{results.length !== 1 ? "s" : ""} para &quot;{initialQuery || query}&quot;
             </p>
 
-            <ImpressionTracker
-              items={results.map((pro, i) => ({ professional_id: pro.id, position: i + 1 }))}
-              source="search"
-            />
             <div className="grid gap-3 sm:grid-cols-2">
               {results.map((pro, i) => (
-                <ProfessionalCard key={pro.id} pro={pro} position={i + 1} />
+                <ProfessionalCard key={pro.id} pro={pro} position={i + 1} pageType="search" />
               ))}
             </div>
 

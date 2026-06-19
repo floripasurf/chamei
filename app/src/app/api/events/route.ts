@@ -93,22 +93,26 @@ export async function POST(request: NextRequest) {
     }
 
     if (body.type === "impression") {
-      // Batched: all professionals shown in one list render, inserted at once.
+      // Batched (cards that actually entered the viewport). category_id is
+      // resolved server-side from the professional; page_type is per item.
       const items = Array.isArray(body.items) ? body.items.slice(0, 50) : [];
-      const source = typeof body.source === "string" ? body.source.slice(0, 20) : null;
       const ids: string[] = [];
       const positions: number[] = [];
+      const pageTypes: string[] = [];
       for (const it of items) {
         const pid = it && typeof it.professional_id === "string" ? it.professional_id : null;
         if (!pid) continue;
         ids.push(pid);
         positions.push(typeof it.position === "number" ? it.position : 0);
+        pageTypes.push(typeof it.page_type === "string" ? it.page_type.slice(0, 20) : "");
       }
       if (ids.length) {
         await sql`
-          INSERT INTO impression_events (professional_id, position, source, visitor_id, pathname)
-          SELECT pid, pos, ${source}, ${visitorId}, ${pathname}
-          FROM unnest(${ids}::uuid[], ${positions}::int[]) AS t(pid, pos)
+          INSERT INTO impression_events
+            (professional_id, category_id, position, source, page_type, visitor_id, pathname)
+          SELECT t.pid, p.category_id, t.pos, t.pt, t.pt, ${visitorId}, ${pathname}
+          FROM unnest(${ids}::uuid[], ${positions}::int[], ${pageTypes}::text[]) AS t(pid, pos, pt)
+          JOIN professionals p ON p.id = t.pid
         `;
       }
       return NextResponse.json({ ok: true });
