@@ -20,9 +20,11 @@ export async function POST(request: NextRequest) {
   const visitorId = typeof body.visitor_id === "string" ? body.visitor_id.slice(0, 64) : null;
   const pathname = typeof body.pathname === "string" ? body.pathname.slice(0, 200) : null;
 
-  // Flood protection only for billable signals (contact/search). Impressions and
-  // profile views are high-volume legitimate browsing and are exempt.
-  if ((body.type === "contact" || body.type === "search") && (visitorId || ctx.ipHash)) {
+  // Flood protection for ALL event types. The threshold is generous so heavy
+  // real browsing (many impressions) passes, but a bot firing hundreds/min is
+  // throttled — protecting funnel/ranking integrity. Impressions/profile_views
+  // lack ip_hash, so they're counted by visitor_id.
+  if (visitorId || ctx.ipHash) {
     try {
       const r = await sql`
         SELECT
@@ -31,9 +33,13 @@ export async function POST(request: NextRequest) {
                AND (visitor_id = ${visitorId} OR ip_hash = ${ctx.ipHash}))
         + (SELECT count(*) FROM search_events
              WHERE created_at > now() - interval '1 minute'
-               AND (visitor_id = ${visitorId} OR ip_hash = ${ctx.ipHash})) AS n
+               AND (visitor_id = ${visitorId} OR ip_hash = ${ctx.ipHash}))
+        + (SELECT count(*) FROM impression_events
+             WHERE created_at > now() - interval '1 minute' AND visitor_id = ${visitorId})
+        + (SELECT count(*) FROM profile_view_events
+             WHERE created_at > now() - interval '1 minute' AND visitor_id = ${visitorId}) AS n
       `;
-      if (Number(r[0]?.n ?? 0) >= 30) {
+      if (Number(r[0]?.n ?? 0) >= 250) {
         return NextResponse.json({ ok: true, throttled: true });
       }
     } catch {
@@ -108,12 +114,20 @@ export async function POST(request: NextRequest) {
         pageTypes.push(typeof it.page_type === "string" ? it.page_type.slice(0, 20) : "");
       }
       if (ids.length) {
+        // Dedup: don't re-record the same professional+page_type for this visitor
+        // within 30min (a refresh/scroll-back shouldn't inflate impressions).
         await sql`
           INSERT INTO impression_events
             (professional_id, category_id, position, source, page_type, visitor_id, pathname)
           SELECT t.pid, p.category_id, t.pos, t.pt, t.pt, ${visitorId}, ${pathname}
           FROM unnest(${ids}::uuid[], ${positions}::int[], ${pageTypes}::text[]) AS t(pid, pos, pt)
           JOIN professionals p ON p.id = t.pid
+          WHERE ${visitorId}::text IS NULL OR NOT EXISTS (
+            SELECT 1 FROM impression_events ie
+            WHERE ie.professional_id = t.pid AND ie.page_type = t.pt
+              AND ie.visitor_id = ${visitorId}
+              AND ie.created_at > now() - interval '30 minutes'
+          )
         `;
       }
       return NextResponse.json({ ok: true });

@@ -5,8 +5,9 @@ export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const lat = parseFloat(searchParams.get("lat") || "");
   const lng = parseFloat(searchParams.get("lng") || "");
-  const radius = parseFloat(searchParams.get("radius") || "15"); // km
-  const limit = parseInt(searchParams.get("limit") || "20");
+  // Cap radius/limit so a request can't force an unbounded heavy query.
+  const radius = Math.min(Math.max(parseFloat(searchParams.get("radius") || "15") || 15, 1), 50); // km
+  const limit = Math.min(Math.max(parseInt(searchParams.get("limit") || "20") || 20, 1), 50);
 
   if (isNaN(lat) || isNaN(lng)) {
     return NextResponse.json({ error: "lat and lng are required" }, { status: 400 });
