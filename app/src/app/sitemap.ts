@@ -4,7 +4,11 @@ import { neon } from "@neondatabase/serverless";
 type Row = Record<string, unknown>;
 
 const BASE = "https://chamei.app";
-const CHUNK = 10000; // professionals per sitemap file (well under the 50k limit)
+// Sitemaps allow up to 50k URLs. We currently have ~13k professionals + ~2.5k
+// category×city pages + categories + blog, comfortably under the limit, so a
+// single sitemap is the reliable choice. When professionals approach ~45k
+// (scraper growth), split into /sitemap/[id].xml via generateSitemaps.
+const PRO_LIMIT = 45000;
 
 // Refresh daily so cities the scraper adds show up without a redeploy.
 export const revalidate = 86400;
@@ -22,17 +26,6 @@ async function safeQuery<T = Row>(
   }
 }
 
-// id 0 holds pages/categories/city-combos/blog; ids 1..N hold professional chunks.
-export async function generateSitemaps() {
-  const sql = neon(process.env.DATABASE_URL!);
-  const rows = await safeQuery<{ n: number }>(
-    () => sql`SELECT count(*)::int n FROM professionals WHERE is_active = true`,
-    "count"
-  );
-  const proChunks = Math.ceil((rows[0]?.n ?? 0) / CHUNK);
-  return Array.from({ length: proChunks + 1 }, (_, i) => ({ id: i }));
-}
-
 function citySlugify(city: string, state: string | null) {
   const slug = city
     .toLowerCase()
@@ -44,37 +37,19 @@ function citySlugify(city: string, state: string | null) {
   return state ? `${slug}-${state.toLowerCase()}` : slug;
 }
 
-export default async function sitemap({
-  id,
-}: {
-  id: number;
-}): Promise<MetadataRoute.Sitemap> {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const sql = neon(process.env.DATABASE_URL!);
 
-  // Professional chunks.
-  if (id > 0) {
-    const offset = (id - 1) * CHUNK;
-    const professionals = await safeQuery<{ slug: string; updated_at: string }>(
-      () => sql`
-        SELECT slug, updated_at FROM professionals
-        WHERE is_active = true
-        ORDER BY updated_at DESC
-        LIMIT ${CHUNK} OFFSET ${offset}
-      `,
-      `professionals[${id}]`
-    );
-    return professionals.map((pro) => ({
-      url: `${BASE}/profissional/${pro.slug}`,
-      lastModified: new Date(pro.updated_at),
-      changeFrequency: "weekly" as const,
-      priority: 0.6,
-    }));
-  }
-
-  // id 0: everything else.
   const categories = await safeQuery<{ slug: string }>(
     () => sql`SELECT slug FROM categories ORDER BY name`,
     "categories"
+  );
+  const professionals = await safeQuery<{ slug: string; updated_at: string }>(
+    () => sql`
+      SELECT slug, updated_at FROM professionals
+      WHERE is_active = true ORDER BY updated_at DESC LIMIT ${PRO_LIMIT}
+    `,
+    "professionals"
   );
   const blogPosts = await safeQuery<{ slug: string; updated_at: string }>(
     () => sql`SELECT slug, updated_at FROM blog_posts WHERE published = true ORDER BY published_at DESC`,
@@ -121,6 +96,13 @@ export default async function sitemap({
     })
     .filter(Boolean) as MetadataRoute.Sitemap;
 
+  const professionalPages: MetadataRoute.Sitemap = professionals.map((pro) => ({
+    url: `${BASE}/profissional/${pro.slug}`,
+    lastModified: new Date(pro.updated_at),
+    changeFrequency: "weekly" as const,
+    priority: 0.6,
+  }));
+
   const blogPages: MetadataRoute.Sitemap = blogPosts.map((post) => ({
     url: `${BASE}/blog/${post.slug}`,
     lastModified: new Date(post.updated_at),
@@ -128,5 +110,5 @@ export default async function sitemap({
     priority: 0.6,
   }));
 
-  return [...staticPages, ...categoryPages, ...cityCategoryPages, ...blogPages];
+  return [...staticPages, ...categoryPages, ...cityCategoryPages, ...professionalPages, ...blogPages];
 }
