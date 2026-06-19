@@ -73,6 +73,7 @@ export async function POST(request: NextRequest) {
         typeof body.category_slug === "string" ? body.category_slug : null;
       const resultCount =
         typeof body.result_count === "number" ? body.result_count : null;
+      const city = typeof body.city === "string" ? body.city.slice(0, 100) : null;
 
       const matched = categorySlug
         ? await sql`SELECT id, slug FROM categories WHERE slug = ${categorySlug} LIMIT 1`
@@ -83,10 +84,10 @@ export async function POST(request: NextRequest) {
       await sql`
         INSERT INTO search_events
           (query, normalized_query, category_id, category_slug, source, result_count,
-           visitor_id, pathname, ua_hash, ip_hash)
+           city, visitor_id, pathname, ua_hash, ip_hash)
         VALUES
           (NULL, NULL, ${categoryId}, ${resolvedSlug}, 'category_browse', ${resultCount},
-           ${visitorId}, ${pathname}, ${ctx.uaHash}, ${ctx.ipHash})
+           ${city}, ${visitorId}, ${pathname}, ${ctx.uaHash}, ${ctx.ipHash})
       `;
 
       return NextResponse.json({ ok: true });

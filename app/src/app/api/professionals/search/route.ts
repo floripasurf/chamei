@@ -55,7 +55,8 @@ export async function GET(request: NextRequest) {
   const city = searchParams.get("city") || "";
   const lat = parseFloat(searchParams.get("lat") || "");
   const lng = parseFloat(searchParams.get("lng") || "");
-  const limit = parseInt(searchParams.get("limit") || "30");
+  // Cap the limit so a request can't force an unbounded heavy query.
+  const limit = Math.min(Math.max(parseInt(searchParams.get("limit") || "30") || 30, 1), 50);
 
   const sql = neon(process.env.DATABASE_URL!);
 

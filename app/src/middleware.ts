@@ -14,5 +14,7 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/api/leads/:path+"],
+  // Admin-only mutation endpoints. Public submit endpoints are POST /api/leads
+  // and POST /api/claim (no sub-path) and are intentionally NOT matched.
+  matcher: ["/api/leads/:path+", "/api/claim/:path+"],
 };

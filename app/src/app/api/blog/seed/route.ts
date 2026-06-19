@@ -1,5 +1,6 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { neon } from "@neondatabase/serverless";
+import { isAuthorizedAdminRequest } from "@/lib/admin-auth";
 
 const articles = [
   {
@@ -173,7 +174,10 @@ const articles = [
   },
 ];
 
-export async function GET() {
+export async function GET(request: NextRequest) {
+  if (!(await isAuthorizedAdminRequest(request))) {
+    return NextResponse.json({ error: "Não autorizado" }, { status: 401 });
+  }
   try {
     const sql = neon(process.env.DATABASE_URL!);
 

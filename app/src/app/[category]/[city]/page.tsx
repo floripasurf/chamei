@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getDb } from "@/lib/db";
 import { Professional } from "@/lib/types";
 import ProfessionalCard from "@/app/components/professional-card";
+import CityBrowseTracker from "./city-browse-tracker";
 import FaqSection from "@/app/components/faq-section";
 import { categoryCityFaq, faqNode } from "@/lib/seo-content";
 import Link from "next/link";
@@ -191,6 +192,7 @@ export default async function CityCategoryPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <CityBrowseTracker categorySlug={category} city={cityName} resultCount={pros.length} />
       <div>
         <section className="bg-gradient-to-b from-white to-gray-50 border-b border-gray-100">
           <div className="max-w-5xl mx-auto px-4 py-10">
