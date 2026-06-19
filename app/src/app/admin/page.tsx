@@ -101,10 +101,19 @@ export default async function AdminPage() {
     contact_rate: number | null;
   };
 
+  type Funnel = {
+    impressions: number;
+    profile_views: number;
+    contacts: number;
+    impression_to_view: number | null;
+    view_to_contact: number | null;
+  };
+
   let contactedPros: ContactedPro[] = [];
   let searchedCategories: SearchedCategory[] = [];
   let unmatchedTerms: UnmatchedTerm[] = [];
   let metrics: Metrics | null = null;
+  let funnel: Funnel | null = null;
   let eventsReady = true;
 
   try {
@@ -127,8 +136,9 @@ export default async function AdminPage() {
     `) as unknown as UnmatchedTerm[];
 
     metrics = (await sql`SELECT * FROM event_metrics`)[0] as unknown as Metrics;
+    funnel = (await sql`SELECT * FROM funnel_metrics`)[0] as unknown as Funnel;
   } catch {
-    // Views from migrations 002/003/004 not present yet.
+    // Views from migrations 002–005 not present yet.
     eventsReady = false;
   }
 
@@ -214,6 +224,34 @@ export default async function AdminPage() {
                   <p className="text-xl font-bold text-gray-900 mt-0.5">{String(m.value)}</p>
                 </div>
               ))}
+            </div>
+          )}
+
+          {eventsReady && funnel && (
+            <div className="bg-white rounded-xl border border-gray-100 p-4 mb-4">
+              <p className="text-xs font-semibold text-gray-500 mb-3">Funil de conversão</p>
+              <div className="flex items-center gap-2 text-center">
+                {[
+                  { label: "Impressões", value: funnel.impressions },
+                  { label: "Visitas ao perfil", value: funnel.profile_views, rate: funnel.impression_to_view },
+                  { label: "Contatos", value: funnel.contacts, rate: funnel.view_to_contact },
+                ].map((s, i) => (
+                  <div key={s.label} className="flex items-center gap-2 flex-1">
+                    {i > 0 && (
+                      <div className="text-[11px] text-gray-400 whitespace-nowrap">
+                        →{" "}
+                        {s.rate != null
+                          ? `${(s.rate * 100).toFixed(1)}%`
+                          : "—"}
+                      </div>
+                    )}
+                    <div className="flex-1 bg-gray-50 rounded-lg py-2">
+                      <p className="text-lg font-bold text-gray-900">{String(s.value)}</p>
+                      <p className="text-[11px] text-gray-400">{s.label}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           )}
 
