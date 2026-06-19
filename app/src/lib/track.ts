@@ -32,23 +32,18 @@ function visitorId(): string {
   }
 }
 
-export function trackEvent(event: ContactEvent | SearchEvent): void {
+function send(payload: Record<string, unknown>): void {
   if (typeof window === "undefined") return;
-
   try {
-    const payload = {
-      ...event,
+    const body = JSON.stringify({
+      ...payload,
       visitor_id: visitorId(),
       pathname: window.location.pathname,
-    };
-    const body = JSON.stringify(payload);
-
+    });
     if (navigator.sendBeacon) {
-      const blob = new Blob([body], { type: "application/json" });
-      navigator.sendBeacon("/api/events", blob);
+      navigator.sendBeacon("/api/events", new Blob([body], { type: "application/json" }));
       return;
     }
-
     void fetch("/api/events", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -58,6 +53,24 @@ export function trackEvent(event: ContactEvent | SearchEvent): void {
   } catch {
     // Never let analytics break the user flow.
   }
+}
+
+export function trackEvent(event: ContactEvent | SearchEvent): void {
+  send(event);
+}
+
+/** Batched impression: all professionals shown in a list, in one request. */
+export function trackImpressions(
+  items: { professional_id: string; position: number }[],
+  source: "search" | "category" | "city" | "nearby" | "home"
+): void {
+  if (!items.length) return;
+  send({ type: "impression", source, items: items.slice(0, 50) });
+}
+
+/** A visit to a professional's profile page. */
+export function trackProfileView(professionalId: string): void {
+  send({ type: "profile_view", professional_id: professionalId });
 }
 
 /** Read the visitor id for callers that pass it through other channels (e.g. the search API). */

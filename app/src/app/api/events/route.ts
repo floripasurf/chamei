@@ -20,9 +20,9 @@ export async function POST(request: NextRequest) {
   const visitorId = typeof body.visitor_id === "string" ? body.visitor_id.slice(0, 64) : null;
   const pathname = typeof body.pathname === "string" ? body.pathname.slice(0, 200) : null;
 
-  // Flood protection: cap events from the same visitor/IP across both tables in
-  // a short window so a bot can't inflate clicks/searches for billing/ranking.
-  if (visitorId || ctx.ipHash) {
+  // Flood protection only for billable signals (contact/search). Impressions and
+  // profile views are high-volume legitimate browsing and are exempt.
+  if ((body.type === "contact" || body.type === "search") && (visitorId || ctx.ipHash)) {
     try {
       const r = await sql`
         SELECT
@@ -89,6 +89,40 @@ export async function POST(request: NextRequest) {
            ${visitorId}, ${pathname}, ${ctx.uaHash}, ${ctx.ipHash})
       `;
 
+      return NextResponse.json({ ok: true });
+    }
+
+    if (body.type === "impression") {
+      // Batched: all professionals shown in one list render, inserted at once.
+      const items = Array.isArray(body.items) ? body.items.slice(0, 50) : [];
+      const source = typeof body.source === "string" ? body.source.slice(0, 20) : null;
+      const ids: string[] = [];
+      const positions: number[] = [];
+      for (const it of items) {
+        const pid = it && typeof it.professional_id === "string" ? it.professional_id : null;
+        if (!pid) continue;
+        ids.push(pid);
+        positions.push(typeof it.position === "number" ? it.position : 0);
+      }
+      if (ids.length) {
+        await sql`
+          INSERT INTO impression_events (professional_id, position, source, visitor_id, pathname)
+          SELECT pid, pos, ${source}, ${visitorId}, ${pathname}
+          FROM unnest(${ids}::uuid[], ${positions}::int[]) AS t(pid, pos)
+        `;
+      }
+      return NextResponse.json({ ok: true });
+    }
+
+    if (body.type === "profile_view") {
+      const professionalId = String(body.professional_id || "");
+      if (!professionalId) {
+        return NextResponse.json({ error: "professional_id required" }, { status: 400 });
+      }
+      await sql`
+        INSERT INTO profile_view_events (professional_id, visitor_id, pathname, referrer)
+        VALUES (${professionalId}, ${visitorId}, ${pathname}, ${ctx.referrer})
+      `;
       return NextResponse.json({ ok: true });
     }
 
