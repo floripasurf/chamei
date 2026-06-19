@@ -69,17 +69,18 @@ export default async function AdminPage() {
 
   const pendingClaims = claims.filter((c: any) => c.status === "pending").length;
 
-  // Monetization insights (event tracking — migration 002).
-  // Guarded so the panel still renders if the migration hasn't run yet.
+  // Monetization insights (event tracking — migrations 002/003/004).
+  // Guarded so the panel still renders if the migrations haven't run yet.
   type ContactedPro = {
     professional_name: string;
     professional_slug: string;
     category_name: string | null;
     city: string | null;
-    total_contacts: number;
-    whatsapp_contacts: number;
-    phone_contacts: number;
-    contacts_30d: number;
+    raw_clicks: number;
+    deduped_contacts: number;
+    deduped_30d: number;
+    unique_visitors: number;
+    avg_position: number | null;
     last_contact_at: string | null;
   };
   type SearchedCategory = {
@@ -90,19 +91,28 @@ export default async function AdminPage() {
     searches_30d: number;
   };
   type UnmatchedTerm = { normalized_query: string; searches: number };
+  type Metrics = {
+    raw_clicks: number;
+    deduped_contacts: number;
+    deduped_30d: number;
+    unique_contact_visitors: number;
+    searches: number;
+    unique_search_visitors: number;
+    contact_rate: number | null;
+  };
 
   let contactedPros: ContactedPro[] = [];
   let searchedCategories: SearchedCategory[] = [];
   let unmatchedTerms: UnmatchedTerm[] = [];
-  let totalContacts = 0;
-  let totalSearches = 0;
+  let metrics: Metrics | null = null;
   let eventsReady = true;
 
   try {
     contactedPros = (await sql`
       SELECT professional_name, professional_slug, category_name, city,
-             total_contacts, whatsapp_contacts, phone_contacts, contacts_30d, last_contact_at
-      FROM professional_contact_stats
+             raw_clicks, deduped_contacts, deduped_30d, unique_visitors,
+             avg_position, last_contact_at
+      FROM professional_lead_stats
       LIMIT 20
     `) as unknown as ContactedPro[];
 
@@ -116,15 +126,9 @@ export default async function AdminPage() {
       SELECT normalized_query, searches FROM top_unmatched_search_terms LIMIT 10
     `) as unknown as UnmatchedTerm[];
 
-    const totals = await sql`
-      SELECT
-        (SELECT count(*) FROM contact_events) as contacts,
-        (SELECT count(*) FROM search_events) as searches
-    `;
-    totalContacts = Number(totals[0]?.contacts ?? 0);
-    totalSearches = Number(totals[0]?.searches ?? 0);
+    metrics = (await sql`SELECT * FROM event_metrics`)[0] as unknown as Metrics;
   } catch {
-    // Tables/views from migration 002 not present yet.
+    // Views from migrations 002/003/004 not present yet.
     eventsReady = false;
   }
 
@@ -194,21 +198,30 @@ export default async function AdminPage() {
         <div className="mb-8">
           <div className="flex items-center justify-between mb-3">
             <h2 className="text-base font-bold text-gray-900">📊 Insights de monetização</h2>
-            <div className="flex gap-2 text-xs">
-              <span className="px-2 py-0.5 bg-green-100 text-green-700 rounded-full">
-                {totalContacts} mensagens
-              </span>
-              <span className="px-2 py-0.5 bg-blue-100 text-blue-700 rounded-full">
-                {totalSearches} buscas
-              </span>
-            </div>
           </div>
+
+          {eventsReady && metrics && (
+            <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 mb-4">
+              {[
+                { label: "Cliques (raw)", value: metrics.raw_clicks, hint: "todos os cliques" },
+                { label: "Contatos (dedup)", value: metrics.deduped_contacts, hint: "1/prestador/canal/visitante por 12h" },
+                { label: "Leads 30d", value: metrics.deduped_30d, hint: "contatos deduplicados, 30 dias" },
+                { label: "Visitantes únicos", value: metrics.unique_contact_visitors, hint: "que contataram" },
+                { label: "Taxa de contato", value: metrics.contact_rate ?? "—", hint: "contatos ÷ visitantes que buscaram" },
+              ].map((m) => (
+                <div key={m.label} className="bg-white rounded-xl border border-gray-100 p-3" title={m.hint}>
+                  <p className="text-[11px] text-gray-400">{m.label}</p>
+                  <p className="text-xl font-bold text-gray-900 mt-0.5">{String(m.value)}</p>
+                </div>
+              ))}
+            </div>
+          )}
 
           {!eventsReady ? (
             <div className="bg-amber-50 border border-amber-200 rounded-xl p-5 text-sm text-amber-800">
-              O rastreamento de eventos ainda não foi ativado. Aplique a migration{" "}
-              <code className="font-mono">002_event_tracking.sql</code> no banco para começar a
-              coletar mensagens e buscas.
+              O rastreamento de eventos ainda não foi ativado. Aplique as migrations{" "}
+              <code className="font-mono">002–004</code> no banco para coletar e medir
+              mensagens e buscas.
             </div>
           ) : (
             <div className="grid lg:grid-cols-2 gap-6">
@@ -218,7 +231,8 @@ export default async function AdminPage() {
                   Prestadores que mais receberam mensagens
                 </h3>
                 <p className="text-xs text-gray-400 mb-3">
-                  Quem recebe contato é candidato a plano pago / destaque.
+                  Leads deduplicados + posição média no ranking — a prova de venda
+                  (&ldquo;apareceu em Nº, recebeu X leads&rdquo;).
                 </p>
                 {contactedPros.length === 0 ? (
                   <p className="text-sm text-gray-400 py-4">Nenhuma mensagem registrada ainda.</p>
@@ -226,8 +240,9 @@ export default async function AdminPage() {
                   <div className="space-y-1">
                     <div className="flex items-center text-[11px] uppercase tracking-wider text-gray-400 pb-1 border-b border-gray-100">
                       <span className="flex-1">Prestador</span>
-                      <span className="w-12 text-right">30d</span>
-                      <span className="w-14 text-right">Total</span>
+                      <span className="w-12 text-right" title="Posição média no ranking ao receber contato">Pos</span>
+                      <span className="w-12 text-right" title="Visitantes únicos">Únic</span>
+                      <span className="w-14 text-right" title="Contatos deduplicados (leads)">Leads</span>
                     </div>
                     {contactedPros.map((p) => (
                       <Link
@@ -241,9 +256,12 @@ export default async function AdminPage() {
                             {p.category_name || "—"}{p.city ? ` · ${p.city}` : ""}
                           </span>
                         </span>
-                        <span className="w-12 text-right text-sm text-gray-500">{p.contacts_30d}</span>
+                        <span className="w-12 text-right text-sm text-gray-500">
+                          {p.avg_position != null ? `${p.avg_position}º` : "—"}
+                        </span>
+                        <span className="w-12 text-right text-sm text-gray-500">{p.unique_visitors}</span>
                         <span className="w-14 text-right text-sm font-semibold text-gray-900">
-                          {p.total_contacts}
+                          {p.deduped_contacts}
                         </span>
                       </Link>
                     ))}

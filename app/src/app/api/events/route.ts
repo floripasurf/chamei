@@ -20,6 +20,27 @@ export async function POST(request: NextRequest) {
   const visitorId = typeof body.visitor_id === "string" ? body.visitor_id.slice(0, 64) : null;
   const pathname = typeof body.pathname === "string" ? body.pathname.slice(0, 200) : null;
 
+  // Flood protection: cap events from the same visitor/IP across both tables in
+  // a short window so a bot can't inflate clicks/searches for billing/ranking.
+  if (visitorId || ctx.ipHash) {
+    try {
+      const r = await sql`
+        SELECT
+          (SELECT count(*) FROM contact_events
+             WHERE created_at > now() - interval '1 minute'
+               AND (visitor_id = ${visitorId} OR ip_hash = ${ctx.ipHash}))
+        + (SELECT count(*) FROM search_events
+             WHERE created_at > now() - interval '1 minute'
+               AND (visitor_id = ${visitorId} OR ip_hash = ${ctx.ipHash})) AS n
+      `;
+      if (Number(r[0]?.n ?? 0) >= 30) {
+        return NextResponse.json({ ok: true, throttled: true });
+      }
+    } catch {
+      // never block the user on the rate-limit check itself
+    }
+  }
+
   try {
     if (body.type === "contact") {
       const professionalId = String(body.professional_id || "");

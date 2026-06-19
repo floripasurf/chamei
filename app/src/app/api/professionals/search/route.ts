@@ -23,12 +23,24 @@ async function logSearch(request: NextRequest, q: string, results: SearchRow[]) 
     try {
       pathname = ctx.referrer ? new URL(ctx.referrer).pathname : null;
     } catch {}
+    const normalized = q.trim().toLowerCase().slice(0, 200);
+    // Dedup: skip an identical search from the same visitor within 60s (re-renders,
+    // double submits) so search counts stay honest.
+    if (vid) {
+      const dup = await sql`
+        SELECT 1 FROM search_events
+        WHERE visitor_id = ${vid} AND normalized_query = ${normalized}
+          AND created_at > now() - interval '60 seconds'
+        LIMIT 1
+      `;
+      if (dup.length) return;
+    }
     await sql`
       INSERT INTO search_events
         (query, normalized_query, category_id, category_slug, source, result_count,
          visitor_id, pathname, ua_hash, ip_hash)
       VALUES
-        (${q.slice(0, 200)}, ${q.trim().toLowerCase().slice(0, 200)},
+        (${q.slice(0, 200)}, ${normalized},
          ${dominant?.id ?? null}, ${dominant?.slug ?? null}, 'search', ${results.length},
          ${vid}, ${pathname}, ${ctx.uaHash}, ${ctx.ipHash})
     `;
