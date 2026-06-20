@@ -6,6 +6,9 @@ import ProfessionalsList from "./professionals-list";
 import FaqSection from "@/app/components/faq-section";
 import { categoryFaq, faqNode } from "@/lib/seo-content";
 
+// ISR: cacheia a página por 1h em vez de bater no banco a cada visita.
+export const revalidate = 3600;
+
 function citySlugify(city: string, state: string | null) {
   const slug = city
     .toLowerCase()

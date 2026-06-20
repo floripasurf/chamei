@@ -5,6 +5,9 @@ import { Professional } from "@/lib/types";
 import ProfessionalCard from "../components/professional-card";
 import NearbyProfessionals from "../components/nearby-professionals";
 
+// ISR: landing estática de SEO; cacheia por 24h.
+export const revalidate = 86400;
+
 export const metadata: Metadata = {
   title: "Eletricista em São Paulo | Chamei - Profissionais Avaliados",
   description:

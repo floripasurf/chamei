@@ -2,8 +2,9 @@ import Link from "next/link";
 import { getDb } from "@/lib/db";
 import CityProfessionals from "./components/city-professionals";
 
-// Force dynamic rendering so the count is always fresh
-export const dynamic = "force-dynamic";
+// ISR: regenera no máximo 1x/hora (count não precisa ser real-time).
+// Evita bater no banco a cada visita — preserva a cota de compute do Neon.
+export const revalidate = 3600;
 
 const CATEGORIES = {
   "Reformas e Reparos": [
