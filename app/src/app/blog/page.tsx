@@ -33,7 +33,7 @@ const categoryLabels: Record<string, string> = {
   pedreiro: "Pedreiro",
 };
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600;
 
 export default async function BlogPage() {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

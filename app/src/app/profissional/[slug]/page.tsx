@@ -8,6 +8,9 @@ import TrackedPhoneLink from "./tracked-phone-link";
 import ProfileViewTracker from "./profile-view-tracker";
 import MobileContactBar from "./mobile-contact-bar";
 
+// ISR: perfis mudam pouco; cacheia por 24h e regenera sob demanda.
+export const revalidate = 86400;
+
 export async function generateMetadata({
   params,
 }: {

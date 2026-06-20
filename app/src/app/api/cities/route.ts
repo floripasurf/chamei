@@ -10,5 +10,9 @@ export async function GET() {
     GROUP BY city, state
     ORDER BY total DESC
   `;
-  return NextResponse.json({ cities });
+  // Cache na CDN por 1h (lista muda devagar) sem prerender no build.
+  return NextResponse.json(
+    { cities },
+    { headers: { "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400" } }
+  );
 }
