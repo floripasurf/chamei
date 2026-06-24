@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "seed:places": "node scripts/seed-places.mjs"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.0.2",
