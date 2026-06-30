@@ -130,3 +130,26 @@ curl -s "http://localhost:3000/sitemap-citycat.xml" | grep -c "<loc>"  →  9087
 ```
 
 9,087 URLs — matches the expected ~9,035 (variance from legitimate slug dedup after fixing both bugs).
+
+---
+
+## Source-level null/empty city fix (2026-06-30): fix root cause in getCitiesForCategory
+
+### Change
+
+In `src/lib/seo/city-stats.ts`, added `AND p.city IS NOT NULL AND p.city <> ''` to the WHERE clause of `getCitiesForCategory`:
+
+```sql
+WHERE p.is_active AND c.slug = ${categorySlug}
+  AND p.city IS NOT NULL AND p.city <> ''
+```
+
+Null/empty city rows are now excluded at the DB query level, eliminating the need for downstream guards.
+
+### Results
+
+```
+npm run build  →  ✓ Compiled successfully (no new errors)
+npm run lint   →  8 pre-existing errors only, no new errors (no new errors in city-stats.ts)
+curl -s "http://localhost:3099/sitemap-citycat.xml" | grep -c "<loc>"  →  9091
+```

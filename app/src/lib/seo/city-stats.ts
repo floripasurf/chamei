@@ -47,6 +47,7 @@ export async function getCitiesForCategory(
     SELECT lower(p.city) AS city_key, p.city, coalesce(p.state,'') AS state, count(*)::int AS count
     FROM professionals p JOIN categories c ON c.id = p.category_id
     WHERE p.is_active AND c.slug = ${categorySlug}
+      AND p.city IS NOT NULL AND p.city <> ''
     GROUP BY lower(p.city), p.city, p.state
     HAVING count(*) >= 2
     ORDER BY count(*) DESC
