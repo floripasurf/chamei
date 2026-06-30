@@ -43,3 +43,25 @@ export function parseCitySlug(citySlug: string): { cityName: string; stateUf: st
 export function catLabelFromSlug(slug: string): string {
   return formatCityName(slug);
 }
+
+/**
+ * Build the URL slug segment for a city+state pair.
+ * This is the canonical slug format used by the /{category}/{city} route.
+ * e.g. ("São Paulo", "SP") → "sao-paulo-sp"
+ *      ("Florianópolis", "SC") → "florianopolis-sc"
+ *      ("Brasília", null)  → "brasilia"
+ */
+export function citySlug(city: string, state: string | null | undefined): string {
+  const slug = city
+    .toLowerCase()
+    .replace(/\s+/g, "-")
+    .replace(/[àáâãä]/g, "a")
+    .replace(/[èéêë]/g, "e")
+    .replace(/[ìíîï]/g, "i")
+    .replace(/[òóôõö]/g, "o")
+    .replace(/[ùúûü]/g, "u")
+    .replace(/[ç]/g, "c")
+    .replace(/[^a-z0-9-]/g, "");
+  const st = state ? state.trim() : "";
+  return st ? `${slug}-${st.toLowerCase()}` : slug;
+}
