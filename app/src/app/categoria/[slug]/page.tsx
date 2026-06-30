@@ -5,20 +5,12 @@ import { Professional } from "@/lib/types";
 import ProfessionalsList from "./professionals-list";
 import FaqSection from "@/app/components/faq-section";
 import { categoryFaq, faqNode } from "@/lib/seo-content";
+import CityLinks, { type CityLinkItem } from "@/app/components/internal-links";
+import { getCitiesForCategory } from "@/lib/seo/city-stats";
+import { citySlug } from "@/lib/seo/slug-utils";
 
 // ISR: cacheia a página por 1h em vez de bater no banco a cada visita.
 export const revalidate = 3600;
-
-function citySlugify(city: string, state: string | null) {
-  const slug = city
-    .toLowerCase()
-    .replace(/\s+/g, "-")
-    .replace(/[àáâãä]/g, "a").replace(/[èéêë]/g, "e")
-    .replace(/[ìíîï]/g, "i").replace(/[òóôõö]/g, "o")
-    .replace(/[ùúûü]/g, "u").replace(/[ç]/g, "c")
-    .replace(/[^a-z0-9-]/g, "");
-  return state ? `${slug}-${state.toLowerCase()}` : slug;
-}
 
 export async function generateMetadata({
   params,
@@ -63,10 +55,9 @@ export default async function CategoryPage({
   };
 
   type Cat = { id: string; name: string; slug: string };
-  type CityRow = { city: string; state: string | null; total: number };
   let category: Cat | null = null;
   let pros: ProWithReview[] = [];
-  let topCities: CityRow[] = [];
+  let cityLinks: CityLinkItem[] = [];
   let otherCategories: { name: string; slug: string }[] = [];
   let dbDown = false;
   try {
@@ -88,13 +79,14 @@ export default async function CategoryPage({
         LIMIT 100
       `) as ProWithReview[];
 
-      topCities = (await sql`
-        SELECT city, state, count(*)::int total
-        FROM professionals
-        WHERE category_id = ${first.id} AND is_active = true
-          AND city IS NOT NULL AND city !~ '^[0-9]+$'
-        GROUP BY city, state ORDER BY total DESC LIMIT 12
-      `) as CityRow[];
+      // Fetch all cities for this category (≥2 active pros) — used for internal linking.
+      const rawCities = await getCitiesForCategory(slug);
+      cityLinks = rawCities.slice(0, 60).map((c) => ({
+        citySlug: citySlug(c.city, c.state),
+        city: c.city,
+        state: c.state,
+        count: c.count,
+      }));
 
       otherCategories = (await sql`
         SELECT name, slug FROM categories WHERE slug <> ${slug} ORDER BY name LIMIT 12
@@ -179,25 +171,12 @@ export default async function CategoryPage({
       <div className="max-w-5xl mx-auto px-4 py-8">
         <ProfessionalsList professionals={pros} categorySlug={category.slug} />
 
-        {/* Cities for this category */}
-        {topCities.length > 0 && (
-          <section className="mt-10">
-            <h2 className="text-lg font-semibold text-gray-900 mb-4">
-              {category.name} por cidade
-            </h2>
-            <div className="flex flex-wrap gap-2">
-              {topCities.map((c) => (
-                <Link
-                  key={`${c.city}-${c.state}`}
-                  href={`/${category!.slug}/${citySlugify(c.city, c.state)}`}
-                  className="px-3 py-1.5 bg-white border border-gray-100 rounded-full text-xs text-gray-600 hover:border-blue-200 hover:text-blue-600 transition-colors"
-                >
-                  {category!.name} em {c.city}{c.state ? `, ${c.state}` : ""} ({c.total})
-                </Link>
-              ))}
-            </div>
-          </section>
-        )}
+        {/* Internal links: category → all cities (creates crawl paths to money-pages) */}
+        <CityLinks
+          categorySlug={category.slug}
+          categoryName={category.name}
+          cities={cityLinks}
+        />
 
         {/* Other categories */}
         {otherCategories.length > 0 && (

@@ -7,6 +7,7 @@ import ShareProfileButton from "./share-profile-button";
 import TrackedPhoneLink from "./tracked-phone-link";
 import ProfileViewTracker from "./profile-view-tracker";
 import MobileContactBar from "./mobile-contact-bar";
+import { citySlug } from "@/lib/seo/slug-utils";
 
 // ISR: perfis mudam pouco; cacheia por 24h e regenera sob demanda.
 export const revalidate = 86400;
@@ -306,6 +307,18 @@ export default async function ProfessionalPage({
 
         {/* Sidebar — Contact CTA */}
         <div>
+          {/* Contextual internal link: profile → category×city money-page */}
+          {pro.category_slug && pro.city && (
+            <div className="mb-4 p-4 bg-white border border-gray-100 rounded-xl text-sm">
+              <Link
+                href={`/${pro.category_slug}/${citySlug(pro.city, pro.state ?? null)}`}
+                className="text-blue-600 hover:underline font-medium"
+              >
+                Veja todos os {pro.category_name?.toLowerCase()} em {pro.city}
+                {pro.state ? `, ${pro.state}` : ""}
+              </Link>
+            </div>
+          )}
           <ContactSidebar
             phone={pro.phone}
             professionalId={pro.id}

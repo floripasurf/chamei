@@ -6,26 +6,11 @@ import CityBrowseTracker from "./city-browse-tracker";
 import FaqSection from "@/app/components/faq-section";
 import { categoryCityFaq, faqNode } from "@/lib/seo-content";
 import Link from "next/link";
+import { parseCitySlug, citySlug } from "@/lib/seo/slug-utils";
+import { getCityCategoryStats } from "@/lib/seo/city-stats";
 
 // ISR: páginas categoria×cidade são long-tail e mudam pouco; cacheia por 24h.
 export const revalidate = 86400;
-
-function formatCityName(slug: string): string {
-  return slug
-    .split("-")
-    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
-    .join(" ");
-}
-
-function extractState(citySlug: string): string | null {
-  // Last 2 chars if they look like a state code (after last dash)
-  const parts = citySlug.split("-");
-  const last = parts[parts.length - 1];
-  if (last.length === 2 && last === last.toLowerCase()) {
-    return last.toUpperCase();
-  }
-  return null;
-}
 
 export async function generateMetadata({
   params,
@@ -33,43 +18,40 @@ export async function generateMetadata({
   params: Promise<{ category: string; city: string }>;
 }): Promise<Metadata> {
   const { category, city } = await params;
+  const { cityName, stateUf } = parseCitySlug(city);
 
-  const state = extractState(city);
-  const cityName = state
-    ? formatCityName(city.replace(`-${state.toLowerCase()}`, ""))
-    : formatCityName(city);
+  // Slug-derived fallback label (Title Case).
+  const slugLabel = category.split("-").map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
 
-  let catName = formatCityName(category);
-  let total = 0;
+  // Prefer DB category name; fall back to slug-derived label.
+  let catLabelFinal = slugLabel;
   try {
     const sql = getDb();
     const cats = await sql`SELECT name FROM categories WHERE slug = ${category} LIMIT 1`;
-    catName = cats[0]?.name || catName;
-
-    const countRows = await sql`
-      SELECT count(*)::int as total FROM professionals p
-      JOIN categories c ON p.category_id = c.id
-      WHERE c.slug = ${category} AND p.is_active = true
-        AND (p.city ILIKE ${`%${cityName}%`} OR p.address ILIKE ${`%${cityName}%`})
-    `;
-    total = countRows[0]?.total || 0;
-  } catch (err) {
-    console.error("[city-cat] generateMetadata db failed", err);
+    catLabelFinal = cats[0]?.name || slugLabel;
+  } catch {
+    // catLabelFinal stays as slugLabel
   }
 
-  const title = `${catName} em ${cityName}${state ? `, ${state}` : ""} | Chamei`;
-  const description = total > 0
-    ? `Encontre os melhores profissionais de ${catName.toLowerCase()} em ${cityName}. ${total} profissionais avaliados com nota no Google. Compare e chame pelo WhatsApp. Grátis.`
-    : `Profissionais de ${catName.toLowerCase()} em ${cityName}. Compare e chame pelo WhatsApp. Grátis.`;
+  const stats = await getCityCategoryStats(category, cityName, stateUf).catch(() => null);
+
+  const year = 2026;
+
+  if (!stats || stats.count < 2) {
+    return {
+      robots: { index: false, follow: true },
+      title: `${catLabelFinal} em ${cityName} | Chamei`,
+    };
+  }
+
+  const title = `Os melhores ${catLabelFinal} em ${cityName} (${year}) — avaliações reais | Chamei`;
+  const desc = `${stats.count} ${catLabelFinal} em ${cityName}${stats.avgRating ? `, nota média ${stats.avgRating}★` : ""}. Contato direto no WhatsApp, grátis.`;
 
   return {
     title,
-    description,
-    openGraph: {
-      title,
-      description,
-      url: `https://chamei.app/${category}/${city}`,
-    },
+    description: desc,
+    alternates: { canonical: `https://chamei.app/${category}/${city}` },
+    openGraph: { title, description: desc },
   };
 }
 
@@ -80,10 +62,9 @@ export default async function CityCategoryPage({
 }) {
   const { category, city } = await params;
 
-  const state = extractState(city);
-  const cityName = state
-    ? formatCityName(city.replace(`-${state.toLowerCase()}`, ""))
-    : formatCityName(city);
+  const { cityName, stateUf } = parseCitySlug(city);
+  // stateUf may be empty string — keep the original extractState logic for display
+  const state = stateUf || null;
 
   type Cat = { id: string; name: string; slug: string };
   type ProWithReview = Professional & {
@@ -112,7 +93,7 @@ export default async function CityCategoryPage({
           ) r) as top_review
         FROM professionals p
         WHERE p.category_id = ${cat.id} AND p.is_active = true
-          AND (p.city ILIKE ${`%${cityName}%`} OR p.address ILIKE ${`%${cityName}%`})
+          AND translate(lower(p.city),'áàâãäçéèêëíìîïóòôõöúùûü','aaaaaceeeeiiiiooooouuuu') = translate(lower(${cityName}),'áàâãäçéèêëíìîïóòôõöúùûü','aaaaaceeeeiiiiooooouuuu')
         ORDER BY p.google_rating DESC NULLS LAST, p.google_review_count DESC NULLS LAST
         LIMIT 50
       `) as ProWithReview[];
@@ -121,7 +102,7 @@ export default async function CityCategoryPage({
         SELECT p.city, p.state, count(*) as total
         FROM professionals p
         WHERE p.category_id = ${cat.id} AND p.is_active = true AND p.city IS NOT NULL
-          AND p.city NOT ILIKE ${`%${cityName}%`}
+          AND translate(lower(p.city),'áàâãäçéèêëíìîïóòôõöúùûü','aaaaaceeeeiiiiooooouuuu') != translate(lower(${cityName}),'áàâãäçéèêëíìîïóòôõöúùûü','aaaaaceeeeiiiiooooouuuu')
         GROUP BY p.city, p.state
         ORDER BY total DESC
         LIMIT 12
@@ -132,7 +113,7 @@ export default async function CityCategoryPage({
         FROM professionals p
         JOIN categories c ON p.category_id = c.id
         WHERE p.is_active = true AND c.slug != ${category}
-          AND (p.city ILIKE ${`%${cityName}%`} OR p.address ILIKE ${`%${cityName}%`})
+          AND translate(lower(p.city),'áàâãäçéèêëíìîïóòôõöúùûü','aaaaaceeeeiiiiooooouuuu') = translate(lower(${cityName}),'áàâãäçéèêëíìîïóòôõöúùûü','aaaaaceeeeiiiiooooouuuu')
         GROUP BY c.id, c.name, c.slug
         ORDER BY total DESC
         LIMIT 10
@@ -162,31 +143,47 @@ export default async function CityCategoryPage({
   const cityDisplay = `${cityName}${state ? `, ${state}` : ""}`;
   const faq = categoryCityFaq(cat.name, cityDisplay, pros.length);
 
-  // Schema.org
+  // Fetch city-category stats for AggregateRating JSON-LD.
+  // Uses the same ISR cache window — no extra per-request load.
+  const stats = await getCityCategoryStats(category, cityName, stateUf).catch(() => null);
+
+  // Schema.org — merge AggregateRating into existing @graph when data is available.
+  const graphNodes: object[] = [
+    {
+      "@type": "ItemList",
+      name: `${cat.name} em ${cityDisplay}`,
+      numberOfItems: pros.length,
+      itemListElement: pros.slice(0, 20).map((p, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        url: `https://chamei.app/profissional/${p.slug}`,
+        name: p.name,
+      })),
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Início", item: "https://chamei.app" },
+        { "@type": "ListItem", position: 2, name: cat.name, item: `https://chamei.app/categoria/${category}` },
+        { "@type": "ListItem", position: 3, name: `${cat.name} em ${cityDisplay}`, item: `https://chamei.app/${category}/${city}` },
+      ],
+    },
+    faqNode(faq),
+  ];
+
+  if (stats && stats.avgRating && stats.reviewCount > 0) {
+    graphNodes.push({
+      "@type": "AggregateRating",
+      itemReviewed: { "@type": "Service", name: `${cat.name} em ${cityName}` },
+      ratingValue: stats.avgRating,
+      reviewCount: stats.reviewCount,
+      bestRating: 5,
+    });
+  }
+
   const jsonLd = {
     "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "ItemList",
-        name: `${cat.name} em ${cityDisplay}`,
-        numberOfItems: pros.length,
-        itemListElement: pros.slice(0, 20).map((p, i) => ({
-          "@type": "ListItem",
-          position: i + 1,
-          url: `https://chamei.app/profissional/${p.slug}`,
-          name: p.name,
-        })),
-      },
-      {
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Início", item: "https://chamei.app" },
-          { "@type": "ListItem", position: 2, name: cat.name, item: `https://chamei.app/categoria/${category}` },
-          { "@type": "ListItem", position: 3, name: `${cat.name} em ${cityDisplay}`, item: `https://chamei.app/${category}/${city}` },
-        ],
-      },
-      faqNode(faq),
-    ],
+    "@graph": graphNodes,
   };
 
   return (
@@ -213,6 +210,28 @@ export default async function CityCategoryPage({
             <p className="text-gray-500 mt-1 text-sm">
               {pros.length} profissionais encontrados
             </p>
+
+            {/* Local stats block: shown when we have >= 2 providers */}
+            {stats && stats.count >= 2 && (
+              <div className="mt-3 text-sm text-gray-600 space-y-1">
+                {stats.avgRating && (
+                  <p>
+                    Nota média:{" "}
+                    <span className="font-semibold text-gray-800">{stats.avgRating}★</span>
+                    {stats.reviewCount > 0 && (
+                      <span className="text-gray-400"> ({stats.reviewCount} avaliações)</span>
+                    )}
+                  </p>
+                )}
+                {stats.neighborhoods.length > 0 && (
+                  <p>
+                    Bairros atendidos:{" "}
+                    <span className="text-gray-500">{stats.neighborhoods.join(", ")}</span>
+                  </p>
+                )}
+              </div>
+            )}
+
             <p className="text-gray-600 mt-4 text-sm leading-relaxed max-w-2xl">
               Precisa de {cat.name.toLowerCase()} em {cityDisplay}? No Chamei você compara
               {pros.length > 0 ? ` ${pros.length}` : ""} profissionais de {cat.name.toLowerCase()} avaliados
@@ -272,7 +291,7 @@ export default async function CityCategoryPage({
               </h2>
               <div className="flex flex-wrap gap-2">
                 {otherCities.map((c: any) => {
-                  const slug = `${c.city.toLowerCase().replace(/\s+/g, "-")}${c.state ? `-${c.state.toLowerCase()}` : ""}`;
+                  const slug = citySlug(c.city, c.state);
                   return (
                     <Link
                       key={slug}
