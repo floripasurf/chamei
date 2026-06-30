@@ -86,3 +86,47 @@ Sample URLs from shard (correct format):
 - Build: clean (no new errors)
 - Lint: no new errors
 - Runtime: 200 OK, correct XML, correct Cache-Control header
+
+---
+
+## Bug Fix Report (2026-06-30): sitemap shard truncated at first duplicate slug
+
+### Bug
+
+In `src/app/sitemap-citycat.xml/route.ts`, inside the `categories.map(async (cat) => { ... })` fan-out, the inner `for (const c of cities)` loop had:
+
+```ts
+if (seen.has(key)) return;
+```
+
+`return` exited the entire async category callback on the first duplicate slug, truncating all remaining cities for that category. This kept the shard at ~109 URLs.
+
+### Root Causes (two bugs, both fixed)
+
+**Bug 1 (as specified):** `return` instead of `continue` — fixed by changing to `continue`.
+
+**Bug 2 (discovered during verification):** Most categories were crashing entirely with `TypeError: Cannot read properties of null (reading 'toLowerCase')` at `citySlug(c.city, c.state)`. The DB has rows where `p.city IS NULL` (2 rows for `diarista`, and similar nulls in most categories). `getCitiesForCategory` groups by `p.city` including NULLs, so null cities reach `citySlug()`, which calls `.toLowerCase()` on null and throws. These exceptions were silently caught per-category, causing all their cities to be dropped. Only the 2 categories (`vidraceiro`, `tapeceiro`) that happened to have no null-city rows before the first crash produced output.
+
+### Fixes Applied
+
+**Line 55** — `return` → `continue`:
+```ts
+- if (seen.has(key)) return;
++ if (seen.has(key)) continue;
+```
+
+**Line 53 (new guard)** — skip null/empty city rows before calling `citySlug`:
+```ts
++ if (!c.city) continue;
+  const slug = citySlug(c.city, c.state);
+```
+
+### Verification
+
+```
+npm run build  →  ✓ Compiled successfully (no new errors)
+npm run lint   →  8 pre-existing errors only, no new errors
+curl -s "http://localhost:3000/sitemap-citycat.xml" | grep -c "<loc>"  →  9087
+```
+
+9,087 URLs — matches the expected ~9,035 (variance from legitimate slug dedup after fixing both bugs).

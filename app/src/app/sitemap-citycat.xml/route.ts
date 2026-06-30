@@ -50,9 +50,10 @@ export async function GET() {
       try {
         const cities = await getCitiesForCategory(cat.slug);
         for (const c of cities) {
+          if (!c.city) continue;
           const slug = citySlug(c.city, c.state);
           const key = `${cat.slug}/${slug}`;
-          if (seen.has(key)) return;
+          if (seen.has(key)) continue;
           seen.add(key);
           urlEntries.push(
             `  <url><loc>${BASE}/${cat.slug}/${slug}</loc><changefreq>daily</changefreq><priority>0.85</priority></url>`
