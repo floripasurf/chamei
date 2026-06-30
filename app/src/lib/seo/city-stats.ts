@@ -25,7 +25,7 @@ export async function getCityCategoryStats(
     FROM professionals p
     JOIN categories c ON c.id = p.category_id
     WHERE p.is_active AND c.slug = ${categorySlug}
-      AND lower(p.city) = lower(${city})
+      AND translate(lower(p.city),'áàâãäçéèêëíìîïóòôõöúùûü','aaaaaceeeeiiiiooooouuuu') = translate(lower(${city}),'áàâãäçéèêëíìîïóòôõöúùûü','aaaaaceeeeiiiiooooouuuu')
       AND upper(coalesce(p.state,'')) = upper(${state})
   `;
   const r = rows[0];

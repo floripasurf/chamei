@@ -6,7 +6,7 @@ import CityBrowseTracker from "./city-browse-tracker";
 import FaqSection from "@/app/components/faq-section";
 import { categoryCityFaq, faqNode } from "@/lib/seo-content";
 import Link from "next/link";
-import { parseCitySlug } from "@/lib/seo/slug-utils";
+import { parseCitySlug, citySlug } from "@/lib/seo/slug-utils";
 import { getCityCategoryStats } from "@/lib/seo/city-stats";
 
 // ISR: páginas categoria×cidade são long-tail e mudam pouco; cacheia por 24h.
@@ -93,7 +93,7 @@ export default async function CityCategoryPage({
           ) r) as top_review
         FROM professionals p
         WHERE p.category_id = ${cat.id} AND p.is_active = true
-          AND (p.city ILIKE ${`%${cityName}%`} OR p.address ILIKE ${`%${cityName}%`})
+          AND translate(lower(p.city),'áàâãäçéèêëíìîïóòôõöúùûü','aaaaaceeeeiiiiooooouuuu') = translate(lower(${cityName}),'áàâãäçéèêëíìîïóòôõöúùûü','aaaaaceeeeiiiiooooouuuu')
         ORDER BY p.google_rating DESC NULLS LAST, p.google_review_count DESC NULLS LAST
         LIMIT 50
       `) as ProWithReview[];
@@ -102,7 +102,7 @@ export default async function CityCategoryPage({
         SELECT p.city, p.state, count(*) as total
         FROM professionals p
         WHERE p.category_id = ${cat.id} AND p.is_active = true AND p.city IS NOT NULL
-          AND p.city NOT ILIKE ${`%${cityName}%`}
+          AND translate(lower(p.city),'áàâãäçéèêëíìîïóòôõöúùûü','aaaaaceeeeiiiiooooouuuu') != translate(lower(${cityName}),'áàâãäçéèêëíìîïóòôõöúùûü','aaaaaceeeeiiiiooooouuuu')
         GROUP BY p.city, p.state
         ORDER BY total DESC
         LIMIT 12
@@ -113,7 +113,7 @@ export default async function CityCategoryPage({
         FROM professionals p
         JOIN categories c ON p.category_id = c.id
         WHERE p.is_active = true AND c.slug != ${category}
-          AND (p.city ILIKE ${`%${cityName}%`} OR p.address ILIKE ${`%${cityName}%`})
+          AND translate(lower(p.city),'áàâãäçéèêëíìîïóòôõöúùûü','aaaaaceeeeiiiiooooouuuu') = translate(lower(${cityName}),'áàâãäçéèêëíìîïóòôõöúùûü','aaaaaceeeeiiiiooooouuuu')
         GROUP BY c.id, c.name, c.slug
         ORDER BY total DESC
         LIMIT 10
@@ -291,7 +291,7 @@ export default async function CityCategoryPage({
               </h2>
               <div className="flex flex-wrap gap-2">
                 {otherCities.map((c: any) => {
-                  const slug = `${c.city.toLowerCase().replace(/\s+/g, "-")}${c.state ? `-${c.state.toLowerCase()}` : ""}`;
+                  const slug = citySlug(c.city, c.state);
                   return (
                     <Link
                       key={slug}

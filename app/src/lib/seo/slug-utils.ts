@@ -11,14 +11,21 @@ export function formatCityName(slug: string): string {
     .join(" ");
 }
 
+/** Valid Brazilian UF codes (lower-case for comparison). */
+const VALID_UFS = new Set([
+  "ac","al","ap","am","ba","ce","df","es","go","ma","mt","ms","mg",
+  "pa","pb","pr","pe","pi","rj","rn","rs","ro","rr","sc","sp","se","to",
+]);
+
 /**
  * Extract the two-letter state code from the end of a city slug.
- * e.g. "rio-de-janeiro-rj" → "RJ", "sao-paulo" → null
+ * Only recognises valid Brazilian UFs to avoid false positives.
+ * e.g. "rio-de-janeiro-rj" → "RJ", "sao-paulo-sp" → "SP", "sao-paulo" → null
  */
 export function extractState(citySlug: string): string | null {
   const parts = citySlug.split("-");
   const last = parts[parts.length - 1];
-  if (last.length === 2 && last === last.toLowerCase()) {
+  if (last.length === 2 && VALID_UFS.has(last.toLowerCase())) {
     return last.toUpperCase();
   }
   return null;
